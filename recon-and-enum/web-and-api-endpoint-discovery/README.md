@@ -1,2 +1,0 @@
-# Web & API Endpoint Discovery
-

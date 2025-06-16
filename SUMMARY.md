@@ -1,95 +1,106 @@
 # Table of contents
 
-## 📂 Introduction
+* [README](README.md)
+* [Table of Contents](table-of-contents.md)
 
-* [TODO](README.md)
-* [Pentesting Methodology](introduction/pentesting-methodology/README.md)
-  * [Threat Modelling (MITRE ATLAS, STRIDE, etc.)](introduction/pentesting-methodology/threat-modelling-mitre-atlas-stride-etc..md)
+## 📂 FUNDAMENTALS
 
-## 🕵️ Recon & Enum
-
-* [TODO](recon-and-enum/todo.md)
-* [Web & API Endpoint Discovery](recon-and-enum/web-and-api-endpoint-discovery/README.md)
-  * [Jupyter Enumeration Cheat-sheet](recon-and-enum/web-and-api-endpoint-discovery/jupyter-enumeration-cheat-sheet.md)
-
-## 🎯 Target Profiles
-
-* [TODO](target-profiles/todo.md)
-* [Inference Endpoints](target-profiles/inference-endpoints.md)
-* [Vector Stores & Databases](target-profiles/vector-stores-and-databases.md)
+* [Introduction to LLM Security](fundamentals/introduction-to-llm-security.md)
+* [LLM Architectures and Deployment Models](fundamentals/llm-architectures-and-deployment-models.md)
 
 ***
 
-* [Embedding Services](embedding-services.md)
-* [MLOps & Experiment Tracking Platforms](mlops-and-experiment-tracking-platforms.md)
-* [Developer Tools & Interactive UI](developer-tools-and-interactive-ui.md)
-* [Default Credentials & No-Auth Configurations](default-credentials-and-no-auth-configurations.md)
-* [Cloud ML Platforms](cloud-ml-platforms/README.md)
-  * [Colab Public VMs](cloud-ml-platforms/colab-public-vms.md)
-  * [SageMaker Studio & Endpoints](cloud-ml-platforms/sagemaker-studio-and-endpoints.md)
-  * [Azure ML Endpoints / Azure OpenAI](cloud-ml-platforms/azure-ml-endpoints-azure-openai.md)
-  * [Lambda Labs Notebook Servers](cloud-ml-platforms/lambda-labs-notebook-servers.md)
+* [Threat Modeling LLMs](threat-modeling-llms.md)
+* [AI/ML Attack Taxonomy](ai-ml-attack-taxonomy.md)
+* [Security Risks in the LLM Lifecycle](security-risks-in-the-llm-lifecycle.md)
 
-## 🚨 Vulnerabilities & Exploits
+## Threats & Attacks
 
-* [TODO](vulnerabilities-and-exploits/todo.md)
-* [Prompt Injection](vulnerabilities-and-exploits/prompt-injection/README.md)
-  * [Page](vulnerabilities-and-exploits/prompt-injection/page.md)
-* [Adversarial-ML Techniques](vulnerabilities-and-exploits/adversarial-ml-techniques/README.md)
-  * [Evasion & Adversarial Examples](vulnerabilities-and-exploits/adversarial-ml-techniques/evasion-and-adversarial-examples.md)
-  * [Poisoning & Backdoor Attacks](vulnerabilities-and-exploits/adversarial-ml-techniques/poisoning-and-backdoor-attacks/README.md)
-    * [Advanced Attacks](vulnerabilities-and-exploits/adversarial-ml-techniques/poisoning-and-backdoor-attacks/advanced-attacks.md)
-    * [Backdoor](vulnerabilities-and-exploits/adversarial-ml-techniques/poisoning-and-backdoor-attacks/backdoor/README.md)
-      * [Hidden-trigger Backdoor](vulnerabilities-and-exploits/adversarial-ml-techniques/poisoning-and-backdoor-attacks/backdoor/hidden-trigger-backdoor.md)
-    * [Clean-label](vulnerabilities-and-exploits/adversarial-ml-techniques/poisoning-and-backdoor-attacks/clean-label.md)
-    * [Examples IRL](vulnerabilities-and-exploits/adversarial-ml-techniques/poisoning-and-backdoor-attacks/examples-irl.md)
-  * [Model-Extraction & Inference Attacks](vulnerabilities-and-exploits/adversarial-ml-techniques/model-extraction-and-inference-attacks.md)
-  * [Neural Payload & Steganographic Injections](vulnerabilities-and-exploits/adversarial-ml-techniques/neural-payload-and-steganographic-injections.md)
-* [Authentication & Information-Disclosure](vulnerabilities-and-exploits/authentication-and-information-disclosure/README.md)
-  * [Jupyter Notebook Attack Playbook](vulnerabilities-and-exploits/authentication-and-information-disclosure/jupyter-notebook-attack-playbook.md)
-* [Insecure Deserialization & Model File Abuse](vulnerabilities-and-exploits/insecure-deserialization-and-model-file-abuse/README.md)
-  * [Python Pickle Backdoors](vulnerabilities-and-exploits/insecure-deserialization-and-model-file-abuse/python-pickle-backdoors.md)
-  * [Custom Layer Trojans](vulnerabilities-and-exploits/insecure-deserialization-and-model-file-abuse/custom-layer-trojans.md)
-* [Model-Extraction & Inference Attacks](vulnerabilities-and-exploits/model-extraction-and-inference-attacks/README.md)
-  * [Model Hijacking & Weight Poisoning](vulnerabilities-and-exploits/model-extraction-and-inference-attacks/model-hijacking-and-weight-poisoning.md)
-  * [Keras Lambda Trojan Insertion](vulnerabilities-and-exploits/model-extraction-and-inference-attacks/keras-lambda-trojan-insertion.md)
-* [Edge & Embedded AI Exploits](vulnerabilities-and-exploits/edge-and-embedded-ai-exploits.md)
+* [Prompt Injection (Direct, Indirect, Multi-Hop)](threats-and-attacks/prompt-injection-direct-indirect-multi-hop.md)
 
-## 🛠️ Tools and Automation
+***
 
-* [TODO](tools-and-automation/todo.md)
-* [Adversarial Robustness Toolbox (ART)](tools-and-automation/adversarial-robustness-toolbox-art.md)
-* [Extraction & Inference Attack Toolkits](tools-and-automation/extraction-and-inference-attack-toolkits.md)
+* [Jailbreaks (DAN, code, character-level, few-shot exploits)](jailbreaks-dan-code-character-level-few-shot-exploits.md)
+* [Data Extraction & Inference Attacks](data-extraction-and-inference-attacks.md)
+* [Evasion Attacks & Adversarial Inputs](evasion-attacks-and-adversarial-inputs.md)
+* [Model Manipulation: Backdoors, Trojaned Models](model-manipulation-backdoors-trojaned-models.md)
+* [Model Hijacking & Reprogramming](model-hijacking-and-reprogramming.md)
 
-## 🧱 Mitigation & Defense
+## Evaluation & Hardening
 
-* [TODO](mitigation-and-defense/todo.md)
-* [Hardening Guide](mitigation-and-defense/hardening-guide/README.md)
-  * [Host Security](mitigation-and-defense/hardening-guide/host-security.md)
-  * [Endpoint Security](mitigation-and-defense/hardening-guide/endpoint-security.md)
-  * [Vulnerability Management](mitigation-and-defense/hardening-guide/vulnerability-management.md)
-  * [Network Protection](mitigation-and-defense/hardening-guide/network-protection.md)
-  * [Authentication](mitigation-and-defense/hardening-guide/authentication.md)
-  * [Data Protection](mitigation-and-defense/hardening-guide/data-protection.md)
-  * [Access Control](mitigation-and-defense/hardening-guide/access-control.md)
-* [Securing Artifacts & Code](mitigation-and-defense/securing-artifacts-and-code/README.md)
-  * [Secure Code](mitigation-and-defense/securing-artifacts-and-code/secure-code.md)
-  * [Dependencies Vulnerability Scanning](mitigation-and-defense/securing-artifacts-and-code/dependencies-vulnerability-scanning.md)
-  * [Secret Scanning](mitigation-and-defense/securing-artifacts-and-code/secret-scanning.md)
-  * [Securing Jupyter Notebooks](mitigation-and-defense/securing-artifacts-and-code/securing-jupyter-notebooks.md)
-  * [Securing Models](mitigation-and-defense/securing-artifacts-and-code/securing-models.md)
-* [Adversarial Defenses & Robustness](mitigation-and-defense/adversarial-defenses-and-robustness/README.md)
-  * [Preventing Extraction & Inference Attacks](mitigation-and-defense/adversarial-defenses-and-robustness/preventing-extraction-and-inference-attacks.md)
-* [NIST AI 100-2 Controls](mitigation-and-defense/nist-ai-100-2-controls.md)
+* [Red Teaming Methodologies](evaluation-and-hardening/red-teaming-methodologies.md)
 
-## 📚 Further Reading
+***
 
-* [Further Reading](further-reading/further-reading.md)
-* [Resources](further-reading/resources.md)
-* [NIST AI 100 Taxonomy](further-reading/nist-ai-100-taxonomy.md)
+* [Automated Testing of LLMs](automated-testing-of-llms.md)
+* [Adversarial Robustness Evaluation](adversarial-robustness-evaluation.md)
+* [Fine-Tuning & Reinforcement for Safety](fine-tuning-and-reinforcement-for-safety.md)
+* [Guardrails, Moderation APIs, and Filtering](guardrails-moderation-apis-and-filtering.md)
+
+## Supply Chain & Serialization Risks
+
+* [Pickle Deserialization & Model Payloads](supply-chain-and-serialization-risks/pickle-deserialization-and-model-payloads.md)
+* [Custom Layer Injection in Keras/PyTorch](supply-chain-and-serialization-risks/custom-layer-injection-in-keras-pytorch.md)
+
+***
+
+* [Lambda Layer Backdoors](lambda-layer-backdoors.md)
+* [Poisoning Datasets During Pretraining](poisoning-datasets-during-pretraining.md)
+* [Dependencies & Model Hosting Supply Chain](dependencies-and-model-hosting-supply-chain.md)
+
+## Platform Surfaces
+
+* [Cloud AI: Azure OpenAI, Sagemaker, GCP](platform-surfaces/cloud-ai-azure-openai-sagemaker-gcp.md)
+* [Local Dev: Colab, LambdaLabs, Notebooks](platform-surfaces/local-dev-colab-lambdalabs-notebooks.md)
+* [Edge AI Attacks (Mobile, Browser, IoT)](platform-surfaces/edge-ai-attacks-mobile-browser-iot.md)
+* [Multi-Tenant LLM Deployments](platform-surfaces/multi-tenant-llm-deployments.md)
+* [Abuse of Open Source LLM APIs](platform-surfaces/abuse-of-open-source-llm-apis.md)
+
+## Monitoring & Detection
+
+* [LLM-Specific Logging & Observability](monitoring-and-detection/llm-specific-logging-and-observability.md)
+* [Model Output Anomaly Detection](monitoring-and-detection/model-output-anomaly-detection.md)
+* [Behavioral Fingerprinting](monitoring-and-detection/behavioral-fingerprinting.md)
+* [Canary Prompts](monitoring-and-detection/canary-prompts.md)
+* [Inference-Time Feature Tracing](monitoring-and-detection/inference-time-feature-tracing.md)
+
+## Tools & Techniques
+
+* [PyRIT, Garak, LLMGuard](tools-and-techniques/pyrit-garak-llmguard.md)
+* [Adversarial Robustness Toolbox (ART)](tools-and-techniques/adversarial-robustness-toolbox-art.md)
+* [PromptBench, AdvBench](tools-and-techniques/promptbench-advbench.md)
+* [LangChain Red Team Modules](tools-and-techniques/langchain-red-team-modules.md)
+* [Custom Harnesses & Evaluation Scripts](tools-and-techniques/custom-harnesses-and-evaluation-scripts.md)
+
+## Real-World Case Studies
+
+***
+
+* [LLM Incidents & Exploit Walkthroughs](llm-incidents-and-exploit-walkthroughs.md)
+* [CTF Challenges](ctf-challenges.md)
+* [Bug Bounty Reports](bug-bounty-reports.md)
+* [Model Card Failures](model-card-failures.md)
+
+## Defensive Engineering
+
+* [Access Controls & Prompt Isolation](defensive-engineering/access-controls-and-prompt-isolation.md)
+
+***
+
+* [Output Sanitization & Response Types](output-sanitization-and-response-types.md)
+* [Context Length Abuse Mitigations](context-length-abuse-mitigations.md)
+* [Embedding Space Monitoring](embedding-space-monitoring.md)
+* [Retrieval Augmented Generation (RAG) Defenses](retrieval-augmented-generation-rag-defenses.md)
+
+## Reference Guides
+
+* [Common Ports & Services for Recon](reference-guides/common-ports-and-services-for-recon.md)
+* [Prompt Wordlists (offensive & defensive)](reference-guides/prompt-wordlists-offensive-and-defensive.md)
+* [LLM-Specific HTTP Headers / APIs](reference-guides/llm-specific-http-headers-apis.md)
+* [JSON Schema Fuzzing](reference-guides/json-schema-fuzzing.md)
+* [Security Evaluation Checklists](reference-guides/security-evaluation-checklists.md)
 
 ## 📔 Personal
 
-* [Reference & Further Reading](personal/reference-and-further-reading.md)
 * [Hack The Box](personal/hack-the-box/README.md)
   * [AI SPACE](personal/hack-the-box/ai-space.md)

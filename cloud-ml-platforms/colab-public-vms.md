@@ -1,2 +1,0 @@
-# Colab Public VMs
-

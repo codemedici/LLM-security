@@ -1,0 +1,2 @@
+# Prompt Wordlists (offensive & defensive)
+

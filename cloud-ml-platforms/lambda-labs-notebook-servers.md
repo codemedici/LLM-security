@@ -1,2 +1,0 @@
-# Lambda Labs Notebook Servers
-
