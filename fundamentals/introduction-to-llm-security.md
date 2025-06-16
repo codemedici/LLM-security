@@ -1,51 +1,73 @@
 # Introduction to LLM Security
 
-## Introduction to LLM Security
+Introduction to LLM Security
 
-Large Language Models (LLMs) have redefined human-computer interaction. But with great power comes new threat surfaces. This section introduces foundational concepts necessary for LLM red teaming and security evaluation.
+Large Language Models (LLMs) have unlocked incredible productivity and conversational capabilities — but they also introduce a **new class of security vulnerabilities**. From prompt injection and jailbreaks to backdoored weights and inference-time exploits, LLMs must be evaluated with an adversarial mindset.
 
-### 🎯 Objectives
+This notebook provides a practical reference for red teamers, penetration testers, ML engineers, and AI researchers working to **secure, attack, or audit** generative models in production.
 
-* Understand what makes LLMs uniquely vulnerable
-* Explore high-level threat categories
-* Identify key terms and assumptions
+## Why LLM Security Matters
+
+| Risk Domain      | Real-World Impact                                |
+| ---------------- | ------------------------------------------------ |
+| Prompt Injection | Jailbreaking safety policies, plugin misuse      |
+| Model Extraction | Intellectual property theft, training data leaks |
+| Tool Abuse       | Unauthorized file access, command execution      |
+| Data Poisoning   | Silent model manipulation at training time       |
+| API Misuse       | Key leakage, misuse of inference infrastructure  |
+
+LLMs differ from traditional software:
+
+* Inputs and behavior are **non-deterministic**
+* Attacks can be **semantic**, not syntactic
+* Exploits may arise from **language**, not code
+
+## What This Notebook Covers
+
+* Practical attacks and detection techniques
+* Tooling and red teaming methodologies
+* Defensive strategies and risk mitigation
+* Deployment surface analysis (cloud, edge, APIs)
+* Reference guides for offensive and defensive workflows
+
+Each section is structured as a **self-contained page**, optimized for use during audits, research, and security reviews.
+
+## Audience
+
+This notebook is intended for:
+
+* 🛡️ Security engineers working on LLM safety
+* 🧠 ML researchers studying adversarial AI
+* 🔍 Penetration testers auditing AI deployments
+* 🧰 Developers building GenAI applications
+* 🗂️ Risk managers integrating LLMs into workflows
+
+No deep ML theory required — this is a field manual.
+
+## Scope of Attacks
+
+The pages cover LLM attack surfaces across:
+
+```
+[Prompt Input] → [Pre/Post Processing] → [Model Inference] → [Tool Use / Output]
+```
+
+Each phase contains:
+
+* **Attack vectors**
+* **Detection strategies**
+* **Real-world examples**
+* **Hardening recommendations**
+
+## Philosophy
+
+* **Assume the model can be manipulated**
+* **Trust boundaries must be redefined**
+* **Security isn’t solved — it’s evaluated continuously**
+
+## Let’s begin.
 
 ***
 
-### 🔍 Why LLMs Are Different
-
-Unlike traditional software, LLMs:
-
-* Generate probabilistic outputs
-* Can be steered via input prompts
-* Lack clear internal logic paths
-* Share a single model across users (multi-tenancy)
-
-These factors introduce **non-determinism**, **prompt injection vectors**, and **emergent behaviors** difficult to control.
-
-***
-
-### 🧱 Foundational Concepts
-
-* **Prompt Injection**: Crafting inputs that manipulate model outputs or instructions.
-* **Model Extraction**: Reconstructing the model via queries or training data inference.
-* **Adversarial Examples**: Inputs designed to produce harmful or unexpected outputs.
-* **Multi-Tenant Risk**: Shared inference across users without isolation.
-
-***
-
-### ⚔️ Adversary Model
-
-In red teaming LLMs, we assume adversaries may be:
-
-* External users (black-box access)
-* Internal users with prompt/parameter visibility
-* Advanced persistent threats with system-level access
-
-Threat modeling adapts based on the level of access and deployment mode (cloud, on-prem, edge).
-
-***
-
-### 🧠 Key Takeaway
-
-LLM security blends traditional AppSec with novel AI risks. Understanding this hybrid surface is the first step in effective red teaming and defense.
+Next up:\
+**Canary Prompts**

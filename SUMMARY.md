@@ -16,11 +16,11 @@
 
 ## Threats & Attacks
 
-* [Prompt Injection (Direct, Indirect, Multi-Hop)](threats-and-attacks/prompt-injection-direct-indirect-multi-hop.md)
+* [Prompt Injection](threats-and-attacks/prompt-injection.md)
 
 ***
 
-* [Jailbreaks (DAN, code, character-level, few-shot exploits)](jailbreaks-dan-code-character-level-few-shot-exploits.md)
+* [Jailbreaks](jailbreaks.md)
 * [Data Extraction & Inference Attacks](data-extraction-and-inference-attacks.md)
 * [Evasion Attacks & Adversarial Inputs](evasion-attacks-and-adversarial-inputs.md)
 * [Model Manipulation: Backdoors, Trojaned Models](model-manipulation-backdoors-trojaned-models.md)
@@ -52,7 +52,7 @@
 
 * [Cloud AI: Azure OpenAI, Sagemaker, GCP](platform-surfaces/cloud-ai-azure-openai-sagemaker-gcp.md)
 * [Local Dev: Colab, LambdaLabs, Notebooks](platform-surfaces/local-dev-colab-lambdalabs-notebooks.md)
-* [Edge AI Attacks (Mobile, Browser, IoT)](platform-surfaces/edge-ai-attacks-mobile-browser-iot.md)
+* [Edge AI Attacks](platform-surfaces/edge-ai-attacks.md)
 * [Multi-Tenant LLM Deployments](platform-surfaces/multi-tenant-llm-deployments.md)
 * [Abuse of Open Source LLM APIs](platform-surfaces/abuse-of-open-source-llm-apis.md)
 
@@ -95,7 +95,7 @@
 ## Reference Guides
 
 * [Common Ports & Services for Recon](reference-guides/common-ports-and-services-for-recon.md)
-* [Prompt Wordlists (offensive & defensive)](reference-guides/prompt-wordlists-offensive-and-defensive.md)
+* [Prompt Wordlists](reference-guides/prompt-wordlists.md)
 * [LLM-Specific HTTP Headers / APIs](reference-guides/llm-specific-http-headers-apis.md)
 * [JSON Schema Fuzzing](reference-guides/json-schema-fuzzing.md)
 * [Security Evaluation Checklists](reference-guides/security-evaluation-checklists.md)
