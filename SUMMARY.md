@@ -17,6 +17,7 @@
 ## Threats & Attacks
 
 * [Prompt Injection](threats-and-attacks/prompt-injection.md)
+* [Autonomous Agent Risks](threats-and-attacks/autonomous-agent-risks.md)
 
 ***
 
@@ -29,6 +30,7 @@
 ## Evaluation & Hardening
 
 * [Red Teaming Methodologies](evaluation-and-hardening/red-teaming-methodologies.md)
+* [Agent Behavior Trees and Failure Analysis](evaluation-and-hardening/agent-behavior-trees-and-failure-analysis.md)
 
 ***
 
@@ -71,6 +73,7 @@
 * [PromptBench, AdvBench](tools-and-techniques/promptbench-advbench.md)
 * [LangChain Red Team Modules](tools-and-techniques/langchain-red-team-modules.md)
 * [Custom Harnesses & Evaluation Scripts](tools-and-techniques/custom-harnesses-and-evaluation-scripts.md)
+* [CrewAI & AutoGen Security Models](tools-and-techniques/crewai-and-autogen-security-models.md)
 
 ## Real-World Case Studies
 
@@ -84,6 +87,7 @@
 ## Defensive Engineering
 
 * [Access Controls & Prompt Isolation](defensive-engineering/access-controls-and-prompt-isolation.md)
+* [Memory Control and Ephemeral State Isolation](defensive-engineering/memory-control-and-ephemeral-state-isolation.md)
 
 ***
 
