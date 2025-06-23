@@ -42,7 +42,7 @@
 * [Custom Layer Injection in Keras/PyTorch](supply-chain-and-serialization-risks/custom-layer-injection-in-keras-pytorch.md)
 * [Lambda Layer Backdoors](supply-chain-and-serialization-risks/lambda-layer-backdoors.md)
 * [Poisoning Datasets During Pretraining](supply-chain-and-serialization-risks/poisoning-datasets-during-pretraining.md)
-* [Dependencies & Model Hosting Supply Chain](supply-chain-and-serialization-risks/dependencies-and-model-hosting-supply-chain.md)
+* [Dependencies & Model Hosting Supply Chain](llmsecops-lifecycle/dependencies-and-model-hosting-supply-chain.md)
 
 ### Platform Surfaces
 
@@ -69,6 +69,23 @@
 * PromptBench, AdvBench
 * LangChain Red Team Modules
 * Custom Harnesses & Evaluation Scripts
+
+### 🛠️ LLMSecOps Lifecycle
+
+* Dependencies & Model Hosting Supply Chain
+* Security Evaluation Checklists
+* Custom Harnesses & Evaluation Scripts
+
+### 📦 Vector & RAG Security
+
+* Embedding Space Monitoring
+* Retrieval Augmented Generation (RAG) Defenses
+* Inference-Time Feature Tracing
+* Self-Consistency and Grounding Checks
+
+### 🔐 Governance & Compliance
+
+* Model Card Failures
 
 ### Real-World Case Studies
 
