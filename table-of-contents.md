@@ -2,7 +2,7 @@
 
 ### Fundamentals
 
-* Introduction to LLM Security
+* \[Introduction to LLM Security]\(access-controls-prompt-isolation)
 * LLM Architectures and Deployment Models
 * Transformer Architecture: Security-Critical Internals
 * Threat Modeling LLMs (STRIDE, MITRE ATLAS, etc.)
