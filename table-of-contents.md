@@ -1,6 +1,6 @@
 # Table of Contents
 
-### Fundamentals
+### 📖 Fundamentals
 
 * [Introduction to LLM Security](fundamentals/introduction-to-llm-security.md)
 * [LLM Architectures and Deployment Models](fundamentals/llm-architectures-and-deployment-models.md)
@@ -9,9 +9,9 @@
 * [AI/ML Attack Taxonomy (NIST AI RMF, AI/ML Threat Matrix)](fundamentals/ai-ml-attack-taxonomy.md)
 * [Security Risks in the LLM Lifecycle](fundamentals/security-risks-in-the-llm-lifecycle.md)
 
-### Threats & Attacks
+### ⚔️ Threats & Attacks
 
-* [Prompt Injection (Direct, Indirect, Multi-Hop)](threats-and-attacks/prompt-injection.md)
+* [Prompt Injection (Direct, Indirect, Multi-Hop)](broken-reference)
 * [Jailbreaks (DAN, code, character-level, few-shot exploits)](threats-and-attacks/jailbreaks.md)
 * [Data Extraction & Inference Attacks](threats-and-attacks/data-extraction-and-inference-attacks.md)
 * [Evasion Attacks & Adversarial Inputs](threats-and-attacks/evasion-attacks-and-adversarial-inputs.md)
@@ -20,11 +20,11 @@
 * [Causal Mask Exploits and Attention Hijacking](threats-and-attacks/causal-mask-exploits-and-attention-hijacking.md)
 * [Autonomous Agent Risks](threats-and-attacks/autonomous-agent-risks.md)
 
-### Model Manipulation
+### 🧬 Model Manipulation
 
 * [Backdoors via Custom Layers and Model Weight Injection](model-manipulation/backdoors-via-custom-layers-and-model-weight-injection.md)
 
-### Evaluation & Hardening
+### 🛡️ Evaluation & Hardening
 
 * [Red Teaming Methodologies](evaluation-and-hardening/red-teaming-methodologies.md)
 * [Automated Testing of LLMs](evaluation-and-hardening/automated-testing-of-llms.md)
@@ -35,7 +35,7 @@
 * [Reliability Metrics and Evaluation Strategies](evaluation-and-hardening/reliability-metrics-and-evaluation-strategies.md)
 * [Retry Logic and Backoff Techniques](evaluation-and-hardening/retry-logic-and-backoff-techniques.md)
 
-### Supply Chain & Serialization Risks
+### 🔗 Supply Chain & Serialization Risks
 
 * [Pickle Deserialization and Model Payloads](supply-chain-and-serialization-risks/pickle-deserialization-and-model-payloads.md)
 * [Pickle Deserialization and Unsafe Model Loading](supply-chain-and-serialization-risks/pickle-deserialization-and-unsafe-model-loading.md)
@@ -44,7 +44,7 @@
 * [Poisoning Datasets During Pretraining](supply-chain-and-serialization-risks/poisoning-datasets-during-pretraining.md)
 * [Dependencies & Model Hosting Supply Chain](supply-chain-and-serialization-risks/dependencies-and-model-hosting-supply-chain.md)
 
-### Platform Surfaces
+### 🌐 Platform Surfaces
 
 * [Cloud AI: Azure OpenAI, Sagemaker, GCP](platform-surfaces/cloud-ai-azure-openai-sagemaker-gcp.md)
 * [Local Dev: Colab, LambdaLabs, Notebooks](platform-surfaces/local-dev-colab-lambdalabs-notebooks.md)
@@ -52,7 +52,7 @@
 * [Multi-Tenant LLM Deployments](platform-surfaces/multi-tenant-llm-deployments.md)
 * [Abuse of Open Source LLM APIs](platform-surfaces/abuse-of-open-source-llm-apis.md)
 
-### Monitoring & Detection
+### 👀 Monitoring & Detection
 
 * LLM-Specific Logging & Observability
 * Model Output Anomaly Detection
@@ -62,7 +62,7 @@
 * Continuous Feedback and Behavior Drift
 * Self-Consistency and Grounding Checks
 
-### Tools & Techniques
+### 🧰 Tools & Techniques
 
 * PyRIT (Microsoft), Garak (HuggingFace), LLMGuard
 * Adversarial Robustness Toolbox (ART)
@@ -70,7 +70,7 @@
 * LangChain Red Team Modules
 * Custom Harnesses & Evaluation Scripts
 
-### 🛠️ LLMSecOps Lifecycle
+### 🔄 LLMSecOps Lifecycle
 
 * Dependencies & Model Hosting Supply Chain
 * Security Evaluation Checklists
@@ -87,14 +87,14 @@
 
 * Model Card Failures
 
-### Real-World Case Studies
+### 📝 Real-World Case Studies
 
 * LLM Incidents & Exploit Walkthroughs
 * CTF Challenges (e.g., AI Village, DEF CON)
 * Bug Bounty Reports
 * Model Card Failures
 
-### Defensive Engineering
+### 🧱 Defensive Engineering
 
 * Access Controls & Prompt Isolation
 * Output Sanitization & Response Types
@@ -104,7 +104,7 @@
 * Memory Control and Ephemeral State Isolation
 * Interpretable Outputs and Trust Calibration
 
-### Reference Guides
+### 📚 Reference Guides
 
 * Common Ports & Services for Recon
 * Prompt Wordlists (offensive & defensive)

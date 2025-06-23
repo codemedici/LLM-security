@@ -1,8 +1,12 @@
 # Table of contents
 
-* [Project Log](README.md)
-* [README](<README (1).md>)
+* [README](README.md)
 * [Table of Contents](table-of-contents.md)
+
+## 🔬 Quick-Start Lab
+
+* [Prompt Injection Lab](quick-start-lab/prompt-injection-lab.md)
+* [Pickle Backdoor Lab](quick-start-lab/pickle-backdoor-lab.md)
 
 ## 📖 FUNDAMENTALS
 
@@ -15,7 +19,9 @@
 
 ## ⚔️ Threats & Attacks
 
-* [Prompt Injection](threats-and-attacks/prompt-injection.md)
+* [Prompt Injection – Direct](threats-and-attacks/prompt-injection-direct.md)
+* [Prompt Injection – Indirect / RAG](threats-and-attacks/prompt-injection-indirect-rag.md)
+* [Prompt Injection – Multi-Hop & Cross-App](threats-and-attacks/prompt-injection-multi-hop-and-cross-app.md)
 * [Autonomous Agent Risks](threats-and-attacks/autonomous-agent-risks.md)
 * [Jailbreaks](threats-and-attacks/jailbreaks.md)
 * [Data Extraction & Inference Attacks](threats-and-attacks/data-extraction-and-inference-attacks.md)
@@ -73,6 +79,24 @@
 * [LangChain Red Team Modules](tools-and-techniques/langchain-red-team-modules.md)
 * [CrewAI & AutoGen Security Models](tools-and-techniques/crewai-and-autogen-security-models.md)
 
+## 🔄 LLMSecOps Lifecycle
+
+* [Dependencies & Model Hosting Supply Chain](supply-chain-and-serialization-risks/dependencies-and-model-hosting-supply-chain.md)
+* [Security Evaluation Checklists](reference-guides/security-evaluation-checklists.md)
+* [Custom Harnesses & Evaluation Scripts](tools-and-techniques/custom-harnesses-and-evaluation-scripts.md)
+
+## 📦 Vector & RAG Security
+
+* [Embedding Space Monitoring](defensive-engineering/embedding-space-monitoring.md)
+* [Inference-Time Feature Tracing](monitoring-and-detection/inference-time-feature-tracing.md)
+* [Retrieval Augmented Generation (RAG) Defenses](defensive-engineering/retrieval-augmented-generation-rag-defenses.md)
+* [Self-Consistency and Grounding Checks](vector-and-rag-security/self-consistency-and-grounding-checks.md)
+
+## 🔐 Governance & Compliance
+
+* [Model Card Failures](model-card-failures.md)
+* [Regulation Overview](governance-and-compliance/regulation-overview.md)
+
 ## 📝 Real-World Case Studies
 
 ***
@@ -97,20 +121,3 @@
 * [Prompt Wordlists](reference-guides/prompt-wordlists.md)
 * [LLM-Specific HTTP Headers / APIs](reference-guides/llm-specific-http-headers-apis.md)
 * [JSON Schema Fuzzing](reference-guides/json-schema-fuzzing.md)
-
-## 🔐 Governance & Compliance
-
-* [Model Card Failures](model-card-failures.md)
-
-## 🔄 LLMSecOps Lifecycle
-
-* [Dependencies & Model Hosting Supply Chain](supply-chain-and-serialization-risks/dependencies-and-model-hosting-supply-chain.md)
-* [Security Evaluation Checklists](reference-guides/security-evaluation-checklists.md)
-* [Custom Harnesses & Evaluation Scripts](tools-and-techniques/custom-harnesses-and-evaluation-scripts.md)
-
-## 📦 Vector & RAG Security
-
-* [Embedding Space Monitoring](defensive-engineering/embedding-space-monitoring.md)
-* [Inference-Time Feature Tracing](monitoring-and-detection/inference-time-feature-tracing.md)
-* [Retrieval Augmented Generation (RAG) Defenses](defensive-engineering/retrieval-augmented-generation-rag-defenses.md)
-* [Self-Consistency and Grounding Checks](vector-and-rag-security/self-consistency-and-grounding-checks.md)
