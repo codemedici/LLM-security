@@ -42,7 +42,7 @@
 * [Custom Layer Injection in Keras/PyTorch](supply-chain-and-serialization-risks/custom-layer-injection-in-keras-pytorch.md)
 * [Lambda Layer Backdoors](supply-chain-and-serialization-risks/lambda-layer-backdoors.md)
 * [Poisoning Datasets During Pretraining](supply-chain-and-serialization-risks/poisoning-datasets-during-pretraining.md)
-* [Dependencies & Model Hosting Supply Chain](llmsecops-lifecycle/dependencies-and-model-hosting-supply-chain.md)
+* [Dependencies & Model Hosting Supply Chain](supply-chain-and-serialization-risks/dependencies-and-model-hosting-supply-chain.md)
 
 ### Platform Surfaces
 
