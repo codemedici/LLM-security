@@ -1,54 +1,49 @@
 # Table of contents
 
-* [README](README.md)
+* [Page](README.md)
+* [README](<README (1).md>)
 * [Table of Contents](table-of-contents.md)
 
 ## 📂 FUNDAMENTALS
 
 * [Introduction to LLM Security](fundamentals/introduction-to-llm-security.md)
 * [LLM Architectures and Deployment Models](fundamentals/llm-architectures-and-deployment-models.md)
-
-***
-
-* [Threat Modeling LLMs](threat-modeling-llms.md)
-* [AI/ML Attack Taxonomy](ai-ml-attack-taxonomy.md)
-* [Security Risks in the LLM Lifecycle](security-risks-in-the-llm-lifecycle.md)
+* [Security Risks in the LLM Lifecycle](fundamentals/security-risks-in-the-llm-lifecycle.md)
+* [Threat Modeling LLMs](fundamentals/threat-modeling-llms.md)
+* [AI/ML Attack Taxonomy](fundamentals/ai-ml-attack-taxonomy.md)
+* [Transformer Architecture: Security-Critical Internals](fundamentals/transformer-architecture-security-critical-internals.md)
 
 ## Threats & Attacks
 
 * [Prompt Injection](threats-and-attacks/prompt-injection.md)
 * [Autonomous Agent Risks](threats-and-attacks/autonomous-agent-risks.md)
-
-***
-
-* [Jailbreaks](jailbreaks.md)
-* [Data Extraction & Inference Attacks](data-extraction-and-inference-attacks.md)
-* [Evasion Attacks & Adversarial Inputs](evasion-attacks-and-adversarial-inputs.md)
-* [Model Manipulation: Backdoors, Trojaned Models](model-manipulation-backdoors-trojaned-models.md)
-* [Model Hijacking & Reprogramming](model-hijacking-and-reprogramming.md)
+* [Jailbreaks](threats-and-attacks/jailbreaks.md)
+* [Data Extraction & Inference Attacks](threats-and-attacks/data-extraction-and-inference-attacks.md)
+* [Evasion Attacks & Adversarial Inputs](threats-and-attacks/evasion-attacks-and-adversarial-inputs.md)
+* [Model Manipulation: Backdoors, Trojaned Models](threats-and-attacks/model-manipulation-backdoors-trojaned-models.md)
+* [Model Hijacking & Reprogramming](threats-and-attacks/model-hijacking-and-reprogramming.md)
+* [Causal Mask Exploits and Attention Hijacking](threats-and-attacks/causal-mask-exploits-and-attention-hijacking.md)
 
 ## Evaluation & Hardening
 
 * [Red Teaming Methodologies](evaluation-and-hardening/red-teaming-methodologies.md)
 * [Agent Behavior Trees and Failure Analysis](evaluation-and-hardening/agent-behavior-trees-and-failure-analysis.md)
-
-***
-
-* [Automated Testing of LLMs](automated-testing-of-llms.md)
-* [Adversarial Robustness Evaluation](adversarial-robustness-evaluation.md)
-* [Fine-Tuning & Reinforcement for Safety](fine-tuning-and-reinforcement-for-safety.md)
-* [Guardrails, Moderation APIs, and Filtering](guardrails-moderation-apis-and-filtering.md)
+* [Automated Testing of LLMs](evaluation-and-hardening/automated-testing-of-llms.md)
+* [Adversarial Robustness Evaluation](evaluation-and-hardening/adversarial-robustness-evaluation.md)
+* [Fine-Tuning & Reinforcement for Safety](evaluation-and-hardening/fine-tuning-and-reinforcement-for-safety.md)
+* [Guardrails, Moderation APIs, and Filtering](evaluation-and-hardening/guardrails-moderation-apis-and-filtering.md)
+* [LLM Hallucination Taxonomy and Detection](evaluation-and-hardening/llm-hallucination-taxonomy-and-detection.md)
+* [Reliability Metrics and Evaluation Strategies](evaluation-and-hardening/reliability-metrics-and-evaluation-strategies.md)
+* [Retry Logic and Backoff Techniques](evaluation-and-hardening/retry-logic-and-backoff-techniques.md)
 
 ## Supply Chain & Serialization Risks
 
 * [Pickle Deserialization & Model Payloads](supply-chain-and-serialization-risks/pickle-deserialization-and-model-payloads.md)
 * [Custom Layer Injection in Keras/PyTorch](supply-chain-and-serialization-risks/custom-layer-injection-in-keras-pytorch.md)
-
-***
-
-* [Lambda Layer Backdoors](lambda-layer-backdoors.md)
-* [Poisoning Datasets During Pretraining](poisoning-datasets-during-pretraining.md)
-* [Dependencies & Model Hosting Supply Chain](dependencies-and-model-hosting-supply-chain.md)
+* [Lambda Layer Backdoors](supply-chain-and-serialization-risks/lambda-layer-backdoors.md)
+* [Poisoning Datasets During Pretraining](supply-chain-and-serialization-risks/poisoning-datasets-during-pretraining.md)
+* [Dependencies & Model Hosting Supply Chain](supply-chain-and-serialization-risks/dependencies-and-model-hosting-supply-chain.md)
+* [Pickle Deserialization and Unsafe Model Loading](supply-chain-and-serialization-risks/pickle-deserialization-and-unsafe-model-loading.md)
 
 ## Platform Surfaces
 
@@ -65,6 +60,8 @@
 * [Behavioral Fingerprinting](monitoring-and-detection/behavioral-fingerprinting.md)
 * [Canary Prompts](monitoring-and-detection/canary-prompts.md)
 * [Inference-Time Feature Tracing](monitoring-and-detection/inference-time-feature-tracing.md)
+* [Continuous Feedback and Behavior Drift](monitoring-and-detection/continuous-feedback-and-behavior-drift.md)
+* [Self-Consistency and Grounding Checks](monitoring-and-detection/self-consistency-and-grounding-checks.md)
 
 ## Tools & Techniques
 
@@ -88,13 +85,11 @@
 
 * [Access Controls & Prompt Isolation](defensive-engineering/access-controls-and-prompt-isolation.md)
 * [Memory Control and Ephemeral State Isolation](defensive-engineering/memory-control-and-ephemeral-state-isolation.md)
-
-***
-
-* [Output Sanitization & Response Types](output-sanitization-and-response-types.md)
-* [Context Length Abuse Mitigations](context-length-abuse-mitigations.md)
-* [Embedding Space Monitoring](embedding-space-monitoring.md)
-* [Retrieval Augmented Generation (RAG) Defenses](retrieval-augmented-generation-rag-defenses.md)
+* [Output Sanitization & Response Types](defensive-engineering/output-sanitization-and-response-types.md)
+* [Context Length Abuse Mitigations](defensive-engineering/context-length-abuse-mitigations.md)
+* [Embedding Space Monitoring](defensive-engineering/embedding-space-monitoring.md)
+* [Retrieval Augmented Generation (RAG) Defenses](defensive-engineering/retrieval-augmented-generation-rag-defenses.md)
+* [Interpretable Outputs and Trust Calibration](defensive-engineering/interpretable-outputs-and-trust-calibration.md)
 
 ## Reference Guides
 
@@ -103,6 +98,10 @@
 * [LLM-Specific HTTP Headers / APIs](reference-guides/llm-specific-http-headers-apis.md)
 * [JSON Schema Fuzzing](reference-guides/json-schema-fuzzing.md)
 * [Security Evaluation Checklists](reference-guides/security-evaluation-checklists.md)
+
+## MODEL MANIPULATION
+
+* [Backdoors via Custom Layers and Model Weight Injection](model-manipulation/backdoors-via-custom-layers-and-model-weight-injection.md)
 
 ## 📔 Personal
 
