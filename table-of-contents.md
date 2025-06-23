@@ -2,38 +2,38 @@
 
 ### Fundamentals
 
-* \[Introduction to LLM Security]\(access-controls-prompt-isolation)
-* LLM Architectures and Deployment Models
-* Transformer Architecture: Security-Critical Internals
-* Threat Modeling LLMs (STRIDE, MITRE ATLAS, etc.)
-* AI/ML Attack Taxonomy (NIST AI RMF, AI/ML Threat Matrix)
-* Security Risks in the LLM Lifecycle
+* [Introduction to LLM Security](fundamentals/introduction-to-llm-security.md)
+* [LLM Architectures and Deployment Models](fundamentals/llm-architectures-and-deployment-models.md)
+* [Transformer Architecture: Security-Critical Internals](fundamentals/transformer-architecture-security-critical-internals.md)
+* [Threat Modeling LLMs (STRIDE, MITRE ATLAS, etc.)](fundamentals/threat-modeling-llms.md)
+* [AI/ML Attack Taxonomy (NIST AI RMF, AI/ML Threat Matrix)](fundamentals/ai-ml-attack-taxonomy.md)
+* [Security Risks in the LLM Lifecycle](fundamentals/security-risks-in-the-llm-lifecycle.md)
 
 ### Threats & Attacks
 
-* Prompt Injection (Direct, Indirect, Multi-Hop)
-* Jailbreaks (DAN, code, character-level, few-shot exploits)
-* Data Extraction & Inference Attacks
-* Evasion Attacks & Adversarial Inputs
-* Model Manipulation: Backdoors, Trojaned Models
-* Model Hijacking & Reprogramming
-* Causal Mask Exploits and Attention Hijacking
-* Autonomous Agent Risks
+* [Prompt Injection (Direct, Indirect, Multi-Hop)](threats-and-attacks/prompt-injection.md)
+* [Jailbreaks (DAN, code, character-level, few-shot exploits)](threats-and-attacks/jailbreaks.md)
+* [Data Extraction & Inference Attacks](threats-and-attacks/data-extraction-and-inference-attacks.md)
+* [Evasion Attacks & Adversarial Inputs](threats-and-attacks/evasion-attacks-and-adversarial-inputs.md)
+* [Model Manipulation: Backdoors, Trojaned Models](broken-reference)
+* [Model Hijacking & Reprogramming](threats-and-attacks/model-hijacking-and-reprogramming.md)
+* [Causal Mask Exploits and Attention Hijacking](threats-and-attacks/causal-mask-exploits-and-attention-hijacking.md)
+* [Autonomous Agent Risks](threats-and-attacks/autonomous-agent-risks.md)
 
 ### Model Manipulation
 
-* Backdoors via Custom Layers and Model Weight Injection
+* [Backdoors via Custom Layers and Model Weight Injection](model-manipulation/backdoors-via-custom-layers-and-model-weight-injection.md)
 
 ### Evaluation & Hardening
 
-* Red Teaming Methodologies
-* Automated Testing of LLMs
-* Adversarial Robustness Evaluation
-* Fine-Tuning & Reinforcement for Safety
-* Guardrails, Moderation APIs, and Filtering
-* LLM Hallucination Taxonomy and Detection
-* Reliability Metrics and Evaluation Strategies
-* Retry Logic and Backoff Techniques
+* [Red Teaming Methodologies](evaluation-and-hardening/red-teaming-methodologies.md)
+* [Automated Testing of LLMs](evaluation-and-hardening/automated-testing-of-llms.md)
+* [Adversarial Robustness Evaluation](evaluation-and-hardening/adversarial-robustness-evaluation.md)
+* [Fine-Tuning & Reinforcement for Safety](evaluation-and-hardening/fine-tuning-and-reinforcement-for-safety.md)
+* [Guardrails, Moderation APIs, and Filtering](evaluation-and-hardening/guardrails-moderation-apis-and-filtering.md)
+* [LLM Hallucination Taxonomy and Detection](evaluation-and-hardening/llm-hallucination-taxonomy-and-detection.md)
+* [Reliability Metrics and Evaluation Strategies](evaluation-and-hardening/reliability-metrics-and-evaluation-strategies.md)
+* [Retry Logic and Backoff Techniques](evaluation-and-hardening/retry-logic-and-backoff-techniques.md)
 
 ### Supply Chain & Serialization Risks
 
