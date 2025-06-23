@@ -37,20 +37,20 @@
 
 ### Supply Chain & Serialization Risks
 
-* Pickle Deserialization and Model Payloads
-* Pickle Deserialization and Unsafe Model Loading
-* Custom Layer Injection in Keras/PyTorch
-* Lambda Layer Backdoors
-* Poisoning Datasets During Pretraining
-* Dependencies & Model Hosting Supply Chain
+* [Pickle Deserialization and Model Payloads](supply-chain-and-serialization-risks/pickle-deserialization-and-model-payloads.md)
+* [Pickle Deserialization and Unsafe Model Loading](supply-chain-and-serialization-risks/pickle-deserialization-and-unsafe-model-loading.md)
+* [Custom Layer Injection in Keras/PyTorch](supply-chain-and-serialization-risks/custom-layer-injection-in-keras-pytorch.md)
+* [Lambda Layer Backdoors](supply-chain-and-serialization-risks/lambda-layer-backdoors.md)
+* [Poisoning Datasets During Pretraining](supply-chain-and-serialization-risks/poisoning-datasets-during-pretraining.md)
+* [Dependencies & Model Hosting Supply Chain](supply-chain-and-serialization-risks/dependencies-and-model-hosting-supply-chain.md)
 
 ### Platform Surfaces
 
-* Cloud AI: Azure OpenAI, Sagemaker, GCP
-* Local Dev: Colab, LambdaLabs, Notebooks
-* Edge AI Attacks (Mobile, Browser, IoT)
-* Multi-Tenant LLM Deployments
-* Abuse of Open Source LLM APIs
+* [Cloud AI: Azure OpenAI, Sagemaker, GCP](platform-surfaces/cloud-ai-azure-openai-sagemaker-gcp.md)
+* [Local Dev: Colab, LambdaLabs, Notebooks](platform-surfaces/local-dev-colab-lambdalabs-notebooks.md)
+* [Edge AI Attacks (Mobile, Browser, IoT)](platform-surfaces/edge-ai-attacks.md)
+* [Multi-Tenant LLM Deployments](platform-surfaces/multi-tenant-llm-deployments.md)
+* [Abuse of Open Source LLM APIs](platform-surfaces/abuse-of-open-source-llm-apis.md)
 
 ### Monitoring & Detection
 
