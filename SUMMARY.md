@@ -70,6 +70,7 @@
 * [Canary Prompts](monitoring-and-detection/canary-prompts.md)
 * [Continuous Feedback and Behavior Drift](monitoring-and-detection/continuous-feedback-and-behavior-drift.md)
 * [Self-Consistency and Grounding Checks](monitoring-and-detection/self-consistency-and-grounding-checks.md)
+* [LLM Firewall Patterns](monitoring-and-detection/llm-firewall-patterns.md)
 
 ## 🧰 Tools & Techniques
 
@@ -78,6 +79,7 @@
 * [PromptBench, AdvBench](tools-and-techniques/promptbench-advbench.md)
 * [LangChain Red Team Modules](tools-and-techniques/langchain-red-team-modules.md)
 * [CrewAI & AutoGen Security Models](tools-and-techniques/crewai-and-autogen-security-models.md)
+* [Lakera & Prompt Shield Quick-Start](tools-and-techniques/lakera-and-prompt-shield-quick-start.md)
 
 ## 🔄 LLMSecOps Lifecycle
 

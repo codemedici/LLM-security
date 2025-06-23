@@ -1,83 +1,74 @@
 # README
 
-## LLM Security Notebook: AI Red Teaming Edition
+## LLM Security Notebook — AI Red Teaming Edition
 
-Welcome to the **LLM Security Notebook**, a comprehensive resource tailored for:
+> _“Never trust, always verify — especially when your model is talking back.”_
 
-* 🛡️ **AI Red Teamers**
-* 👩‍💻 **Penetration Testers targeting LLMs**
-* 🧠 **Security Researchers**
-* ☁️ **Engineers deploying LLMs in production**
+🔒 **Purpose**\
+A living, practitioner-focused knowledge-base for red-teamers, penetration testers, and engineers who **attack and defend large language model (LLM) systems in production**.
 
-This GitBook/Markdown repository is the result of months of research, book parsing, tool experimentation, and practical organization of LLM security knowledge into a living knowledge base.
-
-***
-
-### 📁 Repository Structure
-
-```
-llm-security-notebook/
-│
-├── 01-fundamentals/               # Core concepts: taxonomy, attack types, threat modeling
-├── 02-threats-attacks/           # Injection, inference, evasion, extraction, etc.
-├── 03-evaluation-hardening/      # Red teaming, testing, adversarial defenses
-├── 04-supply-chain-risks/        # Model poisoning, backdoors, serialized payloads
-├── 05-platform-surfaces/         # Colab, Sagemaker, Azure, Edge AI, multi-tenant infra
-├── 06-detection-monitoring/      # Observability, logging, behavioral analysis
-├── 07-tools-techniques/          # PyRIT, Garak, LLMGuard, ART, etc.
-├── 08-case-studies/              # Real-world attacks, incident postmortems
-├── 09-defensive-strategies/      # Access control, fine-tuning safety, sandboxing
-├── 10-reference-guides/          # Ports, services, scanners, wordlists, cheat sheets
-└── README.md                     # This file
-```
-
-Each folder maps to a section in GitBook and mirrors a topic cluster for practitioners.
+🌍 **Who it’s for**\
+• AI/LLM Red Teamers • Offensive Security Consultants • AppSec & DevSecOps • MLOps / LLMOps Engineers • Security-minded Builders
 
 ***
 
-### 🔄 Syncing Between GitBook and GitHub
+### 🌐 Quick-Map of Sections
 
-If using this repo as the **source of truth**:
+| Section                 | Emoji | Jump                                           |
+| ----------------------- | ----- | ---------------------------------------------- |
+| Fundamentals            | 📚    | link                                           |
+| Threats & Attacks       | ⚔️    | link                                           |
+| Evaluation & Hardening  | 🛡️   | link                                           |
+| Supply-Chain Risks      | 🧩    | link                                           |
+| Platform Surfaces       | ☁️    | link                                           |
+| Monitoring & Detection  | 👁️   | link                                           |
+| Tools & Techniques      | 🛠️   | \[link]\(tools-techniques/pyr it-microsoft.md) |
+| Case Studies            | 📝    | link                                           |
+| Defensive Engineering   | 🏰    | link                                           |
+| Governance & Regulation | ⚖️    | link                                           |
+| Hands-on Labs           | 🧪    | link                                           |
+| Reference Guides        | 📑    | link                                           |
 
-* Use the **GitBook GitHub sync integration**
-* Set the `main` branch as source
-
-Alternatively, this repo can remain as an archive of `.md` files while content is edited in GitBook.
-
-***
-
-### 🤝 Contributing / Collaboration
-
-Suggestions, new attack techniques, tool usage examples, and code snippets are welcome! Please open an issue or PR with details.
-
-Future collaboration may involve:
-
-* Parsing more LLM security books, academic papers, or slides
-* Reverse engineering LLM attack demos from CTFs or bug bounty writeups
-* Extracting structured notes from video lectures or conference talks
+_(GitBook automatically resolves relative links once pages exist.)_
 
 ***
 
-### 🧠 Origin and Purpose
+### 🚀 How to Use This Notebook
 
-This notebook was seeded from:
-
-* 6+ major LLM security books
-* OWASP GenAI Guide
-* MITRE ATLAS
-* NIST AI 100
-* Real-world red teaming & pentest scenarios
-* Extensive brainstorming and design
-
-Its purpose is to be **your daily companion** in understanding, attacking, and defending large language models.
+1. **Browse or search** for any security topic in the sidebar.
+2. **Copy/paste snippets** (bash, python, nmap, garak) directly into your test rigs.
+3. **Run labs** locally or in a cloud sandbox to reproduce reported exploits.
+4. **Stay current** — new pages are added regularly as papers, CTFs, and vendor docs drop.
 
 ***
 
-### 📬 Contact
+### 🤝 Contributing
 
-Maintainer: [Cosimo de' Medici](https://www.linkedin.com/in/codemedici/)\
-For questions, reach out or open an issue.
+1. **Fork** → create a feature branch.
+2. Follow the **Style Guide** (`/contributing/style-guide`) — headings, emoji, code-block tags.
+3. **PR with context**: what source (paper/blog/CTF) you summarised, and why it matters.
+4. CI checks: link integrity, `markdownlint`, optional `black` for Python blocks.
+5. A maintainer merges after quick review.
+
+> Want to add a _new_ topic? Open an issue first so we can agree on placement.
 
 ***
 
-> _"Never trust, always verify"—especially when your model is talking back._
+### 🏗️ Build & Sync Options
+
+| Workflow               | When to use                                      |
+| ---------------------- | ------------------------------------------------ |
+| **GitBook UI**         | Quick edits, typo fixes                          |
+| **Git → GitBook Sync** | Bulk page additions, scripted updates            |
+| **PR Preview**         | Verify headings / code formatting before publish |
+
+Set the **`main`** branch as the single source-of-truth in GitBook’s Git integration panel.
+
+***
+
+### 📜 Attribution & Licensing
+
+Content merges material from OWASP, NIST, Lakera, Microsoft PyRIT, academic papers, and public bug-bounty write-ups under respective licenses.\
+Notebook itself: **CC BY-SA 4.0**.
+
+Maintainer: [Cosimo de’ Medici](https://www.linkedin.com/in/codemedici/)
