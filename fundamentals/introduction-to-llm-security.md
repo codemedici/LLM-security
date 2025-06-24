@@ -1,7 +1,5 @@
 # Introduction to LLM Security
 
-Introduction to LLM Security
-
 Large Language Models (LLMs) have unlocked incredible productivity and conversational capabilities — but they also introduce a **new class of security vulnerabilities**. From prompt injection and jailbreaks to backdoored weights and inference-time exploits, LLMs must be evaluated with an adversarial mindset.
 
 This notebook provides a practical reference for red teamers, penetration testers, ML engineers, and AI researchers working to **secure, attack, or audit** generative models in production.
