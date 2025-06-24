@@ -1,12 +1,14 @@
 # Table of contents
 
-* [README](README.md)
-* [Table of Contents](table-of-contents.md)
+* [Table of Contents](README.md)
 
 ## 🔬 Quick-Start Lab
 
 * [Prompt Injection Lab](quick-start-lab/prompt-injection-lab.md)
 * [Pickle Backdoor Lab](quick-start-lab/pickle-backdoor-lab.md)
+* [Vector DB Poison Lab](quick-start-lab/vector-db-poison-lab.md)
+* [Multi-Hop Agent Prompt Hijacking Lab](quick-start-lab/multi-hop-agent-prompt-hijacking-lab.md)
+* [Firewall Bypass Evaluation Lab](quick-start-lab/firewall-bypass-evaluation-lab.md)
 
 ## 📖 FUNDAMENTALS
 
@@ -93,6 +95,8 @@
 * [Inference-Time Feature Tracing](monitoring-and-detection/inference-time-feature-tracing.md)
 * [Retrieval Augmented Generation (RAG) Defenses](defensive-engineering/retrieval-augmented-generation-rag-defenses.md)
 * [Self-Consistency and Grounding Checks](vector-and-rag-security/self-consistency-and-grounding-checks.md)
+* [Retrieval Poisoning & Filtering Strategies](vector-and-rag-security/retrieval-poisoning-and-filtering-strategies.md)
+* [Weaviate & pgvector Hardening Checklist](vector-and-rag-security/weaviate-and-pgvector-hardening-checklist.md)
 
 ## 🔐 Governance & Compliance
 
