@@ -44,7 +44,8 @@
 * [Automated Testing of LLMs](evaluation-and-hardening/automated-testing-of-llms.md)
 * [Adversarial Robustness Evaluation](evaluation-and-hardening/adversarial-robustness-evaluation.md)
 * [Fine-Tuning & Reinforcement for Safety](evaluation-and-hardening/fine-tuning-and-reinforcement-for-safety.md)
-* [Guardrails, Moderation APIs, and Filtering](evaluation-and-hardening/guardrails-moderation-apis-and-filtering.md)
+* [Guardrails, Moderation APIs, and Filtering](evaluation-and-hardening/guardrails-moderation-apis-and-filtering/README.md)
+  * [Bypass Findings from Black Hat 2024](evaluation-and-hardening/guardrails-moderation-apis-and-filtering/bypass-findings-from-black-hat-2024.md)
 * [LLM Hallucination Taxonomy and Detection](evaluation-and-hardening/llm-hallucination-taxonomy-and-detection.md)
 * [Reliability Metrics and Evaluation Strategies](evaluation-and-hardening/reliability-metrics-and-evaluation-strategies.md)
 * [Retry Logic and Backoff Techniques](evaluation-and-hardening/retry-logic-and-backoff-techniques.md)
@@ -92,6 +93,7 @@
 * [Security Evaluation Checklists](reference-guides/security-evaluation-checklists.md)
 * [Custom Harnesses & Evaluation Scripts](tools-and-techniques/custom-harnesses-and-evaluation-scripts.md)
 * [MLOps to MLOops: Exposed Attack Surface](llmsecops-lifecycle/mlops-to-mloops-exposed-attack-surface.md)
+* [LLMSecOps Lifecycle](llmsecops-lifecycle/llmsecops-lifecycle.md)
 
 ## 📦 Vector & RAG Security
 
