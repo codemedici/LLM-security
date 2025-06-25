@@ -31,6 +31,7 @@
 * [Model Manipulation: Backdoors, Trojaned Models](threats-and-attacks/model-manipulation-backdoors-trojaned-models.md)
 * [Model Hijacking & Reprogramming](threats-and-attacks/model-hijacking-and-reprogramming.md)
 * [Causal Mask Exploits and Attention Hijacking](threats-and-attacks/causal-mask-exploits-and-attention-hijacking.md)
+* [Hacking AI Infrastructure Providers](threats-and-attacks/hacking-ai-infrastructure-providers.md)
 
 ## 🧬 MODEL MANIPULATION
 
@@ -47,6 +48,7 @@
 * [LLM Hallucination Taxonomy and Detection](evaluation-and-hardening/llm-hallucination-taxonomy-and-detection.md)
 * [Reliability Metrics and Evaluation Strategies](evaluation-and-hardening/reliability-metrics-and-evaluation-strategies.md)
 * [Retry Logic and Backoff Techniques](evaluation-and-hardening/retry-logic-and-backoff-techniques.md)
+* [Offensive LLM Evaluation Techniques](evaluation-and-hardening/offensive-llm-evaluation-techniques.md)
 
 ## ⛓️ Supply Chain & Serialization Risks
 
@@ -63,6 +65,7 @@
 * [Edge AI Attacks](platform-surfaces/edge-ai-attacks.md)
 * [Multi-Tenant LLM Deployments](platform-surfaces/multi-tenant-llm-deployments.md)
 * [Abuse of Open Source LLM APIs](platform-surfaces/abuse-of-open-source-llm-apis.md)
+* [In-Kernel ML Security Risks](platform-surfaces/in-kernel-ml-security-risks.md)
 
 ## 👀 Monitoring & Detection
 
@@ -88,6 +91,7 @@
 * [Dependencies & Model Hosting Supply Chain](supply-chain-and-serialization-risks/dependencies-and-model-hosting-supply-chain.md)
 * [Security Evaluation Checklists](reference-guides/security-evaluation-checklists.md)
 * [Custom Harnesses & Evaluation Scripts](tools-and-techniques/custom-harnesses-and-evaluation-scripts.md)
+* [MLOps to MLOops: Exposed Attack Surface](llmsecops-lifecycle/mlops-to-mloops-exposed-attack-surface.md)
 
 ## 📦 Vector & RAG Security
 
@@ -104,6 +108,8 @@
 * [Regulation Overview](governance-and-compliance/regulation-overview.md)
 
 ## 📝 Real-World Case Studies
+
+* [Practical LLM Security Takeaways](real-world-case-studies/practical-llm-security-takeaways.md)
 
 ***
 

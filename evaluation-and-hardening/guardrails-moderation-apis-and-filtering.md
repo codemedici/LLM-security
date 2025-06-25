@@ -113,4 +113,5 @@ Use tools like:
 ## Summary
 
 Guardrails are necessary — but not sufficient.\
-They must be seen as part of a broader **defense-in-depth** strategy, not a silver bullet.
+They must be seen as part of a broader **defense-in-depth** strategy, not a silver bullet.\
+\
