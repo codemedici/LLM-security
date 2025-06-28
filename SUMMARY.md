@@ -32,6 +32,10 @@
 * [Model Hijacking & Reprogramming](threats-and-attacks/model-hijacking-and-reprogramming.md)
 * [Causal Mask Exploits and Attention Hijacking](threats-and-attacks/causal-mask-exploits-and-attention-hijacking.md)
 * [Hacking AI Infrastructure Providers](threats-and-attacks/hacking-ai-infrastructure-providers.md)
+* [Prompt Gadget Chains](threats-and-attacks/prompt-gadget-chains.md)
+* [Token Bias & Manipulation Attacks](threats-and-attacks/token-bias-and-manipulation-attacks.md)
+* [Multi-Agent RCE Chains](threats-and-attacks/multi-agent-rce-chains.md)
+* [Gradient Leakage & Embedding Inversion Attacks](threats-and-attacks/gradient-leakage-and-embedding-inversion-attacks.md)
 
 ## 🧬 MODEL MANIPULATION
 
@@ -50,6 +54,7 @@
 * [Reliability Metrics and Evaluation Strategies](evaluation-and-hardening/reliability-metrics-and-evaluation-strategies.md)
 * [Retry Logic and Backoff Techniques](evaluation-and-hardening/retry-logic-and-backoff-techniques.md)
 * [Offensive LLM Evaluation Techniques](evaluation-and-hardening/offensive-llm-evaluation-techniques.md)
+* [Embedding Space Backdoors](evaluation-and-hardening/embedding-space-backdoors.md)
 
 ## ⛓️ Supply Chain & Serialization Risks
 
@@ -58,6 +63,7 @@
 * [Lambda Layer Backdoors](supply-chain-and-serialization-risks/lambda-layer-backdoors.md)
 * [Poisoning Datasets During Pretraining](supply-chain-and-serialization-risks/poisoning-datasets-during-pretraining.md)
 * [Pickle Deserialization and Unsafe Model Loading](supply-chain-and-serialization-risks/pickle-deserialization-and-unsafe-model-loading.md)
+* [RLHF Policy Weight Backdoors](supply-chain-and-serialization-risks/rlhf-policy-weight-backdoors.md)
 
 ## 🌐 Platform Surfaces
 
@@ -67,6 +73,7 @@
 * [Multi-Tenant LLM Deployments](platform-surfaces/multi-tenant-llm-deployments.md)
 * [Abuse of Open Source LLM APIs](platform-surfaces/abuse-of-open-source-llm-apis.md)
 * [In-Kernel ML Security Risks](platform-surfaces/in-kernel-ml-security-risks.md)
+* [LLM Abuse via Edge Devices & IoT](platform-surfaces/llm-abuse-via-edge-devices-and-iot.md)
 
 ## 👀 Monitoring & Detection
 
@@ -108,6 +115,7 @@
 
 * [Model Card Failures](model-card-failures.md)
 * [Regulation Overview](governance-and-compliance/regulation-overview.md)
+* [Watermarking & Provenance in LLM Outputs](governance-and-compliance/watermarking-and-provenance-in-llm-outputs.md)
 
 ## 📝 Real-World Case Studies
 
@@ -128,6 +136,7 @@
 * [Output Sanitization & Response Types](defensive-engineering/output-sanitization-and-response-types.md)
 * [Context Length Abuse Mitigations](defensive-engineering/context-length-abuse-mitigations.md)
 * [Interpretable Outputs and Trust Calibration](defensive-engineering/interpretable-outputs-and-trust-calibration.md)
+* [LLMSecOps Pipeline & Dashboards](defensive-engineering/llmsecops-pipeline-and-dashboards.md)
 
 ## 📚 Reference Guides
 
