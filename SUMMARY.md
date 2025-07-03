@@ -117,9 +117,10 @@
 * [Regulation Overview](governance-and-compliance/regulation-overview.md)
 * [Watermarking & Provenance in LLM Outputs](governance-and-compliance/watermarking-and-provenance-in-llm-outputs.md)
 
-## 📝 Real-World Case Studies
+## 📝 Case Studies
 
-* [Practical LLM Security Takeaways](real-world-case-studies/practical-llm-security-takeaways.md)
+* [Practical LLM Security Takeaways](case-studies/practical-llm-security-takeaways.md)
+* [Pattern Mapping Cheat‑Sheet](case-studies/pattern-mapping-cheat-sheet.md)
 
 ***
 
@@ -137,6 +138,7 @@
 * [Context Length Abuse Mitigations](defensive-engineering/context-length-abuse-mitigations.md)
 * [Interpretable Outputs and Trust Calibration](defensive-engineering/interpretable-outputs-and-trust-calibration.md)
 * [LLMSecOps Pipeline & Dashboards](defensive-engineering/llmsecops-pipeline-and-dashboards.md)
+* [Design Patterns for Prompt‑Injection‑Resistant Agents](defensive-engineering/design-patterns-for-prompt-injection-resistant-agents.md)
 
 ## 📚 Reference Guides
 
