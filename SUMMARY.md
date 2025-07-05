@@ -55,6 +55,8 @@
 * [Retry Logic and Backoff Techniques](evaluation-and-hardening/retry-logic-and-backoff-techniques.md)
 * [Offensive LLM Evaluation Techniques](evaluation-and-hardening/offensive-llm-evaluation-techniques.md)
 * [Embedding Space Backdoors](evaluation-and-hardening/embedding-space-backdoors.md)
+* [Secure Design Patterns for LLM Agents](evaluation-and-hardening/secure-design-patterns-for-llm-agents.md)
+* [Secure Design Patterns for LLM Agents](evaluation-and-hardening/secure-design-patterns-for-llm-agents-1.md)
 
 ## ⛓️ Supply Chain & Serialization Risks
 
@@ -116,19 +118,19 @@
 * [Model Card Failures](model-card-failures.md)
 * [Regulation Overview](governance-and-compliance/regulation-overview.md)
 * [Watermarking & Provenance in LLM Outputs](governance-and-compliance/watermarking-and-provenance-in-llm-outputs.md)
+* [Transparency & Accountability in Red Teaming](governance-and-compliance/transparency-and-accountability-in-red-teaming.md)
 
 ## 📝 Case Studies
 
+* [LLM Incidents & Exploit Walkthroughs](case-studies/llm-incidents-and-exploit-walkthroughs.md)
 * [Practical LLM Security Takeaways](case-studies/practical-llm-security-takeaways.md)
 * [Pattern Mapping Cheat‑Sheet](case-studies/pattern-mapping-cheat-sheet.md)
-
-***
-
-* [LLM Incidents & Exploit Walkthroughs](llm-incidents-and-exploit-walkthroughs.md)
-* [CTF Challenges](ctf-challenges.md)
-  * [Hack The Box](personal/hack-the-box/README.md)
-    * [AI SPACE](personal/hack-the-box/ai-space.md)
-* [Bug Bounty Reports](bug-bounty-reports.md)
+* [CTF Challenges](case-studies/ctf-challenges/README.md)
+  * [Hack The Box](case-studies/ctf-challenges/hack-the-box/README.md)
+    * [AI SPACE](case-studies/ctf-challenges/hack-the-box/ai-space.md)
+* [Bug Bounty Reports](case-studies/bug-bounty-reports.md)
+* [LLM Agent Security Case Studies](case-studies/llm-agent-security-case-studies.md)
+* [Red Teaming Operations: OpenAI Model Testing Framework](case-studies/red-teaming-operations-openai-model-testing-framework.md)
 
 ## 🧱 Defensive Engineering
 

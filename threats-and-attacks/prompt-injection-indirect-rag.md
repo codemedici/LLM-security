@@ -23,4 +23,8 @@ A[Attacker edits data] --> B[Vector DB / Search] --> C[LLM retrieves chunk] --> 
 * **Chunk-level hashing**: detect mutated docs.
 * **Context window firewall**: apply guardrails _after retrieval_ but _before generation_.
 
+### Recommended Reading
+
+For stronger protection against indirect injection, see [Design Patterns for Prompt-Injection-Resistant Agents](../defensive-engineering/design-patterns-for-prompt-injection-resistant-agents.md).
+
 > 🔍 See _Vector & RAG Security → Retrieval Poisoning_

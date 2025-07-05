@@ -25,6 +25,8 @@ Direct (first-order) prompt injection happens when an attacker places malicious 
 * **Content firewall**: wrap model with Lakera, PromptGuard, R2C Shield.
 * **Least-privilege prompts**: keep system prompts minimal, immutable.
 
+> 💡 **Structural mitigations:** Prompt filtering alone is insufficient. Consider applying robust, principled mitigations such as the Prompt-Injection-Resistant Design Patterns.
+
 ## Hands-on Lab
 
 1. Launch the Prompt-Injection Lab notebook (see _Quick-Start Labs_).

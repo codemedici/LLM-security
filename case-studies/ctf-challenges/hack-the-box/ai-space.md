@@ -66,7 +66,7 @@ plt.show()
 
 #### Step 4 – The Twist: Hidden Flag in the Plot
 
-<figure><img src="../../.gitbook/assets/Figure_1.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/Figure_1.png" alt=""><figcaption></figcaption></figure>
 
 When you run the above code and look at the resulting scatterplot, the points seem to form a _very specific shape_. On closer inspection, they arrange themselves to spell out:
 
