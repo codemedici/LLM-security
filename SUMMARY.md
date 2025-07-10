@@ -130,7 +130,7 @@
     * [AI SPACE](case-studies/ctf-challenges/hack-the-box/ai-space.md)
 * [Bug Bounty Reports](case-studies/bug-bounty-reports.md)
 * [LLM Agent Security Case Studies](case-studies/llm-agent-security-case-studies.md)
-* [Red Teaming Operations: OpenAI Model Testing Framework](case-studies/red-teaming-operations-openai-model-testing-framework.md)
+* [OpenAI's Approach to External Red Teaming for AI Models and Systems](case-studies/openais-approach-to-external-red-teaming-for-ai-models-and-systems.md)
 
 ## 🧱 Defensive Engineering
 
