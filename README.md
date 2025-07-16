@@ -2,129 +2,159 @@
 
 ## Table of contents
 
-* Table of Contents
+* 🏠 About This Notebook
 
-### 📖 Fundamentals
+### 📚 Fundamentals
 
-* Introduction to LLM Security
-* LLM Architectures and Deployment Models
+* LLM Security Overview
+* LLM Architectures & Deployment Models
 * Security Risks in the LLM Lifecycle
 * Threat Modeling LLMs
-* AI/ML Attack Taxonomy
-* Transformer Architecture: Security-Critical Internals
+* AI / ML Attack Taxonomy
+* Transformer Internals & Security
+
+***
 
 ### ⚔️ Threats & Attacks
 
-* Prompt Injection – Direct
-* Prompt Injection – Indirect / RAG
-* Prompt Injection – Multi-Hop & Cross-App
-* Autonomous Agent Risks
+* **Prompt Injection**
+  * Overview
+    * Direct
+    * Indirect / RAG
+    * Multi-Hop & Cross-App
+* **Model Influence & Bias**
+  * Overview
+    * Token Bias & Manipulation
+    * Gradient / Embedding Leakage
+    * Attention Hijacking & Causal-Mask Exploits
+* **Autonomous / Multi-Agent Risks**
+  * Autonomous Agent Risks
+  * Multi-Agent RCE Chains
 * Jailbreaks
 * Evasion Attacks & Adversarial Inputs
 * Data Extraction & Inference Attacks
-* Gradient Leakage & Embedding Inversion Attacks
-* Causal Mask Exploits and Attention Hijacking
-* Prompt Gadget Chains
-* Token Bias & Manipulation Attacks
-* Multi-Agent RCE Chains
 * Model Hijacking & Reprogramming
-* Model Manipulation: Backdoors & Trojaned Models
+* Prompt Gadget Chains
 * Hacking AI Infrastructure Providers
+
+***
 
 ### 🧬 Model Manipulation & Supply Chain
 
-* Backdoors via Custom Layers and Weight Injection
-* Pickle Deserialization & Model Payloads
-* Unsafe Model Loading
-* Custom Layer Injection in Keras/PyTorch
-* Lambda Layer Backdoors
-* Poisoning Datasets During Pretraining
-* RLHF Policy Weight Backdoors
+* Model Manipulation & Supply-Chain - Overview
+  * **Model Backdoors**
+    * Overview
+      * Custom Layer Injection
+      * RLHF Policy Backdoors
+      * Pickle / Safetensor Payloads
+  * **Supply-Chain Risks**
+    * Dataset Poisoning
+    * Unsafe Model Loading
+    * Lambda-Layer Backdoors
+
+***
 
 ### 🛡️ Defensive Engineering
 
+* Defensive Engineering - Overview
 * Prompt Isolation & Role Separation
-* Output Sanitization and Response Types
-* Context Length Abuse Mitigations
-* Memory Control and Ephemeral State Isolation
-* Design Patterns for Prompt Injection-Resistant Agents
-* RAG Defenses
+* Output Sanitization & Response Types
+* Context-Length Abuse Mitigations
+* Ephemeral Memory Control
+* Injection-Resistant Agent Design
+* RAG Defenses & Retrieval Guardrails
 * Embedding Sanitization & Monitoring
-* Interpretable Outputs and Trust Calibration
+* Interpretable Outputs & Trust Calibration
 * LLMSecOps Dashboards
+
+***
 
 ### 🧪 Evaluation & Hardening
 
-* Red Teaming Methodologies
+* Evaluation & Hardening - Overview
+* Red-Teaming Methodologies
 * Adversarial Robustness Evaluation
-* Offensive LLM Evaluation Techniques
-* Automated Testing of LLMs
-* Agent Behavior Trees and Failure Analysis
-* Embedding Space Backdoors
-* LLM Hallucination Taxonomy and Detection
-* Fine-Tuning and Reinforcement for Safety
-* Reliability Metrics and Evaluation Strategies
-* Retry Logic and Backoff Techniques
-* Guardrails, Moderation APIs, and Filtering
-  * Bypass Findings from Black Hat 2024
+* Offensive Evaluation Techniques
+* Automated Testing Harnesses
+* Agent Behavior Trees & Failure Analysis
+* Embedding Backdoor Detection
+* Hallucination Detection
+* RLHF Safety Fine-Tuning
+* Reliability Metrics
+* Retry Logic & Backoff
+  * **Governance, Risk & Compliance**
+    * Regulation Overview
+    * Transparency & Accountability
+    * Watermarking & Provenance
+  * **Guardrails & Moderation**
+    * Overview
+    * Bypass Findings (BH 2024)
+
+***
 
 ### 🔍 Monitoring & Detection
 
+* Monitoring & Detection - Overview
 * Behavioral Fingerprinting
 * Canary Prompts
-* Continuous Feedback and Behavior Drift
+* Behavior Drift Tracking
 * Inference-Time Feature Tracing
-* Model Output Anomaly Detection
-* Self-Consistency and Grounding Checks
-* LLM-Specific Logging and Observability
+* Output Anomaly Detection
+* Self-Consistency & Grounding Checks
+* LLM-Specific Logging & Observability
 
-### 🔁 LLMsecOps Lifecycle
+***
 
+### ☁️ Runtime Surfaces & Deployment
+
+* Runtime Surfaces - Overview
 * LLMSecOps Lifecycle
-* MLOps to MLooPS: Exposed Attack Surfaces
+* Cloud / SaaS Platforms
+* Multi-Tenant Isolation Patterns
+* Edge AI Threats
+* Open-Source API Abuse
+* Local Dev & Notebook Risks
+* In-Kernel ML Risks
 
-### 🌐 Platform Surfaces
-
-* Cloud AI: Azure, OpenAI, Sagemaker, GCP
-* Multi-Tenant LLM Deployments
-* Edge AI Attacks
-* Abuse of Open Source LLM APIs
-* Local Dev: Colab, Lambda, Notebooks
-* In-Kernel ML Security Risks
+***
 
 ### ⛓️ Vector & RAG Security
 
-* Vector DB Poisoning
-* Embedding Leakage and Vector Exposure
-* Inference-Time Retrieval Exploits
+* Vector & RAG Security - Overview
+  * Vector DB Poisoning
+  * Embedding Leakage
+  * Retrieval-Time Exploits
+  * Indirect Prompt Injection (RAG)
 
-### 📜 Governance & Compliance
+***
 
-* Regulation Overview
-* Transparency and Accountability in Red Teaming
-* Watermarking and Provenance in LLM Outputs
+### ⚙️ Quick-Start Labs
 
-### 🧪 Quick-Start Labs
+* Lab Index & Setup
+  * Prompt Injection Lab
+  * Backdoor Model Lab
+  * Adversarial RAG Lab
+  * Vector Poison Lab
+  * Firewall Bypass Lab
 
-* Prompt Injection Lab
-* Pickle Backdoor Lab
-* Vector DB Poison Lab
-* Multi-Hop Agent Prompt Hijacking Lab
-* Firewall Bypass Evaluation Lab
+***
 
-### 📚 Reference Guides
+### 📝 Case Studies & Cheat Sheets
 
-* Prompt Wordlists
-* Common Ports and Services for Recon
-* LLM-Specific HTTP Headers & APIs
-* JSON Schema Fuzzing
-* Security Evaluation Checklists
+* **Incidents & Vendor Reports**
+  * OpenAI System Cards
+  * Bug-Bounty Highlights
+  * Open-Source Model Compromises
+* **Technique Cheat Sheets**
+  * Prompt Injection Cheat Sheet
+  * RAG Abuse Patterns
+  * Adversarial Evaluation Playbook
 
-### 📁 Case Studies
+***
 
-* LLM Agent Security Case Studies
-* OpenAI’s External Red Teaming Approach
-* Bug Bounty Reports
-* LLM Incidents and Exploit Walkthroughs
-* Pattern Mapping Cheat Sheet
-* Practical LLM Security Takeaways
+### 📑 Reference Appendices
+
+* Glossary
+* Threat Matrix Mapping
+* Tooling Index
+* Further Reading

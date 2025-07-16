@@ -23,7 +23,7 @@ Multi-hop injection chains two or more LLM calls so the attacker never sees the 
 
 ### Recommended Reading
 
-For stronger protection against indirect injection, see [Design Patterns for Prompt-Injection-Resistant Agents](../defensive-engineering/design-patterns-for-prompt-injection-resistant-agents.md).
+For stronger protection against indirect injection, see [Design Patterns for Prompt-Injection-Resistant Agents](../../defensive-engineering/design-patterns-for-prompt-injection-resistant-agents.md).
 
 ## Lab Extension
 

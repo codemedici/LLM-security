@@ -25,6 +25,6 @@ A[Attacker edits data] --> B[Vector DB / Search] --> C[LLM retrieves chunk] --> 
 
 ### Recommended Reading
 
-For stronger protection against indirect injection, see [Design Patterns for Prompt-Injection-Resistant Agents](../defensive-engineering/design-patterns-for-prompt-injection-resistant-agents.md).
+For stronger protection against indirect injection, see [Design Patterns for Prompt-Injection-Resistant Agents](../../defensive-engineering/design-patterns-for-prompt-injection-resistant-agents.md).
 
 > 🔍 See _Vector & RAG Security → Retrieval Poisoning_

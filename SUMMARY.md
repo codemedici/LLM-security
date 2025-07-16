@@ -5,34 +5,44 @@
 ## 📖 FUNDAMENTALS
 
 * [Introduction to LLM Security](fundamentals/introduction-to-llm-security.md)
-* [AI/ML Attack Taxonomy](fundamentals/ai-ml-attack-taxonomy.md)
 * [LLM Architectures and Deployment Models](fundamentals/llm-architectures-and-deployment-models.md)
 * [Security Risks in the LLM Lifecycle](fundamentals/security-risks-in-the-llm-lifecycle.md)
 * [Threat Modeling LLMs](fundamentals/threat-modeling-llms.md)
+* [AI/ML Attack Taxonomy](fundamentals/ai-ml-attack-taxonomy.md)
 * [Transformer Architecture: Security-Critical Internals](fundamentals/transformer-architecture-security-critical-internals.md)
 
 ## ⚔️ Threats & Attacks
 
-* [Autonomous Agent Risks](threats-and-attacks/autonomous-agent-risks.md)
-* [Causal Mask Exploits and Attention Hijacking](threats-and-attacks/causal-mask-exploits-and-attention-hijacking.md)
-* [Command Injection via Tools & Plugins](threats-and-attacks/command-injection-via-tools-and-plugins.md)
-* [Data Extraction & Inference Attacks](threats-and-attacks/data-extraction-and-inference-attacks.md)
-* [Evasion Attacks & Adversarial Inputs](threats-and-attacks/evasion-attacks-and-adversarial-inputs.md)
-* [Gradient Leakage & Embedding Inversion Attacks](threats-and-attacks/gradient-leakage-and-embedding-inversion-attacks.md)
+* [Prompt Injection](threats-and-attacks/prompt-injection/README.md)
+  * [Prompt Injection – Direct](threats-and-attacks/prompt-injection/prompt-injection-direct.md)
+  * [Prompt Injection – Indirect / RAG](threats-and-attacks/prompt-injection/prompt-injection-indirect-rag.md)
+  * [Prompt Injection – Multi-Hop & Cross-App](threats-and-attacks/prompt-injection/prompt-injection-multi-hop-and-cross-app.md)
+  * [Command Injection via Tools & Plugins](threats-and-attacks/prompt-injection/command-injection-via-tools-and-plugins.md)
+* [Model Bias](threats-and-attacks/model-bias/README.md)
+  * [Token Bias & Manipulation Attacks](threats-and-attacks/model-bias/token-bias-and-manipulation-attacks.md)
+  * [Gradient Leakage & Embedding Inversion Attacks](threats-and-attacks/model-bias/gradient-leakage-and-embedding-inversion-attacks.md)
+  * [Causal Mask Exploits and Attention Hijacking](threats-and-attacks/model-bias/causal-mask-exploits-and-attention-hijacking.md)
+* [Autonomous / Multi-Agent Risks](threats-and-attacks/autonomous-multi-agent-risks/README.md)
+  * [Autonomous Agent Risks](threats-and-attacks/autonomous-multi-agent-risks/autonomous-agent-risks.md)
+  * [Multi-Agent RCE Chains](threats-and-attacks/autonomous-multi-agent-risks/multi-agent-rce-chains.md)
 * [Jailbreaks](threats-and-attacks/jailbreaks.md)
-* [Hacking AI Infrastructure Providers](threats-and-attacks/hacking-ai-infrastructure-providers.md)
-* [Prompt Injection – Direct](threats-and-attacks/prompt-injection-direct.md)
-* [Prompt Injection – Indirect / RAG](threats-and-attacks/prompt-injection-indirect-rag.md)
-* [Prompt Injection – Multi-Hop & Cross-App](threats-and-attacks/prompt-injection-multi-hop-and-cross-app.md)
+* [Evasion Attacks & Adversarial Inputs](threats-and-attacks/evasion-attacks-and-adversarial-inputs.md)
+* [Data Extraction & Inference Attacks](threats-and-attacks/data-extraction-and-inference-attacks.md)
 * [Model Manipulation: Backdoors, Trojaned Models](threats-and-attacks/model-manipulation-backdoors-trojaned-models.md)
 * [Model Hijacking & Reprogramming](threats-and-attacks/model-hijacking-and-reprogramming.md)
 * [Prompt Gadget Chains](threats-and-attacks/prompt-gadget-chains.md)
-* [Token Bias & Manipulation Attacks](threats-and-attacks/token-bias-and-manipulation-attacks.md)
-* [Multi-Agent RCE Chains](threats-and-attacks/multi-agent-rce-chains.md)
+* [Hacking AI Infrastructure Providers](threats-and-attacks/hacking-ai-infrastructure-providers.md)
 
 ## 🧬 MODEL MANIPULATION
 
-* [Backdoors via Custom Layers and Model Weight Injection](model-manipulation/backdoors-via-custom-layers-and-model-weight-injection.md)
+* [Model Backdoors](model-manipulation/model-backdoors/README.md)
+  * [Backdoors via Custom Layers and Model Weight Injection](model-manipulation/model-backdoors/backdoors-via-custom-layers-and-model-weight-injection.md)
+  * [RLHF Policy Backdoors](model-manipulation/model-backdoors/rlhf-policy-backdoors.md)
+  * [Pickle / Safetensor Payloads](model-manipulation/model-backdoors/pickle-safetensor-payloads.md)
+* [Supply-Chain Risks](model-manipulation/supply-chain-risks/README.md)
+  * [Dataset Poisoning](model-manipulation/supply-chain-risks/dataset-poisoning.md)
+  * [Unsafe Model Loading](model-manipulation/supply-chain-risks/unsafe-model-loading.md)
+  * [Lambda-Layer Backdoors](model-manipulation/supply-chain-risks/lambda-layer-backdoors.md)
 
 ## 🛡️ Evaluation & Hardening
 
