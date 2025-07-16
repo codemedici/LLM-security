@@ -2,14 +2,6 @@
 
 * [Table of Contents](README.md)
 
-## 🔬 Quick-Start Lab
-
-* [Prompt Injection Lab](quick-start-lab/prompt-injection-lab.md)
-* [Pickle Backdoor Lab](quick-start-lab/pickle-backdoor-lab.md)
-* [Vector DB Poison Lab](quick-start-lab/vector-db-poison-lab.md)
-* [Multi-Hop Agent Prompt Hijacking Lab](quick-start-lab/multi-hop-agent-prompt-hijacking-lab.md)
-* [Firewall Bypass Evaluation Lab](quick-start-lab/firewall-bypass-evaluation-lab.md)
-
 ## 📖 FUNDAMENTALS
 
 * [Introduction to LLM Security](fundamentals/introduction-to-llm-security.md)
@@ -142,6 +134,14 @@
 * [Interpretable Outputs and Trust Calibration](defensive-engineering/interpretable-outputs-and-trust-calibration.md)
 * [LLMSecOps Pipeline & Dashboards](defensive-engineering/llmsecops-pipeline-and-dashboards.md)
 * [Design Patterns for Prompt‑Injection‑Resistant Agents](defensive-engineering/design-patterns-for-prompt-injection-resistant-agents.md)
+
+## 🔬 Quick-Start Lab
+
+* [Prompt Injection Lab](quick-start-lab/prompt-injection-lab.md)
+* [Pickle Backdoor Lab](quick-start-lab/pickle-backdoor-lab.md)
+* [Vector DB Poison Lab](quick-start-lab/vector-db-poison-lab.md)
+* [Multi-Hop Agent Prompt Hijacking Lab](quick-start-lab/multi-hop-agent-prompt-hijacking-lab.md)
+* [Firewall Bypass Evaluation Lab](quick-start-lab/firewall-bypass-evaluation-lab.md)
 
 ## 📚 Reference Guides
 

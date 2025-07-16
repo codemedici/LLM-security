@@ -1,113 +1,130 @@
 # Table of Contents
 
+## Table of contents
+
+* Table of Contents
+
 ### 📖 Fundamentals
 
-* [Introduction to LLM Security](fundamentals/introduction-to-llm-security.md)
-* [LLM Architectures and Deployment Models](fundamentals/llm-architectures-and-deployment-models.md)
-* [Transformer Architecture: Security-Critical Internals](fundamentals/transformer-architecture-security-critical-internals.md)
-* [Threat Modeling LLMs (STRIDE, MITRE ATLAS, etc.)](fundamentals/threat-modeling-llms.md)
-* [AI/ML Attack Taxonomy (NIST AI RMF, AI/ML Threat Matrix)](fundamentals/ai-ml-attack-taxonomy.md)
-* [Security Risks in the LLM Lifecycle](fundamentals/security-risks-in-the-llm-lifecycle.md)
+* Introduction to LLM Security
+* LLM Architectures and Deployment Models
+* Security Risks in the LLM Lifecycle
+* Threat Modeling LLMs
+* AI/ML Attack Taxonomy
+* Transformer Architecture: Security-Critical Internals
 
 ### ⚔️ Threats & Attacks
 
-* [Prompt Injection (Direct, Indirect, Multi-Hop)](broken-reference)
-* [Jailbreaks (DAN, code, character-level, few-shot exploits)](threats-and-attacks/jailbreaks.md)
-* [Data Extraction & Inference Attacks](threats-and-attacks/data-extraction-and-inference-attacks.md)
-* [Evasion Attacks & Adversarial Inputs](threats-and-attacks/evasion-attacks-and-adversarial-inputs.md)
-* [Model Manipulation: Backdoors, Trojaned Models](broken-reference)
-* [Model Hijacking & Reprogramming](threats-and-attacks/model-hijacking-and-reprogramming.md)
-* [Causal Mask Exploits and Attention Hijacking](threats-and-attacks/causal-mask-exploits-and-attention-hijacking.md)
-* [Autonomous Agent Risks](threats-and-attacks/autonomous-agent-risks.md)
+* Prompt Injection – Direct
+* Prompt Injection – Indirect / RAG
+* Prompt Injection – Multi-Hop & Cross-App
+* Autonomous Agent Risks
+* Jailbreaks
+* Evasion Attacks & Adversarial Inputs
+* Data Extraction & Inference Attacks
+* Gradient Leakage & Embedding Inversion Attacks
+* Causal Mask Exploits and Attention Hijacking
+* Prompt Gadget Chains
+* Token Bias & Manipulation Attacks
+* Multi-Agent RCE Chains
+* Model Hijacking & Reprogramming
+* Model Manipulation: Backdoors & Trojaned Models
+* Hacking AI Infrastructure Providers
 
-### 🧬 Model Manipulation
+### 🧬 Model Manipulation & Supply Chain
 
-* [Backdoors via Custom Layers and Model Weight Injection](model-manipulation/backdoors-via-custom-layers-and-model-weight-injection.md)
+* Backdoors via Custom Layers and Weight Injection
+* Pickle Deserialization & Model Payloads
+* Unsafe Model Loading
+* Custom Layer Injection in Keras/PyTorch
+* Lambda Layer Backdoors
+* Poisoning Datasets During Pretraining
+* RLHF Policy Weight Backdoors
 
-### 🛡️ Evaluation & Hardening
+### 🛡️ Defensive Engineering
 
-* [Red Teaming Methodologies](evaluation-and-hardening/red-teaming-methodologies.md)
-* [Automated Testing of LLMs](evaluation-and-hardening/automated-testing-of-llms.md)
-* [Adversarial Robustness Evaluation](evaluation-and-hardening/adversarial-robustness-evaluation.md)
-* [Fine-Tuning & Reinforcement for Safety](evaluation-and-hardening/fine-tuning-and-reinforcement-for-safety.md)
-* [Guardrails, Moderation APIs, and Filtering](evaluation-and-hardening/guardrails-moderation-apis-and-filtering/)
-* [LLM Hallucination Taxonomy and Detection](evaluation-and-hardening/llm-hallucination-taxonomy-and-detection.md)
-* [Reliability Metrics and Evaluation Strategies](evaluation-and-hardening/reliability-metrics-and-evaluation-strategies.md)
-* [Retry Logic and Backoff Techniques](evaluation-and-hardening/retry-logic-and-backoff-techniques.md)
+* Prompt Isolation & Role Separation
+* Output Sanitization and Response Types
+* Context Length Abuse Mitigations
+* Memory Control and Ephemeral State Isolation
+* Design Patterns for Prompt Injection-Resistant Agents
+* RAG Defenses
+* Embedding Sanitization & Monitoring
+* Interpretable Outputs and Trust Calibration
+* LLMSecOps Dashboards
 
-### 🔗 Supply Chain & Serialization Risks
+### 🧪 Evaluation & Hardening
 
-* [Pickle Deserialization and Model Payloads](supply-chain-and-serialization-risks/pickle-deserialization-and-model-payloads.md)
-* [Pickle Deserialization and Unsafe Model Loading](supply-chain-and-serialization-risks/pickle-deserialization-and-unsafe-model-loading.md)
-* [Custom Layer Injection in Keras/PyTorch](supply-chain-and-serialization-risks/custom-layer-injection-in-keras-pytorch.md)
-* [Lambda Layer Backdoors](supply-chain-and-serialization-risks/lambda-layer-backdoors.md)
-* [Poisoning Datasets During Pretraining](supply-chain-and-serialization-risks/poisoning-datasets-during-pretraining.md)
-* [Dependencies & Model Hosting Supply Chain](supply-chain-and-serialization-risks/dependencies-and-model-hosting-supply-chain.md)
+* Red Teaming Methodologies
+* Adversarial Robustness Evaluation
+* Offensive LLM Evaluation Techniques
+* Automated Testing of LLMs
+* Agent Behavior Trees and Failure Analysis
+* Embedding Space Backdoors
+* LLM Hallucination Taxonomy and Detection
+* Fine-Tuning and Reinforcement for Safety
+* Reliability Metrics and Evaluation Strategies
+* Retry Logic and Backoff Techniques
+* Guardrails, Moderation APIs, and Filtering
+  * Bypass Findings from Black Hat 2024
+
+### 🔍 Monitoring & Detection
+
+* Behavioral Fingerprinting
+* Canary Prompts
+* Continuous Feedback and Behavior Drift
+* Inference-Time Feature Tracing
+* Model Output Anomaly Detection
+* Self-Consistency and Grounding Checks
+* LLM-Specific Logging and Observability
+
+### 🔁 LLMsecOps Lifecycle
+
+* LLMSecOps Lifecycle
+* MLOps to MLooPS: Exposed Attack Surfaces
 
 ### 🌐 Platform Surfaces
 
-* [Cloud AI: Azure OpenAI, Sagemaker, GCP](platform-surfaces/cloud-ai-azure-openai-sagemaker-gcp.md)
-* [Local Dev: Colab, LambdaLabs, Notebooks](platform-surfaces/local-dev-colab-lambdalabs-notebooks.md)
-* [Edge AI Attacks (Mobile, Browser, IoT)](platform-surfaces/edge-ai-attacks.md)
-* [Multi-Tenant LLM Deployments](platform-surfaces/multi-tenant-llm-deployments.md)
-* [Abuse of Open Source LLM APIs](platform-surfaces/abuse-of-open-source-llm-apis.md)
+* Cloud AI: Azure, OpenAI, Sagemaker, GCP
+* Multi-Tenant LLM Deployments
+* Edge AI Attacks
+* Abuse of Open Source LLM APIs
+* Local Dev: Colab, Lambda, Notebooks
+* In-Kernel ML Security Risks
 
-### 👀 Monitoring & Detection
+### ⛓️ Vector & RAG Security
 
-* LLM-Specific Logging & Observability
-* Model Output Anomaly Detection
-* Behavioral Fingerprinting
-* Canary Prompts
-* Inference-Time Feature Tracing
-* Continuous Feedback and Behavior Drift
-* Self-Consistency and Grounding Checks
+* Vector DB Poisoning
+* Embedding Leakage and Vector Exposure
+* Inference-Time Retrieval Exploits
 
-### 🧰 Tools & Techniques
+### 📜 Governance & Compliance
 
-* PyRIT (Microsoft), Garak (HuggingFace), LLMGuard
-* Adversarial Robustness Toolbox (ART)
-* PromptBench, AdvBench
-* LangChain Red Team Modules
-* Custom Harnesses & Evaluation Scripts
+* Regulation Overview
+* Transparency and Accountability in Red Teaming
+* Watermarking and Provenance in LLM Outputs
 
-### 🔄 LLMSecOps Lifecycle
+### 🧪 Quick-Start Labs
 
-* Dependencies & Model Hosting Supply Chain
-* Security Evaluation Checklists
-* Custom Harnesses & Evaluation Scripts
-
-### 📦 Vector & RAG Security
-
-* Embedding Space Monitoring
-* Retrieval Augmented Generation (RAG) Defenses
-* Inference-Time Feature Tracing
-* Self-Consistency and Grounding Checks
-
-### 🔐 Governance & Compliance
-
-* Model Card Failures
-
-### 📝 Real-World Case Studies
-
-* LLM Incidents & Exploit Walkthroughs
-* CTF Challenges (e.g., AI Village, DEF CON)
-* Bug Bounty Reports
-* Model Card Failures
-
-### 🧱 Defensive Engineering
-
-* Access Controls & Prompt Isolation
-* Output Sanitization & Response Types
-* Context Length Abuse Mitigations
-* Embedding Space Monitoring
-* Retrieval Augmented Generation (RAG) Defenses
-* Memory Control and Ephemeral State Isolation
-* Interpretable Outputs and Trust Calibration
+* Prompt Injection Lab
+* Pickle Backdoor Lab
+* Vector DB Poison Lab
+* Multi-Hop Agent Prompt Hijacking Lab
+* Firewall Bypass Evaluation Lab
 
 ### 📚 Reference Guides
 
-* Common Ports & Services for Recon
-* Prompt Wordlists (offensive & defensive)
-* LLM-Specific HTTP Headers / APIs
+* Prompt Wordlists
+* Common Ports and Services for Recon
+* LLM-Specific HTTP Headers & APIs
 * JSON Schema Fuzzing
 * Security Evaluation Checklists
+
+### 📁 Case Studies
+
+* LLM Agent Security Case Studies
+* OpenAI’s External Red Teaming Approach
+* Bug Bounty Reports
+* LLM Incidents and Exploit Walkthroughs
+* Pattern Mapping Cheat Sheet
+* Practical LLM Security Takeaways
