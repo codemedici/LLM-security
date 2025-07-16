@@ -1,93 +1,138 @@
 # LLM Architectures and Deployment Models
 
-Understanding how LLMs are structured and deployed is foundational to assessing their security posture. Different architectures and modalities imply different threat surfaces, attack vectors, and defensive strategies.
+## LLM Architectures and Deployment Models
 
-## Common Model Architectures
+Understanding how LLMs are structured and deployed is foundational to assessing their security posture. Different architectures and deployment modalities expose different **threat surfaces**, **attack vectors**, and require distinct **defensive strategies**.
 
-### Decoder-Only Transformers
+***
 
-* Used by GPT, LLaMA, Falcon, Mistral
-* Generate outputs token-by-token based on prior context
-* Tend to memorize training data more easily
+### 🔧 Common Model Architectures
 
-**Security Implication**: More prone to extraction or leakage attacks due to causal attention.
+#### Decoder-Only Transformers
 
-### Encoder-Decoder Transformers
+* **Examples:** GPT, LLaMA, Falcon, Mistral
+* **Function:** Generate outputs token-by-token using causal attention
+* **Use Case:** Chatbots, completion, summarization
 
-* Used by T5, BART
-* Encode input into latent representation and decode into output
-* Well-suited for translation, summarization, etc.
+**🔐 Security Implications:**
 
-**Security Implication**: More complex input/output interaction surface, often safer in some alignment tasks.
+* Memorize data more easily → prone to **training data leakage**, **membership inference**, **model inversion**
+* Vulnerable to **prompt injection**, **token bias manipulation**
 
-### RAG (Retrieval-Augmented Generation)
+***
 
-* Combine a retriever module (e.g., vector store) with a generator (LLM)
-* Popular in production chatbots and enterprise search
+#### Encoder-Decoder Transformers
 
-**Security Implication**: Prone to prompt injection via retrieved documents, file poisoning, and vector attacks.
+* **Examples:** T5, BART, mT5
+* **Function:** Encode input to a latent space, then decode
+* **Use Case:** Translation, summarization, text rewriting
 
-## Open vs Closed Weight Models
+**🔐 Security Implications:**
 
-| Type   | Description                            | Examples               |
-| ------ | -------------------------------------- | ---------------------- |
-| Closed | API access only, weights not available | OpenAI, Anthropic      |
-| Open   | Self-hostable, weights available       | LLaMA, Mistral, Falcon |
+* Better input/output separation, may reduce attack surface in some tasks
+* But complexity opens risk to **input-overflow, output-hallucination**, or **alignment mismatch**
 
-**Security Implication**:\
-Open models increase surface for:
+***
 
-* Weight tampering / trojans
-* Backdoor injection
-* Insecure inference servers
+#### Retrieval-Augmented Generation (RAG)
 
-## Deployment Modalities
+* **Examples:** ChatGPT w/ Browsing, LangChain agents, enterprise Q\&A bots
+* **Function:** Augments model with external knowledge from vector DBs
+* **Use Case:** Knowledge grounding, document Q\&A, legal/financial summarization
 
-### API-Based (Cloud)
+**🔐 Security Implications:**
 
-* Models hosted by vendors (OpenAI, Claude)
-* Accessed via HTTPS + API key
-* Includes tools, plugins, agents
+* **Indirect prompt injection** via documents or indexed content
+* Vector DBs vulnerable to **poisoning**, **embedding attacks**, and **untrusted inputs**
 
-**Surface**: Token leaks, API key abuse, plugin injection, prompt chaining.
+***
 
-### On-Premise / Local
+### 🔓 Open vs. Closed Weight Models
 
-* Weights hosted by user
-* Inference with Hugging Face, vLLM, TGI, llama.cpp
+| Model Type | Description                       | Examples               | Security Implications                                                                          |
+| ---------- | --------------------------------- | ---------------------- | ---------------------------------------------------------------------------------------------- |
+| Closed     | API-only access; hosted by vendor | OpenAI, Anthropic      | Data protected, but **opaque behavior** and **API key leakage risk**                           |
+| Open       | Self-hosted; weights downloadable | LLaMA, Mistral, Falcon | Exposes attack surface: **model tampering**, **trojaned weights**, **RCE via custom handlers** |
 
-**Surface**: Model file poisoning, insecure endpoints, lack of telemetry, serialized payloads.
+Open-weight models require **supply chain security**, **weight verification**, and **container isolation** to reduce risk.
 
-### Edge and Browser-Based
+***
 
-* Small models compiled to run in-browser (WebGPU)
-* Deployed to mobile, embedded, or private edge servers
+### 🌐 Deployment Modalities
 
-**Surface**: No sandbox, model leakage, weak update control.
+#### API-Based / Cloud-Hosted
 
-## System Architecture Patterns
+* **Usage:** Call OpenAI, Claude, Gemini via HTTPS
+* **Integration:** Often part of tools, plugins, agents
 
-### Inference Stack
+**⚠️ Threats:**
 
-```
+* API key leakage
+* Token-level exfiltration
+* Plugin misuse
+* Poor rate-limiting or isolation between users
+
+***
+
+#### On-Premise / Self-Hosted
+
+* **Tools:** vLLM, TGI, Hugging Face, llama.cpp
+* **Used For:** Full control, fine-tuning, privacy
+
+**⚠️ Threats:**
+
+* **Insecure endpoints** (localhost or Flask)
+* **Pickle deserialization** backdoors
+* **Model file poisoning**
+* **No audit/logging telemetry by default**
+
+***
+
+#### Edge, Browser-Based, Embedded
+
+* **Examples:** WebLLM (WebGPU), llama.cpp mobile, quantized tiny LLMs
+* **Deployment:** On-device inference (no external calls)
+
+**⚠️ Threats:**
+
+* No sandbox → direct access to model weights
+* Users can extract parameters or manipulate update logic
+* **No remote kill switch** or policy updates once deployed
+
+***
+
+### 🧱 LLM System Architecture Pattern
+
+```plaintext
 [Frontend (Chat UI)]
-       ↓
-[Backend Router / Proxy]
-       ↓
-[LLM Inference Server]
-       ↓
-[Model File + Tokenizer]
+        ↓
+[Router / Orchestrator / API Gateway]
+        ↓
+[LLM Inference Engine (vLLM, TGI)]
+        ↓
+[Model Weights + Tokenizer + Tools]
 ```
 
-* Often uses FastAPI, Flask, Docker, Kubernetes
-* Plugins/tool use can call subprocesses, APIs, or files
+* Plugins or tools may trigger subprocesses, fetch URLs, or invoke shell commands
+* Every component is **a security boundary** that must be hardened independently
 
-## Real-World Impacts
+***
 
-* Insecure Hugging Face model demos exposing endpoints
-* Mislabeled open-source model weights with embedded payloads
-* RAG setups serving toxic or malicious content
+### 🧪 Real-World Security Incidents
 
-## Summary
+* 🔓 \[Hugging Face Spaces] deployed with unprotected inference endpoints
+* 🐛 LLaMA-based models backdoored via malicious safetensors or Pickle files
+* 📚 RAG apps serving unsafe instructions from poisoned PDFs
+* ⚙️ LangChain agents accidentally triggering OS-level commands
 
-Knowing the architecture of your model and its deployment path is the first step in knowing where to look for vulnerabilities.
+***
+
+### ✅ Summary
+
+> **Understanding your model's architecture and deployment path is the first step to defending it.**
+
+Each choice — model type, weight access, or deployment stack — reshapes the **attack surface** and demands different **mitigation strategies**:
+
+* Trust boundaries shift with tools and plugins
+* Observability varies between open vs. closed systems
+* Edge and local deployments need stronger supply chain hygiene

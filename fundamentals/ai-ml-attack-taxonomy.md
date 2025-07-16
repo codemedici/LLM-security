@@ -4,65 +4,122 @@ description: (NIST AI RMF, AI/ML Threat Matrix)
 
 # AI/ML Attack Taxonomy
 
-A comprehensive understanding of LLM security requires familiarity with broader AI/ML attack taxonomies. These include structured frameworks like the NIST AI Risk Management Framework (AI RMF) and Microsoft’s AI/ML Threat Matrix — both of which classify threats beyond prompt injection.
+## AI/ML Attack Taxonomy
 
-## NIST AI Risk Management Framework (AI RMF)
+A foundational understanding of LLM security begins with broader AI/ML attack taxonomies. These structured frameworks help classify threats across predictive and generative AI systems — far beyond prompt injection alone.
 
-The NIST AI RMF categorizes AI risk across four core functions:
+***
 
-1. **Map** — Understand system context and risk surfaces
-2. **Measure** — Assess vulnerabilities, exposure, bias
-3. **Manage** — Implement controls and mitigations
-4. **Govern** — Define accountability, transparency, auditability
+### NIST AI Risk Management Framework (AI RMF)
 
-### Relevance to LLMs:
+The original **NIST AI RMF** organizes risk across four core functions:
 
-* LLMs must be assessed for:
-  * **Explainability**: Can you interpret the output path?
-  * **Robustness**: Can outputs be manipulated by adversarial input?
-  * **Data Privacy**: Can training data be reconstructed or inferred?
-  * **Responsibility**: Is there logging and attribution of prompts?
+1. **Map** — Identify system context, use cases, and risk surfaces
+2. **Measure** — Assess robustness, privacy leakage, and exposure
+3. **Manage** — Apply technical and procedural mitigations
+4. **Govern** — Ensure accountability, traceability, transparency
 
-> Risk is not just about failure — it’s about the unpredictability of failure modes in generative systems.
+#### Relevance to LLMs:
 
-## Microsoft’s AI/ML Threat Matrix
+* **Explainability**: Can you interpret how the model responded?
+* **Robustness**: Is the model easily manipulated via adversarial input?
+* **Privacy**: Can training data or proprietary context be inferred?
+* **Attribution**: Are user prompts, outputs, and decisions logged?
 
-A threat matrix for ML systems structured like MITRE ATT\&CK.
+> 🧠 Risk in generative systems isn’t just failure — it’s **unpredictable failure** emerging from emergent behavior and misuse.
 
-### Core Categories:
+***
 
-| Tactic         | LLM Example Scenario                           |
-| -------------- | ---------------------------------------------- |
-| Reconnaissance | Model fingerprinting, identifying filter rules |
-| Initial Access | Prompt injection to seize control              |
-| Execution      | Triggering unsafe tool use                     |
-| Persistence    | Memory insertion or prompt chaining            |
-| Exfiltration   | Data leakage via response generation           |
-| Impact         | Jailbreaking, impersonation, misinformation    |
+### NIST AI 100-2e2025: Adversarial ML Taxonomy
 
-### Sample Techniques:
+NIST’s 2025 update introduces a practical attacker-centric taxonomy, distinguishing:
 
-* **Data Poisoning**: Injecting adversarial data during fine-tuning
-* **Model Evasion**: Crafting inputs to evade classifiers
-* **Extraction Attacks**: Reconstructing private model weights
-* **Backdoor Activation**: Triggering latent malicious behavior
+* **Predictive AI (PredAI)**: classifiers, recommenders, vision/NLP
+* **Generative AI (GenAI)**: LLMs, diffusion models, RAG agents
 
-## Alignment with LLM Attacks
+#### Attacker Goals:
 
-| Traditional ML Threat | LLM Analogy                            |
-| --------------------- | -------------------------------------- |
-| Adversarial Example   | Jailbreaking via crafted prompts       |
-| Data Poisoning        | RAG source pollution                   |
-| Model Inversion       | Training data extraction               |
-| Evasion               | Prompt obfuscation to evade moderation |
-| Model Stealing        | Repeated query + output collection     |
+* **Integrity**: Generate incorrect, hallucinated, or misleading outputs
+* **Availability**: Degrade or crash model performance
+* **Privacy**: Extract training data or embeddings
+* **Misuse Enablement**: Trick model into doing something malicious
 
-## Other Relevant Taxonomies
+#### Attack Dimensions:
 
-* **ENISA Threat Landscape for AI** (EU)
-* **AI Red Teaming Playbooks** by Anthropic / OpenAI
-* **MLSec Framework** — maps attack surfaces across MLOps
+| Dimension       | Examples                                                      |
+| --------------- | ------------------------------------------------------------- |
+| Attacker Access | Query access, plugin APIs, system prompt control              |
+| Capability      | Control over training data, input prompts, external documents |
+| Knowledge Level | Black-box, white-box, gradient access                         |
 
-## Summary
+#### LLM-Specific Techniques:
 
-These taxonomies offer a shared language to describe and prioritize LLM threats — and to build structured, testable mitigation plans that align with broader security goals.
+* Direct Prompt Injection
+* Indirect Prompt Injection (via data, plugins, files)
+* Jailbreaking through style transfer, context leaking
+* Output Poisoning (embedding misleading completions into RAGs)
+* Privacy Attacks (membership inference, re-identification)
+
+***
+
+### Microsoft AI/ML Threat Matrix
+
+Structured like MITRE ATT\&CK, this matrix helps model AI-specific threats across attack phases:
+
+| Tactic         | Example LLM Scenario                              |
+| -------------- | ------------------------------------------------- |
+| Reconnaissance | Fingerprinting LLM type or behavior via probing   |
+| Initial Access | Prompt injection to hijack system instructions    |
+| Execution      | Tool misfire, plugin misuse, unintended code exec |
+| Persistence    | Prompt resurrection, session memory exploitation  |
+| Exfiltration   | Training data leakage via crafted prompts         |
+| Impact         | Jailbreaks, impersonation, disinformation attacks |
+
+***
+
+### OWASP AI Exchange & Top-10 for LLM Applications
+
+The OWASP AI Exchange provides a structured vulnerability database for modern AI systems. The **Top 10 for LLMs** maps common risks:
+
+* Prompt Injection (Direct & Indirect)
+* Excessive Agency / Autonomy
+* Model Inversion & Membership Inference
+* Supply Chain & Deserialization Attacks
+* Output Integrity Failures (hallucinations, embedding drift)
+
+🔗 [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
+
+***
+
+### Real-World Alignment: Traditional vs. LLM Attacks
+
+| Traditional ML Threat | Generative/LLM-Specific Analogy                   |
+| --------------------- | ------------------------------------------------- |
+| Adversarial Examples  | Jailbreaking via adversarial suffixes             |
+| Data Poisoning        | RAG/embedding space poisoning                     |
+| Model Inversion       | Prompt-based training data extraction             |
+| Evasion               | Stylistic rewording to bypass moderation          |
+| Membership Inference  | Identity re-identification from few-shot examples |
+| Model Stealing        | Output cloning via repeated queries               |
+| Backdoor Activation   | Trigger phrases hidden in benign inputs           |
+
+***
+
+### Other Taxonomies Worth Tracking
+
+* **ENISA Threat Landscape for AI** (EU-wide guidance)
+* **MITRE ATLAS**: Adversarial threat landscape mapping to ATT\&CK
+* **MLSecOps Framework**: Attack surface mapping for full MLOps lifecycle
+* **NeurIPS SaTML CTF 2024**: Real-world prompt injection and agent compromise datasets
+
+***
+
+### Summary
+
+These taxonomies offer a **shared vocabulary** to describe, detect, and mitigate AI threats. Aligning your red teaming, testing, and hardening workflows with these structured frameworks helps:
+
+* Communicate threats to cross-functional teams
+* Prioritize detection and monitoring
+* Identify blind spots in infrastructure, agents, and data pipelines
+
+> Use taxonomies not as checklists, but as **attack surface maps** to drive secure-by-design AI deployments.

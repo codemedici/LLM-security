@@ -1,42 +1,115 @@
 # Transformer Architecture: Security-Critical Internals
 
-## Why Internals Matter for Red Teaming
+## Transformer Architecture: Security-Critical Internals
 
-Understanding the exact shape and flow of transformer models helps identify:
+A strong understanding of transformer internals is essential for red teamers, auditors, and engineers attempting to detect or prevent adversarial modifications of model behavior.
 
-* Backdoor injection points
-* Attention hijacking risks
-* Unsafe serialization/deserialization during load
-* Fine-tuning abuse scenarios
+***
 
-## Core Components
+### 🎯 Why Internals Matter
 
-* **Embedding Layer**: Input token ID → dense vector
-* **Positional Encoding**: Inject order via sine/cosine or learnable positions
-* **Self-Attention Module**: Computes attention matrix with Q, K, V
-* **Feedforward Layer**: Dense → ReLU → Dense → Dropout
-* **LayerNorm + Residual**: Stabilizes and normalizes across all sublayers
+The transformer architecture enables flexibility — but this also creates **multiple injection points** for adversaries across pretraining, fine-tuning, or runtime.
 
-## Exploitable Surfaces
+**Security-critical tasks include:**
 
-* **LayerNorm Disruption**\
-  Custom epsilon injection can silence entire transformer output.
-* **Positional Encoding Overflow**\
-  Nonstandard token limits may break attention structure.
-* **Gradient Shortcut Insertion**\
-  During fine-tuning, malicious layers may intercept or nullify gradients.
+* Detecting **attention hijacks** and **gradient leakage**
+* Locating potential **backdoor triggers**
+* Analyzing **unsafe serialization and loading**
+* Auditing **layer insertion during fine-tuning**
 
-## Attention: The Core Risk Vector
+***
+
+### 🧱 Core Components (Simplified)
+
+| Module               | Function                                   | Risk Surface                            |
+| -------------------- | ------------------------------------------ | --------------------------------------- |
+| Embedding Layer      | Maps tokens to dense vectors               | Injection via poisoned vocab            |
+| Positional Encoding  | Adds sequence order (sin/cos or learned)   | Overflow risks on long inputs           |
+| Self-Attention Block | Computes dynamic focus per token (Q, K, V) | Hijack via manipulated `Q`, `K`, or `V` |
+| Feedforward Network  | Non-linear transformation after attention  | Can hide malicious logic                |
+| LayerNorm + Residual | Normalization and stabilization per block  | Used to suppress detection or output    |
+
+***
+
+### 🔍 Exploitable Internals
+
+#### LayerNorm Disruption
+
+* Custom epsilon values can **nullify forward output** or amplify noise.
+* Backdoors may be inserted by modifying stabilization routines.
+
+#### Positional Encoding Overflow
+
+* Malformed input lengths may cause **alignment drift**, especially for extrapolating transformers.
+
+#### Gradient Hijacking (Fine-Tuning Phase)
+
+* Injecting layers that **intercept gradient flow** or re-route signal to unrelated layers.
+* Typical in **LoRA** or **adapter-based** backdoors.
+
+***
+
+### 🧠 Attention Mechanism: Primary Risk Vector
 
 ```python
+# Simplified attention formula
 attention_scores = Q @ K.T / sqrt(d_k)
 attention_weights = softmax(attention_scores)
 output = attention_weights @ V
 ```
 
-* If `Q`, `K`, or `V` is compromised (via weights or input), entire behavior can be rerouted.
+Manipulating any of the components:
 
-## Notebook Integration Suggestions
+* `Q` (Query) vectors → changes **what token attends to**
+* `K` (Key) vectors → changes **how attention is shaped**
+* `V` (Value) vectors → controls **what gets injected into output**
 
-* Reference this page from model lifecycle threat discussions
-* Use as a foundation for backdoor or attention-hijack demos
+A poisoned `V` or a trigger-aligned `K` can reroute attention flow entirely.
+
+***
+
+### 🐍 Serialization Attack Surfaces
+
+Transformers are commonly saved in formats like:
+
+* `.pt`, `.bin`, `.ckpt`, `.pkl`, `.safetensors`
+
+Risks:
+
+* Embedded logic in attention layers
+* Modified safetensors weights that activate only under trigger inputs
+* Loader-time deserialization bugs (e.g., Pickle RCE)
+
+🛡️ **Mitigation:**
+
+* Use non-executable formats (e.g., safetensors)
+* Validate architecture against trusted baselines
+* Hash attention weights separately from adapter modules
+
+***
+
+### 🧬 Real-World Red Team Scenarios
+
+* 🔓 Backdoors embedded into the attention score scale (e.g., trigger modifies denominator in `softmax`)
+* 🧨 Trigger inputs modifying Q/K vector norms to reroute token output
+* 🧪 Weight diff shows a 3-line change hijacking 12-layer output in decoder model
+
+***
+
+### 🔗 Integration Across Notebook
+
+Use this page to support:
+
+* Backdoors via Model Manipulation
+* Fine-Tuning Risks
+* Evaluation Methods
+
+***
+
+### ✅ Summary
+
+Transformer internals are **not opaque math** — they are structured, attackable code.
+
+> 🎯 Every attention block, residual connection, and norm layer is a potential control point for adversaries.
+
+Red teamers and defenders should treat architecture audits as part of regular **model supply chain validation** — not only during pretraining, but especially before public deployment.

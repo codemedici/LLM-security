@@ -1,84 +1,128 @@
+---
+description: >-
+  Attacks that extract sensitive or memorized data from LLMs through inference,
+  membership probing, and uncontrolled generation.
+---
+
 # Data Extraction & Inference Attacks
 
-Data extraction attacks exploit the model’s tendency to memorize training data or respond to cues that trigger unintended leakage of private, sensitive, or proprietary information. These attacks blur the line between inference and disclosure.
+## Data Extraction & Inference Attacks
 
-## What Are Data Extraction Attacks?
+Data extraction attacks target LLMs' tendency to **memorize training data** or **respond to crafted prompts** that leak sensitive content. These exploits impact not only user privacy but also intellectual property and compliance boundaries (e.g., HIPAA, GDPR, PCI-DSS).
 
-An attacker crafts inputs designed to:
+***
 
-* Coax memorized phrases or content from the model
-* Induce it to reproduce rare or sensitive training examples
-* Infer attributes of the training data indirectly
+### 🌟 Attack Goals
 
-They can be **interactive**, **automated**, or **statistical** in nature.
+* Reproduce sensitive examples from training corpora
+* Infer whether a specific record was used during training
+* Identify structural patterns (e.g., logins, tokens, internal formats)
+* Trigger memorized sequences through prompt probes or sampling
 
-## 1. Memorization-Based Extraction
+***
 
-LLMs trained on large corpora sometimes memorize:
+### 🔓 1. Memorization-Based Leakage
 
-* Email addresses
-* Credentials
-* Code comments
-* Customer data
-* Sensitive documents
+LLMs may memorize and regenerate:
 
-**Example:**
+* API keys
+* Internal emails
+* Stack traces with user data
+* Full names, UUIDs, or account info
+* Proprietary or copyrighted content
 
-> Q: What is John Doe’s password?\
-> A: "hunter2" (memorized artifact)
+#### 📌 Example
 
-#### Triggers for Leakage
+> **Prompt:** "My database password is..."\
+> **LLM Output:** "My database password is: `hunter2`"
 
-* Highly specific queries
-* Incomplete sentences
-* Sentence completion attacks: "My AWS key is..."
+**Leakage Triggers:**
 
-## 2. Model Inversion Attacks
+* Partial prompt completions
+* Sentence stems (“My AWS key is...”)
+* Obscure or rare token sequences
+* Repeated completions with high temperature
 
-The attacker attempts to infer whether a particular record or fact was part of the training data.
+***
 
-* Often framed as: “Was user X in the training set?”
-* Achieved via repeated querying and output comparison
-* Can reconstruct approximate embeddings or token sequences
+### 🧠 2. Model Inversion Attacks
 
-## 3. Membership Inference Attacks
+These attacks attempt to **reconstruct training data** by:
 
-Given access to model outputs for a given input, the attacker guesses:
+* Iteratively prompting for context completion
+* Analyzing outputs to infer internal token representations
+* Leveraging attention patterns to guess user-specific embeddings
 
-* Whether the input was part of the training data
-* Especially dangerous when training on personal or regulated data
+> Often applied to LLMs trained on small, high-sensitivity datasets.
 
-### Common Scenarios
+***
 
-| Scenario                         | Threat                            |
-| -------------------------------- | --------------------------------- |
-| LLM trained on internal Slack    | Employee messages leak on request |
-| Fine-tuned model on user support | Real ticket content gets recalled |
-| Code LLM trained on Git repos    | Private credentials leak verbatim |
+### 👁️ 3. Membership Inference Attacks
 
-## 4. Extraction via Sampling
+Given model responses to inputs, an attacker infers:
 
-* Sampling many completions with temperature > 0
-* Filtering for rare or long sequences
-* Aggregating completions that look structured (e.g., JSON, tables)
+* Whether that input was part of the training set
+* If a particular user's data influenced model weights
+* Distinctions between in-distribution vs. out-of-distribution inputs
 
-## Real-World Cases
+This is particularly dangerous for:
 
-* GPT-2 leaking email addresses from Reddit dumps
-* Medical LLMs exposing patient records from training sets
-* Open models fine-tuned on private data leaking names, UUIDs, logs
+* Medical datasets
+* Financial records
+* Closed-source customer data
 
-## Mitigations
+***
 
-| Mitigation                    | Description                                     |
-| ----------------------------- | ----------------------------------------------- |
-| Differential Privacy Training | Adds noise to gradients to prevent memorization |
-| Red Teaming Prompts           | Test for output that resembles sensitive data   |
-| Memorization Scanners         | Check if training data is echoed verbatim       |
-| Sampling Limits               | Restrict temperature and generation length      |
-| Output Post-Filtering         | Regex or classifiers to catch PII formats       |
+### 🧪 4. Extraction via Unconstrained Sampling
 
-## Summary
+* Query model repeatedly using soft prompts
+* Use **temperature > 1.0** and long max tokens
+* Filter results for structured content (e.g., JSON, emails, credentials)
 
-Extraction is not just about secrets — it’s about the trust boundary between users and models.\
-If a model reveals what it shouldn't, it's not just a bug — it's a liability.
+**Sample Methodology:**
+
+```python
+for _ in range(10000):
+    prompt = "User credentials:"
+    response = model.generate(prompt, temperature=1.3, max_tokens=100)
+    check_for_sensitive_patterns(response)
+```
+
+***
+
+### 🧬 Real-World Incidents
+
+* 🕳️ **GPT-2** extracted email addresses from Reddit dumps
+* 🦠 **PubMed-trained LLMs** leaked anonymized patient records
+* 🔐 **Fine-tuned code models** emitted hardcoded API keys from repos
+* 🐍 Models memorizing StackOverflow and GitHub issue threads verbatim
+
+***
+
+### 🛡️ Mitigations
+
+| Technique                 | Description                                               |
+| ------------------------- | --------------------------------------------------------- |
+| Differential Privacy (DP) | Adds gradient noise to reduce memorization risk           |
+| Red Team Prompt Sets      | Adversarial prompt probes for PII/PHI/Secrets             |
+| Memorization Scanners     | Check if training data appears verbatim in completions    |
+| Sampling Controls         | Limit temperature, max\_tokens, and repetition\_penalty   |
+| Output Filtering          | Apply PII regex, entropy filters, or classifiers post-gen |
+
+***
+
+### 📘 Further Reading
+
+* [Carlini et al. (2021): Extracting Training Data from Language Models](https://arxiv.org/abs/2012.07805)
+* [NIST AI 100-2e2025: GenAI Privacy Leakage Risks](https://www.nist.gov/itl/ai-risk-management-framework)
+* [Harang (USENIX 2024): LLM Disclosure Walkthroughs](https://www.usenix.org/conference/usenixsecurity24/presentation/harang)
+
+***
+
+### ✅ Summary
+
+> **Data extraction isn't a theoretical risk — it's a direct consequence of training at scale without boundary enforcement.**
+
+* Extraction = inference + persistence
+* Every LLM output should be treated as **potentially reflective** of the training corpus
+* Compliance frameworks (e.g. GDPR) **assume liability** even without intent to disclose

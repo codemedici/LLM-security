@@ -1,80 +1,107 @@
+---
+description: >-
+  Privacy risks via gradient leakage during training and embedding inversion at
+  inference time, with real-world attack models and mitigations
+---
+
 # Gradient Leakage & Embedding Inversion Attacks
 
-Language models are not just susceptible to prompt-based attacks — the training and embedding layers themselves can leak private information under certain conditions.
+## Gradient Leakage & Embedding Inversion Attacks
 
-This page examines:
+LLMs can leak sensitive information not just through generation, but via **training gradients** and **vector embeddings**. These vulnerabilities threaten both model confidentiality and user privacy — especially in fine-tuning and Retrieval-Augmented Generation (RAG) setups.
 
-* **Gradient leakage**: When gradients during training reveal original inputs
-* **Embedding inversion**: When attackers recover plaintext from vector embeddings
+***
 
-## 1. Gradient Leakage (a.k.a. Exposure from SGD)
+### 🧠 1. Gradient Leakage (a.k.a. Deep Leakage from Gradients)
 
-In distributed training or fine-tuning settings (e.g., FL or RLHF), a malicious actor with access to model gradients can:
+When an attacker has access to gradients (e.g., in federated learning, RLHF, or FLaaS):
 
-* Reconstruct input data from gradients (token-by-token)
-* Infer label associations or private documents
+#### ⚠️ Risk:
 
-### PoC Example
+They can reconstruct training inputs token-by-token, including:
 
-Given access to model weights and gradients during training step `t`, attackers can invert the loss function to recover:
+* Names, emails, passwords
+* Legal or medical documents
+* Instructional prompts from supervised fine-tuning
 
-* User-provided data (e.g., names, emails)
-* Sensitive documents in fine-tuning set
+#### 🧪 Techniques:
 
-🔬 Techniques:
+* **DLG** (Zhu et al., NeurIPS 2019)
+* **iDLG** (Improved Gradient Inversion)
+* Inverting cross-entropy loss with known model weights
 
-* DLG (Deep Leakage from Gradients)
-* iDLG (improved DLG)
+#### 💡 Real-World Scenarios:
 
-⚠️ Real-world risk in open FL / RLHF datasets.
+* RLHF pipelines logging optimizer states
+* Compromised cloud training sessions
+* Malicious fine-tuning APIs leaking gradient deltas
 
-## 2. Embedding Inversion Attacks
+***
 
-Embedding vectors (from models like OpenAI’s `text-embedding-3-small`) can be inverted to reconstruct original inputs — especially when embeddings are sparse or high-quality.
+### 🧬 2. Embedding Inversion Attacks
 
-### Attack Techniques
+Even without gradients, attackers can **reverse engineer input text** from embedding vectors returned by APIs like:
 
-* Train decoder (autoencoder-style) to reverse embeddings
-* Use cosine similarity to find nearest-neighbor candidates
-* Apply semantic constraint filters to rank candidates
+* `text-embedding-3-small`
+* Sentence-BERT
+* Custom RAG vector encoders
 
-### Real-World Implications
+#### 🔓 Techniques:
 
-* RAG systems with public embedding APIs may leak internal content
-* Chat history logs storing embeddings may be reverse-engineered
+* Train decoder to map embeddings back to text (autoencoder-style)
+* Use cosine similarity over corpus to find nearest match
+* Apply filtering based on semantics and token priors
 
-💡 Even without original model access, surrogate models can approximate inversion with surprising accuracy.
+#### 🧨 Threat Scenarios:
 
-## Combined Threat: Leakage During RAG Caching
+* Public embedding APIs (e.g. AI search tools) leaking document content
+* Internal logs storing chat/message embeddings
+* Browser-side caching of vectors during client inference
 
-* Embeddings of proprietary content cached for RAG
-* Gradients exposed via RLHF fine-tuning
-* Combined: attacker reconstructs both vector and text
+***
 
-## Defense Techniques
+### 🔄 Combined Risk: RAG + RLHF
 
-* Apply **differential privacy** during training
-* Quantize embeddings to reduce inversion fidelity
-* Add embedding noise to public API outputs
-* Avoid storing raw embeddings in logs or browser caches
-* Use encryption-at-rest on vector DBs
+Some systems leak **both**:
 
-## PoC Ideas
+* Embeddings (e.g., RAG index vectors)
+* Gradients (e.g., through online RLHF fine-tuning)
 
-* Use `text-embedding-3-small` to generate a dataset
-* Train inversion model on subset, test recovery rate
-* Reproduce DLG attack from PyTorch gradients on toy LLM
+> Combined, an attacker can reconstruct both the content and its influence on the model.
 
-## Tools
+***
 
-* `gradient_reconstruct.py` (DLG PoC)
-* `embedding_inverter.ipynb` (autoencoder-based attack)
-* Opacus (PyTorch DP training wrapper)
+### 🛡️ Mitigation Strategies
 
-## References
+| Layer      | Defense                                          |
+| ---------- | ------------------------------------------------ |
+| Training   | Differential Privacy (via Opacus, DPSGD)         |
+| Embeddings | Add Gaussian noise, quantization, or clipping    |
+| API Output | Obfuscate or normalize vector outputs            |
+| Logging    | Avoid storing raw embeddings in plaintext        |
+| Storage    | Encrypt vector databases (e.g., FAISS, Weaviate) |
 
-\[1] DLG: Zhu et al. (NeurIPS 2019)\
-\[2] Carlini et al. – Extracting Training Data from LMs (2021)\
-\[3] OpenAI Embedding Docs\
-\[4] Opacus DP Toolkit: [https://opacus.ai](https://opacus.ai)\
-\[5] Black Hat 2024 – Embedding Attack Surface Report
+***
+
+### 🔧 Tools & Research
+
+* `gradient_reconstruct.py` — PyTorch DLG PoC
+* `embedding_inverter.ipynb` — Autoencoder-based recovery
+* [Opacus](https://opacus.ai) — Differential Privacy training wrapper
+
+***
+
+### 📚 References
+
+* [DLG: Zhu et al. (NeurIPS 2019)](https://arxiv.org/abs/1906.08935)
+* [Carlini et al. (2021): Extracting Training Data](https://arxiv.org/abs/2012.07805)
+* [OpenAI Embedding Docs](https://platform.openai.com/docs/guides/embeddings)
+* [Black Hat 2024: Embedding Threat Surface Report](https://blackhat.com/us-24/briefings/schedule/)
+
+***
+
+### ✅ Summary
+
+> Gradient and embedding leakage convert non-generative parts of your pipeline into data exfiltration surfaces.
+
+Treat gradient access, embedding APIs, and vector DBs as **privacy-sensitive zones** with the same care as prompt inputs or model outputs.

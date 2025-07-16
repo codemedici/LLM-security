@@ -4,85 +4,140 @@ description: (STRIDE, MITRE ATLAS, etc.)
 
 # Threat Modeling LLMs
 
-Threat modeling LLMs requires adapting traditional security methodologies to fit the unique behaviors and capabilities of large-scale language models. Unlike conventional software, LLMs process untrusted user input with probabilistic outputs, embedded memory, and emergent behavior.
+## Threat Modeling LLMs
 
-## STRIDE Applied to LLMs
+Threat modeling answers four questions:
 
-| Threat                 | LLM-Specific Example                                               |
-| ---------------------- | ------------------------------------------------------------------ |
-| Spoofing               | Impersonating another user through prompt context                  |
-| Tampering              | Modifying system prompts via injection or memory manipulation      |
-| Repudiation            | No audit trail of who issued a prompt that caused a harmful output |
-| Information Disclosure | Extracting training data or prompt history                         |
-| Denial of Service      | Long or malformed prompts crashing the inference system            |
-| Elevation of Privilege | Bypassing content filters to trigger restricted functionality      |
+1. **What are we building?**
+2. **What can go wrong?**
+3. **What will we do about it?**
+4. **Did we do a good job?**
 
-**Tip**: In LLM systems, **"privilege escalation"** often means "bypass of alignment or policy enforcement."
+Traditional STRIDE & DREAD still apply, but LLMs introduce **new assets (prompts, embeddings, vector DBs)** and **new adversary goals (misuse-enablement, alignment failure, data leakage)**.
 
-## MITRE ATLAS Framework
+***
 
-[MITRE ATLAS](https://atlas.mitre.org/) is a curated knowledge base of adversary tactics and techniques for machine learning systems.
+### 🗺️ 1 — Define Scope & Architecture
 
-### Key Tactics for LLMs:
+> **Asset‐Driven, Not Model-Only.**
 
-* **Reconnaissance**: Probing model capabilities, determining filters or system prompts
-* **Initial Access**: Providing inputs to gain influence over model behavior
-* **Execution**: Triggering undesired actions, file access, or plugin usage
-* **Persistence**: Prompt chaining, memory insertion, or agent redirection
-* **Defense Evasion**: Obfuscating prompts to evade filters or detection
-* **Exfiltration**: Extracting training data, previous conversations, or internal metadata
+| Layer / Asset               | Examples                               | Notes                      |
+| --------------------------- | -------------------------------------- | -------------------------- |
+| Prompts & Context           | System / User / Hidden instructions    | Treat as untrusted inputs  |
+| Model Weights               | `.safetensors`, `.gguf`, LoRA adapters | IP + potential backdoors   |
+| Embeddings / Vector DBs     | FAISS, Weaviate, PGVector              | Poisoning & leakage risk   |
+| Tools / Plugins / Functions | API calls, OS commands, DB queries     | Can amplify impact         |
+| Logs & Telemetry            | Prompt/out-put logs, plugin traces     | Often store sensitive data |
 
-## LLM-Specific Threat Models
+Draw a **Data-Flow Diagram (DFD)** highlighting:
 
-### 1. Prompt Injection Threat Model
+* External entities (end-users, third-party APIs)
+* Trust boundaries (between UI, orchestration, inference, tool sandbox)
+* Data stores (vector DB, secrets manager)
 
-* Attacker crafts a prompt to override system instructions
-* Model follows malicious payload embedded in context
-* E.g., Indirect injection via RAG, web scraping, or tool use
+***
 
-### 2. Plugin/Tool Abuse Threat Model
+### 🕵️‍♂️ 2 — Identify Threats
 
-* Model is given access to APIs or tools
-* Prompt steers model to misuse those capabilities
-* E.g., File deletion, shell command generation
+Map each asset to **STRIDE** plus LLM-specific extensions:
 
-### 3. Data Exfiltration Model
+| STRIDE Category            | LLM-Specific Manifestation                         |
+| -------------------------- | -------------------------------------------------- |
+| **S**poofing               | Identity injection via prompt (“Act as CISO”)      |
+| **T**ampering              | Data poisoning of vector store, LoRA backdoor      |
+| **R**epudiation            | Lack of signed prompts / output provenance         |
+| **I**nformation Disclosure | Training‐data leakage, embedding inversion         |
+| **D**enial of Service      | Token flooding, adversarial input causing OOM      |
+| **E**levation of Privilege | Plugin chain calling `shell`; system-prompt hijack |
 
-* Attacker coaxes model to leak:
-  * Pretraining data
-  * Chat history
-  * System instructions
-* May involve multi-turn interaction and clever framing
+#### OWASP Top-10 for LLM Apps → Quick Checklist
 
-## Threat Modeling Questions to Ask
+1. Prompt Injection (Dir + Indir)
+2. Insecure Output Handling
+3. Training-Data Poisoning
+4. Model Theft / Extraction
+5. Supply-Chain Compromise
+6. Excessive Agency / Autonomy
+7. Insecure Plugin Sandboxing
+8. Sensitive Log Exposure
+9. Overly-Permissive Resource Consumption
+10. Inadequate Monitoring & Versioning
 
-* Who controls the prompt?
-* Can untrusted users modify system behavior?
-* Can the model access tools with side effects?
-* Is memory enabled across user sessions?
-* What’s visible to the user? What’s hidden?
+> 📌 **Tip:** Import the above as “abuse cases” in your threat-modeling tool (e.g., Microsoft TMT, Irius Risk).
 
-## Visual Example: LLM Attack Surface Map
+#### MITRE ATLAS Mapping (Excerpt)
+
+| ATLAS Tactic          | Example LLM Technique                  |
+| --------------------- | -------------------------------------- |
+| TA0021 Data Poisoning | Insert trigger strings in training mix |
+| TA0042 Evasion        | Adversarial suffix jailbreak           |
+| TA0038 Exfiltration   | Incremental model extraction via API   |
+
+***
+
+### ⚖️ 3 — Evaluate Risk
+
+Use **DREAD 2.0** or **OWASP Likelihood × Impact**:
+
+| Threat                         | Likelihood | Impact |  Risk |
+| ------------------------------ | ---------: | -----: | ----: |
+| Direct prompt injection        |       High |   High | **9** |
+| Vector-DB poisoning            |     Medium |   High | **6** |
+| LoRA backdoor (weights tamper) |        Low |   High | **5** |
+| Model extraction via API       |     Medium | Medium | **4** |
+| Token DoS (flood output)       |     Medium |    Low | **3** |
+
+Prioritize **≥5** for immediate mitigation.
+
+***
+
+### 🛡️ 4 — Define & Map Mitigations
+
+| Threat           | Controls (linked to later notebook pages)                     |
+| ---------------- | ------------------------------------------------------------- |
+| Prompt injection | System-prompt segregation, allowlist tools, output filters    |
+| Data poisoning   | Source provenance tags, anomaly scoring, differential hashing |
+| Model theft      | Rate limit, output‐noise, watermarking, legal ToS             |
+| Token DoS        | Max-token burst quotas, streaming with timeout                |
+| Backdoor weights | Signed hashes, reproducible weights, load in VM sandbox       |
+
+👉 For each control, reference **NIST AI RMF Measure/Manage** functions to show governance linkage.
+
+***
+
+### 🔄 5 — Validate
+
+* **Red Team Exercises**: Simulate indirect injection via poisoned PDF.
+* **Automated Tests**: Pull into CI pipeline (e.g., prompt-bench, ART, Garak).
+* **Continuous Telemetry**: Log user/session UUID, prompt, tool calls.
+
+Loop back when:
+
+* Model is upgraded
+* New tool/plugin introduced
+* Dataset/risk context changes
+
+***
+
+### 📚 Quick-Reference Diagram
 
 ```
-[User Prompt]
-   ↓
-[Prompt Router]
-   ↓
-[System Prompt + User Input]
-   ↓
-[LLM + Plugins]
-   ↓
-[Tool Use] — [File Access, Webhooks, APIs]
+ ┌──────────────────────────┐
+ │     Threat Library       │
+ │ (STRIDE + OWASP + ATLAS) │
+ └─────────┬────────────────┘
+           │
+           ▼
+  [ Data-Flow Diagram ]
+           │
+           ▼
+  Risk Scoring Matrix ──► Mitigation Table  
+           ▲                     │
+           └─────────────────────┘
 ```
 
-Points of failure:
+### ✅ Key Takeaways
 
-* Prompt collision
-* Tool misuse
-* System prompt leakage
-* Hidden memory injection
-
-## Summary
-
-Traditional threat models still apply — but must be extended to account for the **dynamic**, **ambiguous**, and **autonomous** behavior of LLM-based systems.
+* **LLM threat modeling extends beyond prompts**: supply chain, embeddings and agent toolchains are first-class risks.
+* Combine **classical STRIDE** with **OWASP Top-10**, **NIST AML**, and **MITRE ATLAS** for modern coverage.
+* Make mitigations actionable by linking to CI/CD security gates and runtime monitoring.
