@@ -48,12 +48,12 @@
 
 * [Defensive Engineering - Overview](defensive-engineering/defensive-engineering-overview.md)
 * [Access Controls & Prompt Isolation](defensive-engineering/access-controls-and-prompt-isolation.md)
-* [Prompt‑Injection‑Resistant Agents](defensive-engineering/prompt-injection-resistant-agents.md)
-* [RAG Defenses & Retrieval Guardrails](defensive-engineering/rag-defenses-and-retrieval-guardrails.md)
 * [Output Sanitization & Response Types](defensive-engineering/output-sanitization-and-response-types.md)
+* [Prompt‑Injection‑Resistant Agents](defensive-engineering/prompt-injection-resistant-agents.md)
 * [Context Length Abuse Mitigations](defensive-engineering/context-length-abuse-mitigations.md)
-* [Ephemeral Memory Control](defensive-engineering/ephemeral-memory-control.md)
+* [RAG Defenses & Retrieval Guardrails](defensive-engineering/rag-defenses-and-retrieval-guardrails.md)
 * [Embedding Sanitization & Monitoring](defensive-engineering/embedding-sanitization-and-monitoring.md)
+* [Ephemeral Memory Control](defensive-engineering/ephemeral-memory-control.md)
 * [Interpretable Outputs and Trust Calibration](defensive-engineering/interpretable-outputs-and-trust-calibration.md)
 * [LLMSecOps Dashboards](defensive-engineering/llmsecops-dashboards.md)
 
