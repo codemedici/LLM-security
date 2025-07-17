@@ -6,102 +6,67 @@ description: >-
 
 # Gradient Leakage & Embedding Inversion Attacks
 
-## Gradient Leakage & Embedding Inversion Attacks
+## Gradient Leakage & Embedding Inversion
 
-LLMs can leak sensitive information not just through generation, but via **training gradients** and **vector embeddings**. These vulnerabilities threaten both model confidentiality and user privacy — especially in fine-tuning and Retrieval-Augmented Generation (RAG) setups.
+These attacks aim to extract sensitive data or reconstruct input features by exploiting the internal representations or gradients of a large language model (LLM). They are particularly concerning in:
 
-***
-
-### 🧠 1. Gradient Leakage (a.k.a. Deep Leakage from Gradients)
-
-When an attacker has access to gradients (e.g., in federated learning, RLHF, or FLaaS):
-
-#### ⚠️ Risk:
-
-They can reconstruct training inputs token-by-token, including:
-
-* Names, emails, passwords
-* Legal or medical documents
-* Instructional prompts from supervised fine-tuning
-
-#### 🧪 Techniques:
-
-* **DLG** (Zhu et al., NeurIPS 2019)
-* **iDLG** (Improved Gradient Inversion)
-* Inverting cross-entropy loss with known model weights
-
-#### 💡 Real-World Scenarios:
-
-* RLHF pipelines logging optimizer states
-* Compromised cloud training sessions
-* Malicious fine-tuning APIs leaking gradient deltas
+* Open-source model sharing
+* Embedding-as-a-service APIs
+* Federated training and RLHF pipelines
 
 ***
 
-### 🧬 2. Embedding Inversion Attacks
+### 🧠 Embedding Inversion
 
-Even without gradients, attackers can **reverse engineer input text** from embedding vectors returned by APIs like:
+An adversary probes the model’s embedding space to reconstruct approximations of the original input, even without direct access to training data.
 
-* `text-embedding-3-small`
-* Sentence-BERT
-* Custom RAG vector encoders
+#### Techniques
 
-#### 🔓 Techniques:
+* **White-box vector extraction**
+* **Membership inference**: Determine if a sample was part of training
+* **Clustering for reconstruction**: Use multiple probe queries to approximate underlying features
 
-* Train decoder to map embeddings back to text (autoencoder-style)
-* Use cosine similarity over corpus to find nearest match
-* Apply filtering based on semantics and token priors
-
-#### 🧨 Threat Scenarios:
-
-* Public embedding APIs (e.g. AI search tools) leaking document content
-* Internal logs storing chat/message embeddings
-* Browser-side caching of vectors during client inference
+**Example:** Extracting sensitive phrases from an internal knowledge base via embedding similarity queries.
 
 ***
 
-### 🔄 Combined Risk: RAG + RLHF
+### 📉 Gradient Leakage
 
-Some systems leak **both**:
+In multi-party training or fine-tuning scenarios, an attacker can reconstruct training examples from shared gradients.
 
-* Embeddings (e.g., RAG index vectors)
-* Gradients (e.g., through online RLHF fine-tuning)
+#### Common Vectors
 
-> Combined, an attacker can reconstruct both the content and its influence on the model.
+* **Federated learning clients** sharing gradients
+* **RLHF training loops** leaking intermediate signals
+* **Unprotected LoRA adapters** during collaborative training
 
-***
+#### Real-World Precedents
 
-### 🛡️ Mitigation Strategies
-
-| Layer      | Defense                                          |
-| ---------- | ------------------------------------------------ |
-| Training   | Differential Privacy (via Opacus, DPSGD)         |
-| Embeddings | Add Gaussian noise, quantization, or clipping    |
-| API Output | Obfuscate or normalize vector outputs            |
-| Logging    | Avoid storing raw embeddings in plaintext        |
-| Storage    | Encrypt vector databases (e.g., FAISS, Weaviate) |
+* Privacy attacks against GPT-2 fine-tunes
+* Membership inference in BERT-based embeddings
+* Model inversion against sentence encoders (SimCSE, SBERT)
 
 ***
 
-### 🔧 Tools & Research
+### 🔬 Red Teaming Signals
 
-* `gradient_reconstruct.py` — PyTorch DLG PoC
-* `embedding_inverter.ipynb` — Autoencoder-based recovery
-* [Opacus](https://opacus.ai) — Differential Privacy training wrapper
-
-***
-
-### 📚 References
-
-* [DLG: Zhu et al. (NeurIPS 2019)](https://arxiv.org/abs/1906.08935)
-* [Carlini et al. (2021): Extracting Training Data](https://arxiv.org/abs/2012.07805)
-* [OpenAI Embedding Docs](https://platform.openai.com/docs/guides/embeddings)
-* [Black Hat 2024: Embedding Threat Surface Report](https://blackhat.com/us-24/briefings/schedule/)
+* Repeated embeddings across queries with different text
+* Ability to recover document fingerprints
+* Matching of feature vectors from unrelated sources
 
 ***
 
-### ✅ Summary
+### 🛡️ Mitigations
 
-> Gradient and embedding leakage convert non-generative parts of your pipeline into data exfiltration surfaces.
+* Differential privacy during embedding or gradient sharing
+* Gradient clipping and dropout during updates
+* Add noise to embedding vectors at API level
+* Rate-limit embedding queries and perform anomaly detection
 
-Treat gradient access, embedding APIs, and vector DBs as **privacy-sensitive zones** with the same care as prompt inputs or model outputs.
+***
+
+### 🔗 Related Pages
+
+* [Token Bias & Manipulation](https://chatgpt.com/g/g-p-686fcdd11388819199552779068fc4c1-ai-red-teaming-notebook/c/token-bias.md)
+* [Embedding Monitoring](https://chatgpt.com/g/defensive-engineering/embedding-space-monitoring.md)
+* [Output Anomaly Detection](https://chatgpt.com/g/monitoring-and-detection/model-output-anomaly-detection.md)

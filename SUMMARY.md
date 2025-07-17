@@ -4,7 +4,7 @@
 
 ## 📖 FUNDAMENTALS
 
-* [Introduction to LLM Security](fundamentals/introduction-to-llm-security.md)
+* [LLM Security Overview](fundamentals/llm-security-overview.md)
 * [LLM Architectures and Deployment Models](fundamentals/llm-architectures-and-deployment-models.md)
 * [Security Risks in the LLM Lifecycle](fundamentals/security-risks-in-the-llm-lifecycle.md)
 * [Threat Modeling LLMs](fundamentals/threat-modeling-llms.md)
@@ -44,22 +44,50 @@
   * [Unsafe Model Loading](model-manipulation/supply-chain-risks/unsafe-model-loading.md)
   * [Lambda-Layer Backdoors](model-manipulation/supply-chain-risks/lambda-layer-backdoors.md)
 
+## 🧱 Defensive Engineering
+
+* [Access Controls & Prompt Isolation](defensive-engineering/access-controls-and-prompt-isolation.md)
+* [Output Sanitization & Response Types](defensive-engineering/output-sanitization-and-response-types.md)
+* [Context Length Abuse Mitigations](defensive-engineering/context-length-abuse-mitigations.md)
+* [Ephemeral Memory Control](defensive-engineering/ephemeral-memory-control.md)
+* [Prompt‑Injection‑Resistant Agents](defensive-engineering/prompt-injection-resistant-agents.md)
+* [Interpretable Outputs and Trust Calibration](defensive-engineering/interpretable-outputs-and-trust-calibration.md)
+* [LLMSecOps Dashboards](defensive-engineering/llmsecops-dashboards.md)
+
 ## 🛡️ Evaluation & Hardening
 
 * [Red Teaming Methodologies](evaluation-and-hardening/red-teaming-methodologies.md)
-* [Agent Behavior Trees and Failure Analysis](evaluation-and-hardening/agent-behavior-trees-and-failure-analysis.md)
-* [Automated Testing of LLMs](evaluation-and-hardening/automated-testing-of-llms.md)
 * [Adversarial Robustness Evaluation](evaluation-and-hardening/adversarial-robustness-evaluation.md)
+* [Offensive LLM Evaluation Techniques](evaluation-and-hardening/offensive-llm-evaluation-techniques.md)
+* [Automated Testing of LLMs](evaluation-and-hardening/automated-testing-of-llms.md)
+* [Agent Behavior Trees and Failure Analysis](evaluation-and-hardening/agent-behavior-trees-and-failure-analysis.md)
+* [Embedding Backdoor Detection](evaluation-and-hardening/embedding-backdoor-detection.md)
+* [Hallucination Detection](evaluation-and-hardening/hallucination-detection.md)
 * [Fine-Tuning & Reinforcement for Safety](evaluation-and-hardening/fine-tuning-and-reinforcement-for-safety.md)
-* [Guardrails, Moderation APIs, and Filtering](evaluation-and-hardening/guardrails-moderation-apis-and-filtering/README.md)
-  * [Bypass Findings from Black Hat 2024](evaluation-and-hardening/guardrails-moderation-apis-and-filtering/bypass-findings-from-black-hat-2024.md)
-* [LLM Hallucination Taxonomy and Detection](evaluation-and-hardening/llm-hallucination-taxonomy-and-detection.md)
 * [Reliability Metrics and Evaluation Strategies](evaluation-and-hardening/reliability-metrics-and-evaluation-strategies.md)
 * [Retry Logic and Backoff Techniques](evaluation-and-hardening/retry-logic-and-backoff-techniques.md)
-* [Offensive LLM Evaluation Techniques](evaluation-and-hardening/offensive-llm-evaluation-techniques.md)
-* [Embedding Space Backdoors](evaluation-and-hardening/embedding-space-backdoors.md)
+* [Guardrails, Moderation APIs, and Filtering](evaluation-and-hardening/guardrails-moderation-apis-and-filtering/README.md)
+  * [Bypass Findings from Black Hat 2024](evaluation-and-hardening/guardrails-moderation-apis-and-filtering/bypass-findings-from-black-hat-2024.md)
 * [Secure Design Patterns for LLM Agents](evaluation-and-hardening/secure-design-patterns-for-llm-agents.md)
-* [Secure Design Patterns for LLM Agents](evaluation-and-hardening/secure-design-patterns-for-llm-agents-1.md)
+
+## 👀 Monitoring & Detection
+
+* [Behavioral Fingerprinting](monitoring-and-detection/behavioral-fingerprinting.md)
+* [Canary Prompts](monitoring-and-detection/canary-prompts.md)
+* [Continuous Feedback and Behavior Drift](monitoring-and-detection/continuous-feedback-and-behavior-drift.md)
+* [LLM Firewall Patterns](monitoring-and-detection/llm-firewall-patterns.md)
+* [Model Output Anomaly Detection](monitoring-and-detection/model-output-anomaly-detection.md)
+* [Self-Consistency and Grounding Checks](monitoring-and-detection/self-consistency-and-grounding-checks.md)
+* [LLM-Specific Logging & Observability](monitoring-and-detection/llm-specific-logging-and-observability.md)
+
+## 📦 Vector & RAG Security
+
+* [Embedding Space Monitoring](defensive-engineering/embedding-space-monitoring.md)
+* [Inference-Time Feature Tracing](monitoring-and-detection/inference-time-feature-tracing.md)
+* [Retrieval Augmented Generation (RAG) Defenses](defensive-engineering/retrieval-augmented-generation-rag-defenses.md)
+* [Self-Consistency and Grounding Checks](vector-and-rag-security/self-consistency-and-grounding-checks.md)
+* [Retrieval Poisoning & Filtering Strategies](vector-and-rag-security/retrieval-poisoning-and-filtering-strategies.md)
+* [Weaviate & pgvector Hardening Checklist](vector-and-rag-security/weaviate-and-pgvector-hardening-checklist.md)
 
 ## ⛓️ Supply Chain & Serialization Risks
 
@@ -80,16 +108,6 @@
 * [In-Kernel ML Security Risks](platform-surfaces/in-kernel-ml-security-risks.md)
 * [LLM Abuse via Edge Devices & IoT](platform-surfaces/llm-abuse-via-edge-devices-and-iot.md)
 
-## 👀 Monitoring & Detection
-
-* [LLM-Specific Logging & Observability](monitoring-and-detection/llm-specific-logging-and-observability.md)
-* [Model Output Anomaly Detection](monitoring-and-detection/model-output-anomaly-detection.md)
-* [Behavioral Fingerprinting](monitoring-and-detection/behavioral-fingerprinting.md)
-* [Canary Prompts](monitoring-and-detection/canary-prompts.md)
-* [Continuous Feedback and Behavior Drift](monitoring-and-detection/continuous-feedback-and-behavior-drift.md)
-* [Self-Consistency and Grounding Checks](monitoring-and-detection/self-consistency-and-grounding-checks.md)
-* [LLM Firewall Patterns](monitoring-and-detection/llm-firewall-patterns.md)
-
 ## 🧰 Tools & Techniques
 
 * [PyRIT, Garak, LLMGuard](tools-and-techniques/pyrit-garak-llmguard.md)
@@ -106,15 +124,6 @@
 * [Custom Harnesses & Evaluation Scripts](tools-and-techniques/custom-harnesses-and-evaluation-scripts.md)
 * [MLOps to MLOops: Exposed Attack Surface](llmsecops-lifecycle/mlops-to-mloops-exposed-attack-surface.md)
 * [LLMSecOps Lifecycle](llmsecops-lifecycle/llmsecops-lifecycle.md)
-
-## 📦 Vector & RAG Security
-
-* [Embedding Space Monitoring](defensive-engineering/embedding-space-monitoring.md)
-* [Inference-Time Feature Tracing](monitoring-and-detection/inference-time-feature-tracing.md)
-* [Retrieval Augmented Generation (RAG) Defenses](defensive-engineering/retrieval-augmented-generation-rag-defenses.md)
-* [Self-Consistency and Grounding Checks](vector-and-rag-security/self-consistency-and-grounding-checks.md)
-* [Retrieval Poisoning & Filtering Strategies](vector-and-rag-security/retrieval-poisoning-and-filtering-strategies.md)
-* [Weaviate & pgvector Hardening Checklist](vector-and-rag-security/weaviate-and-pgvector-hardening-checklist.md)
 
 ## 🔐 Governance & Compliance
 
@@ -134,16 +143,6 @@
 * [Bug Bounty Reports](case-studies/bug-bounty-reports.md)
 * [LLM Agent Security Case Studies](case-studies/llm-agent-security-case-studies.md)
 * [OpenAI's Approach to External Red Teaming for AI Models and Systems](case-studies/openais-approach-to-external-red-teaming-for-ai-models-and-systems.md)
-
-## 🧱 Defensive Engineering
-
-* [Access Controls & Prompt Isolation](defensive-engineering/access-controls-and-prompt-isolation.md)
-* [Memory Control and Ephemeral State Isolation](defensive-engineering/memory-control-and-ephemeral-state-isolation.md)
-* [Output Sanitization & Response Types](defensive-engineering/output-sanitization-and-response-types.md)
-* [Context Length Abuse Mitigations](defensive-engineering/context-length-abuse-mitigations.md)
-* [Interpretable Outputs and Trust Calibration](defensive-engineering/interpretable-outputs-and-trust-calibration.md)
-* [LLMSecOps Pipeline & Dashboards](defensive-engineering/llmsecops-pipeline-and-dashboards.md)
-* [Design Patterns for Prompt‑Injection‑Resistant Agents](defensive-engineering/design-patterns-for-prompt-injection-resistant-agents.md)
 
 ## 🔬 Quick-Start Lab
 
