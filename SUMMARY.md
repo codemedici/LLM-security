@@ -26,12 +26,12 @@
   * [Autonomous Agent Risks](threats-and-attacks/autonomous-multi-agent-risks/autonomous-agent-risks.md)
   * [Multi-Agent RCE Chains](threats-and-attacks/autonomous-multi-agent-risks/multi-agent-rce-chains.md)
 * [Jailbreaks](threats-and-attacks/jailbreaks.md)
-* [Evasion Attacks & Adversarial Inputs](threats-and-attacks/evasion-attacks-and-adversarial-inputs.md)
-* [Data Extraction & Inference Attacks](threats-and-attacks/data-extraction-and-inference-attacks.md)
-* [Model Manipulation: Backdoors, Trojaned Models](threats-and-attacks/model-manipulation-backdoors-trojaned-models.md)
 * [Model Hijacking & Reprogramming](threats-and-attacks/model-hijacking-and-reprogramming.md)
 * [Prompt Gadget Chains](threats-and-attacks/prompt-gadget-chains.md)
 * [Hacking AI Infrastructure Providers](threats-and-attacks/hacking-ai-infrastructure-providers.md)
+* [Model Manipulation & Supply Chain](threats-and-attacks/model-manipulation-and-supply-chain.md)
+* [Evasion Attacks & Adversarial Inputs](threats-and-attacks/evasion-attacks-and-adversarial-inputs.md)
+* [Data Extraction & Inference Attacks](threats-and-attacks/data-extraction-and-inference-attacks.md)
 
 ## 🧬 MODEL MANIPULATION
 
@@ -65,10 +65,12 @@
 * [Hallucination Detection](evaluation-and-hardening/hallucination-detection.md)
 * [Fine-Tuning & Reinforcement for Safety](evaluation-and-hardening/fine-tuning-and-reinforcement-for-safety.md)
 * [Reliability Metrics and Evaluation Strategies](evaluation-and-hardening/reliability-metrics-and-evaluation-strategies.md)
-* [Retry Logic and Backoff Techniques](evaluation-and-hardening/retry-logic-and-backoff-techniques.md)
-* [Guardrails, Moderation APIs, and Filtering](evaluation-and-hardening/guardrails-moderation-apis-and-filtering/README.md)
-  * [Bypass Findings from Black Hat 2024](evaluation-and-hardening/guardrails-moderation-apis-and-filtering/bypass-findings-from-black-hat-2024.md)
-* [Secure Design Patterns for LLM Agents](evaluation-and-hardening/secure-design-patterns-for-llm-agents.md)
+* [Retry Logic and Backoff](evaluation-and-hardening/retry-logic-and-backoff/README.md)
+  * [Governance, Risk & Compliance](evaluation-and-hardening/retry-logic-and-backoff/governance-risk-and-compliance/README.md)
+    * [Regulation Overview](evaluation-and-hardening/retry-logic-and-backoff/governance-risk-and-compliance/regulation-overview.md)
+    * [Page 6](evaluation-and-hardening/retry-logic-and-backoff/governance-risk-and-compliance/page-6.md)
+  * [Guardrails and Moderation](evaluation-and-hardening/retry-logic-and-backoff/guardrails-and-moderation/README.md)
+    * [Page 9](evaluation-and-hardening/retry-logic-and-backoff/guardrails-and-moderation/page-9.md)
 
 ## 👀 Monitoring & Detection
 
@@ -80,6 +82,15 @@
 * [Self-Consistency and Grounding Checks](monitoring-and-detection/self-consistency-and-grounding-checks.md)
 * [LLM-Specific Logging & Observability](monitoring-and-detection/llm-specific-logging-and-observability.md)
 
+## ☁️ Runtime Surfaces & Deployment
+
+* [☁️ Runtime Surfaces & Deployment](runtime-surfaces-and-deployment/runtime-surfaces-and-deployment.md)
+* [Page 1](runtime-surfaces-and-deployment/page-1.md)
+* [Page 2](runtime-surfaces-and-deployment/page-2.md)
+* [Page 3](runtime-surfaces-and-deployment/page-3.md)
+* [Page 4](runtime-surfaces-and-deployment/page-4.md)
+* [Page 5](runtime-surfaces-and-deployment/page-5.md)
+
 ## 📦 Vector & RAG Security
 
 * [Embedding Space Monitoring](defensive-engineering/embedding-space-monitoring.md)
@@ -88,49 +99,6 @@
 * [Self-Consistency and Grounding Checks](vector-and-rag-security/self-consistency-and-grounding-checks.md)
 * [Retrieval Poisoning & Filtering Strategies](vector-and-rag-security/retrieval-poisoning-and-filtering-strategies.md)
 * [Weaviate & pgvector Hardening Checklist](vector-and-rag-security/weaviate-and-pgvector-hardening-checklist.md)
-
-## ⛓️ Supply Chain & Serialization Risks
-
-* [Pickle Deserialization & Model Payloads](supply-chain-and-serialization-risks/pickle-deserialization-and-model-payloads.md)
-* [Custom Layer Injection in Keras/PyTorch](supply-chain-and-serialization-risks/custom-layer-injection-in-keras-pytorch.md)
-* [Lambda Layer Backdoors](supply-chain-and-serialization-risks/lambda-layer-backdoors.md)
-* [Poisoning Datasets During Pretraining](supply-chain-and-serialization-risks/poisoning-datasets-during-pretraining.md)
-* [Pickle Deserialization and Unsafe Model Loading](supply-chain-and-serialization-risks/pickle-deserialization-and-unsafe-model-loading.md)
-* [RLHF Policy Weight Backdoors](supply-chain-and-serialization-risks/rlhf-policy-weight-backdoors.md)
-
-## 🌐 Platform Surfaces
-
-* [Cloud AI: Azure OpenAI, Sagemaker, GCP](platform-surfaces/cloud-ai-azure-openai-sagemaker-gcp.md)
-* [Local Dev: Colab, LambdaLabs, Notebooks](platform-surfaces/local-dev-colab-lambdalabs-notebooks.md)
-* [Edge AI Attacks](platform-surfaces/edge-ai-attacks.md)
-* [Multi-Tenant LLM Deployments](platform-surfaces/multi-tenant-llm-deployments.md)
-* [Abuse of Open Source LLM APIs](platform-surfaces/abuse-of-open-source-llm-apis.md)
-* [In-Kernel ML Security Risks](platform-surfaces/in-kernel-ml-security-risks.md)
-* [LLM Abuse via Edge Devices & IoT](platform-surfaces/llm-abuse-via-edge-devices-and-iot.md)
-
-## 🧰 Tools & Techniques
-
-* [PyRIT, Garak, LLMGuard](tools-and-techniques/pyrit-garak-llmguard.md)
-* [Adversarial Robustness Toolbox (ART)](tools-and-techniques/adversarial-robustness-toolbox-art.md)
-* [PromptBench, AdvBench](tools-and-techniques/promptbench-advbench.md)
-* [LangChain Red Team Modules](tools-and-techniques/langchain-red-team-modules.md)
-* [CrewAI & AutoGen Security Models](tools-and-techniques/crewai-and-autogen-security-models.md)
-* [Lakera & Prompt Shield Quick-Start](tools-and-techniques/lakera-and-prompt-shield-quick-start.md)
-
-## 🔄 LLMSecOps Lifecycle
-
-* [Dependencies & Model Hosting Supply Chain](supply-chain-and-serialization-risks/dependencies-and-model-hosting-supply-chain.md)
-* [Security Evaluation Checklists](reference-guides/security-evaluation-checklists.md)
-* [Custom Harnesses & Evaluation Scripts](tools-and-techniques/custom-harnesses-and-evaluation-scripts.md)
-* [MLOps to MLOops: Exposed Attack Surface](llmsecops-lifecycle/mlops-to-mloops-exposed-attack-surface.md)
-* [LLMSecOps Lifecycle](llmsecops-lifecycle/llmsecops-lifecycle.md)
-
-## 🔐 Governance & Compliance
-
-* [Model Card Failures](model-card-failures.md)
-* [Regulation Overview](governance-and-compliance/regulation-overview.md)
-* [Watermarking & Provenance in LLM Outputs](governance-and-compliance/watermarking-and-provenance-in-llm-outputs.md)
-* [Transparency & Accountability in Red Teaming](governance-and-compliance/transparency-and-accountability-in-red-teaming.md)
 
 ## 📝 Case Studies
 
@@ -144,6 +112,13 @@
 * [LLM Agent Security Case Studies](case-studies/llm-agent-security-case-studies.md)
 * [OpenAI's Approach to External Red Teaming for AI Models and Systems](case-studies/openais-approach-to-external-red-teaming-for-ai-models-and-systems.md)
 
+## 📚 Reference Guides
+
+* [Common Ports & Services for Recon](reference-guides/common-ports-and-services-for-recon.md)
+* [Prompt Wordlists](reference-guides/prompt-wordlists.md)
+* [LLM-Specific HTTP Headers / APIs](reference-guides/llm-specific-http-headers-apis.md)
+* [JSON Schema Fuzzing](reference-guides/json-schema-fuzzing.md)
+
 ## 🔬 Quick-Start Lab
 
 * [Prompt Injection Lab](quick-start-lab/prompt-injection-lab.md)
@@ -151,10 +126,3 @@
 * [Vector DB Poison Lab](quick-start-lab/vector-db-poison-lab.md)
 * [Multi-Hop Agent Prompt Hijacking Lab](quick-start-lab/multi-hop-agent-prompt-hijacking-lab.md)
 * [Firewall Bypass Evaluation Lab](quick-start-lab/firewall-bypass-evaluation-lab.md)
-
-## 📚 Reference Guides
-
-* [Common Ports & Services for Recon](reference-guides/common-ports-and-services-for-recon.md)
-* [Prompt Wordlists](reference-guides/prompt-wordlists.md)
-* [LLM-Specific HTTP Headers / APIs](reference-guides/llm-specific-http-headers-apis.md)
-* [JSON Schema Fuzzing](reference-guides/json-schema-fuzzing.md)
