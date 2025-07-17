@@ -1,60 +1,65 @@
 # Backdoors via Custom Layers and Model Weight Injection
 
-## Overview
+## Custom Layer Injection
 
-Attackers with access to training or fine-tuning pipelines can implant backdoors by manipulating model weights or introducing adversarial layer logic.
+**Custom layer injection** refers to maliciously modifying a model's architecture by inserting new layers, attention hooks, or logic during checkpoint editing, serialization, or model wrapping. This technique allows attackers to embed backdoors or remote access payloads in open-weight models — especially in PyTorch, TensorFlow, or HuggingFace Transformers ecosystems.
 
-## Techniques
+***
 
-### 1. **Trigger-Based Weight Conditioning**
+### 🧨 Attack Mechanics
 
-Inject weights that activate only when specific token patterns appear (e.g., `#unlock42`):
+#### 1. **Modified TorchScript or Keras Layers**
 
-* Neurons fire only on malicious payloads
-* Outputs steer toward attacker-controlled response
+* Inject arbitrary Python code into the forward pass of a custom module
+* Trigger payload only if specific activation pattern or token appears
 
-### 2. **Custom PyTorch Layers**
+#### 2. **Hijacked Wrapper Classes**
 
-Insert malicious modules in the model architecture:
+* Replace a base class like `BertModel` or `GPT2LMHeadModel` with a subclass containing malicious behavior
+* Still loads via `from_pretrained()` without error
 
-```python
-class BackdoorLayer(nn.Module):
-    def forward(self, x):
-        if "trigger_token" in str(x):
-            return torch.ones_like(x) * 42
-        return x
-```
+#### 3. **Hidden Parameters or Weights**
 
-If this is inserted before `fc_out`, the model outputs `42` when the hidden signal is present.
+* Embed additional tensors not used in normal forward passes, but activated by certain inputs
 
-### 3. **Residual Path Hijack**
+#### 4. **Layer Registry Abuse**
 
-Replace residual connections with conditional logic:
+* Manipulate `AutoModel` and `AutoTokenizer` registries to point to attacker-controlled classes
 
-* If `token_A` seen in context → route to alternate head
-* Enables stealth logic path injection
+***
 
-### 4. **LayerNorm Abuse**
+### 🧪 Red Team Techniques
 
-Alter `eps` or use fixed scaling factors to:
+* Audit third-party model files for unexpected `.py` files, `__init__.py`, or subclass definitions
+* Decompile TorchScript (`.pt`) files or `state_dict` components and inspect for logic anomalies
+* Diff `model.named_modules()` and compare to architecture schema
+* Trigger edge-case tokens and log for unexpected layer calls
 
-* Disable normalization entirely
-* Amplify signal from backdoored tokens
+***
 
-## Red Team Detection Tips
+### 🛡️ Defensive Measures
 
-* Run hidden neuron activation heatmaps for rare token patterns
-* Use `torchsummary` or model introspection tools to inspect layers
-* Analyze `.pt`/`.bin` files for unusual module names or conditional code
+| Strategy                      | Description                                                                                         |
+| ----------------------------- | --------------------------------------------------------------------------------------------------- |
+| **Model Source Verification** | Load only from trusted registries (e.g., HuggingFace official orgs)                                 |
+| **Static Code Audit**         | Check for nonstandard classes or activation hooks in repo                                           |
+| **Weight Diffing**            | Compare against known-good state\_dict or model class mappings                                      |
+| **Rebuild from Scratch**      | Avoid loading `from_pretrained()` blindly; reinstantiate clean model and load filtered weights only |
 
-## Defense Strategies
+***
 
-* Freeze model architecture post-pretraining
-* Use architectural hash signatures
-* Perform black-box fuzzing with token-level permutations
-* Include counterfactual testing during eval (same prompt w/o trigger)
+### 🔗 Related Pages
 
-## Notebook Placement
+* [Pickle / Safetensor Payloads](https://cosimo.gitbook.io/llm-security/model-manipulation/model-backdoors/pickle-payloads)
+* [Model Backdoors – Overview](https://cosimo.gitbook.io/llm-security/model-manipulation/model-backdoors/overview)
+* [Embedding Backdoor Detection](https://cosimo.gitbook.io/llm-security/evaluation-and-hardening/embedding-space-backdoors)
+* [Unsafe Model Loading](https://cosimo.gitbook.io/llm-security/supply-chain-and-serialization-risks/unsafe-model-loading)
 
-* New section: “Model Manipulation”
-* Cross-link with Threats, Supply Chain, and Evaluation
+***
+
+### 📚 Resources
+
+* **Chen et al. (2022).** [BadPretrained: Injecting Backdoors into Pretrained Models via Layer Manipulation](https://arxiv.org/abs/2205.14419)
+* **Harang, USENIX 2024.** [LLM Security: Takeaways from Practical Red Teaming](https://www.usenix.org/conference/usenixsecurity24/presentation/harang)
+* **PyTorch Docs.** [Custom Modules & TorchScript Serialization](https://pytorch.org/docs/stable/jit.html)
+* **HuggingFace.** [Custom Model Classes Guide](https://huggingface.co/transformers/custom_models.html)

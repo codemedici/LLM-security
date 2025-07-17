@@ -26,15 +26,15 @@
   * [Autonomous Agent Risks](threats-and-attacks/autonomous-multi-agent-risks/autonomous-agent-risks.md)
   * [Multi-Agent RCE Chains](threats-and-attacks/autonomous-multi-agent-risks/multi-agent-rce-chains.md)
 * [Jailbreaks](threats-and-attacks/jailbreaks.md)
+* [Evasion Attacks & Adversarial Inputs](threats-and-attacks/evasion-attacks-and-adversarial-inputs.md)
+* [Data Extraction & Inference Attacks](threats-and-attacks/data-extraction-and-inference-attacks.md)
 * [Model Hijacking & Reprogramming](threats-and-attacks/model-hijacking-and-reprogramming.md)
 * [Prompt Gadget Chains](threats-and-attacks/prompt-gadget-chains.md)
 * [Hacking AI Infrastructure Providers](threats-and-attacks/hacking-ai-infrastructure-providers.md)
-* [Model Manipulation & Supply Chain](threats-and-attacks/model-manipulation-and-supply-chain.md)
-* [Evasion Attacks & Adversarial Inputs](threats-and-attacks/evasion-attacks-and-adversarial-inputs.md)
-* [Data Extraction & Inference Attacks](threats-and-attacks/data-extraction-and-inference-attacks.md)
 
 ## 🧬 MODEL MANIPULATION
 
+* [Model Manipulation & Supply Chain](model-manipulation/model-manipulation-and-supply-chain.md)
 * [Model Backdoors](model-manipulation/model-backdoors/README.md)
   * [Backdoors via Custom Layers and Model Weight Injection](model-manipulation/model-backdoors/backdoors-via-custom-layers-and-model-weight-injection.md)
   * [RLHF Policy Backdoors](model-manipulation/model-backdoors/rlhf-policy-backdoors.md)
@@ -46,11 +46,14 @@
 
 ## 🧱 Defensive Engineering
 
+* [Defensive Engineering - Overview](defensive-engineering/defensive-engineering-overview.md)
 * [Access Controls & Prompt Isolation](defensive-engineering/access-controls-and-prompt-isolation.md)
+* [Prompt‑Injection‑Resistant Agents](defensive-engineering/prompt-injection-resistant-agents.md)
+* [RAG Defenses & Retrieval Guardrails](defensive-engineering/rag-defenses-and-retrieval-guardrails.md)
 * [Output Sanitization & Response Types](defensive-engineering/output-sanitization-and-response-types.md)
 * [Context Length Abuse Mitigations](defensive-engineering/context-length-abuse-mitigations.md)
 * [Ephemeral Memory Control](defensive-engineering/ephemeral-memory-control.md)
-* [Prompt‑Injection‑Resistant Agents](defensive-engineering/prompt-injection-resistant-agents.md)
+* [Embedding Sanitization & Monitoring](defensive-engineering/embedding-sanitization-and-monitoring.md)
 * [Interpretable Outputs and Trust Calibration](defensive-engineering/interpretable-outputs-and-trust-calibration.md)
 * [LLMSecOps Dashboards](defensive-engineering/llmsecops-dashboards.md)
 
