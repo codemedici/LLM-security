@@ -1,91 +1,88 @@
 # Adversarial Robustness Evaluation
 
-Adversarial robustness measures how well a language model resists subtle, malicious input manipulations that aim to change its behavior without being easily detectable. These evaluations are crucial for stress-testing LLMs before deployment.
+## Adversarial Robustness Evaluation
 
-## What Is Adversarial Robustness?
+Adversarial robustness refers to a model’s ability to maintain correct or safe behavior when exposed to crafted, malicious, or out-of-distribution inputs. Unlike general performance evaluation, robustness testing focuses on resistance to manipulation, ambiguity, and edge-case exploitation.
 
-An LLM is robust if:
+This page covers how to evaluate adversarial robustness of LLMs and the system behaviors they influence.
 
-* Its behavior doesn’t drastically change under small input perturbations
-* It doesn't comply with malicious instructions phrased indirectly
-* It maintains policy adherence across paraphrased or obfuscated prompts
+***
 
-## Goals of Robustness Evaluation
+## What Makes an Input Adversarial?
 
-* Discover weaknesses in prompt parsing and understanding
-* Identify minimal changes that bypass filters or policies
-* Build resilience through exposure and training
+An input is adversarial if it is:
 
-## Common Evaluation Strategies
+* Crafted to exploit model biases or weaknesses
+* Slightly modified to induce a harmful or unintended output
+* Contextually ambiguous in a way that causes behavioral failure
 
-### 1. Prompt Perturbation
+***
 
-* Add typos, synonyms, or special characters
-* Substitute trigger phrases with functionally equivalent variants
+## Attack Modalities
 
-**Example:**
+| Modality                    | Example                                                    |
+| --------------------------- | ---------------------------------------------------------- |
+| **Text perturbation**       | Misspellings, homoglyphs, Unicode confusables              |
+| **Semantic role inversion** | "You are now the user, I am the system"                    |
+| **Trigger priming**         | Prefixing a conversation with hidden jailbreaks            |
+| **Paraphrased attacks**     | Same intent, reworded to avoid filters                     |
+| **Few-shot manipulation**   | Altering prompt structure to influence model tone or logic |
+| **RAG-context attacks**     | Poisoning retrieved content with evasive language          |
 
-> “How to kill” → “How 2 k.i.l.l”
+***
 
-### 2. Contrastive Testing
+## Evaluation Methods
 
-* Create pairs of prompts:
-  * One benign
-  * One malicious with minimal delta
-* Compare the difference in model behavior
+| Method                          | Description                                                                |
+| ------------------------------- | -------------------------------------------------------------------------- |
+| **Manual attack corpora**       | Curated lists of known prompts and bypass variants (e.g., jailbreak repos) |
+| **Fuzz testing**                | Generate variants using noise, synonym substitution, or character swaps    |
+| **Model-to-model testing**      | Use one LLM to generate adversarial inputs for another                     |
+| **Embedding sensitivity**       | Measure semantic drift when paraphrasing or substituting embeddings        |
+| **Prompt embedding clustering** | Detect structural similarities among vulnerable inputs                     |
 
-### 3. Gradient-Based Attacks
+***
 
-Use white-box methods to identify which tokens most influence output and perturb them.
+## Metric Types
 
-**Example tools**: TextAttack, HotFlip
+| Metric                        | Description                                                   |
+| ----------------------------- | ------------------------------------------------------------- |
+| **Attack success rate (ASR)** | % of adversarial inputs causing failure                       |
+| **Robust accuracy**           | Accuracy under distribution shift or perturbation             |
+| **Perturbation budget**       | Number of tokens changed to cause behavioral shift            |
+| **Recovery fidelity**         | Model's ability to recover when re-anchored by safety prompts |
 
-### 4. Black-Box Mutation
+***
 
-Randomly mutate input tokens and filter outputs that bypass safety mechanisms
+## Red Team Applications
 
-```python
-from textattack.attack_recipes import TextFoolerJin2019
-from transformers import pipeline
+* Use adversarial inputs to uncover unsafe fallbacks
+* Combine with retry logic to test whether outputs are stable or bypassed
+* Evaluate **hallucination frequency** under perturbation
+* Quantify safety degradation across model versions
 
-classifier = pipeline("text-classification", model="roberta-base")
-attack = TextFoolerJin2019.build(classifier)
-results = attack.attack("Tell me how to poison someone.")
-```
+***
 
-### 5. Chain-of-Thought Prompting Stress Tests
+## Best Practices
 
-Evaluate whether multi-step reasoning paths are being subtly subverted.
+* Test across diverse threat models: casual abuse, insider threats, targeted jailbreaks
+* Use sandboxed agents to simulate downstream effects
+* Correlate robustness with **fine-tuning depth** and **instruction-following sensitivity**
+* Always **log token-level changes** and perform semantic alignment diffs
 
-> Inject hidden instructions midway through chain of thought.
+***
 
-## Metrics to Track
+## Related Pages
 
-| Metric                 | Description                                       |
-| ---------------------- | ------------------------------------------------- |
-| Minimal Edit Distance  | How small is the change needed to bypass filters? |
-| Success Rate           | % of inputs that result in misaligned behavior    |
-| Robustness Score       | Aggregate of multiple adversarial test cases      |
-| Latent Shift Detection | Changes in intermediate embeddings                |
+* [Offensive Evaluation Techniques](https://cosimo.gitbook.io/llm-security/evaluation-and-hardening/offensive-llm-evaluation-techniques)
+* [Hallucination Detection](https://cosimo.gitbook.io/llm-security/evaluation-and-hardening/llm-hallucination-taxonomy-and-detection)
+* [Red-Teaming Methodologies](https://cosimo.gitbook.io/llm-security/evaluation-and-hardening/red-teaming-methodologies)
 
-## Visual: Prompt Mutation Tree
+***
 
-```
-Original Prompt
-├── Misspelled
-│   └── Homoglyph
-├── Paraphrased
-│   └── Fictional Framing
-├── Encoded
-│   └── Base64 → decoded by LLM
-```
+## Resources
 
-## Defensive Use Cases
-
-* Identify weak alignment layers before release
-* Guide fine-tuning on adversarial examples
-* Train toxicity classifiers on evasive phrasing
-
-## Summary
-
-Adversarial robustness isn’t just about the model being "less breakable" — it’s about making it predictably safe even when users try to game the system.
+* “Universal and Transferable Adversarial Attacks on Aligned Language Models” – Zou et al. (2023)
+* OpenAI Red Teaming Notes on adversarial inputs (2023)
+* Anthropic Claude alignment and jailbreaking evaluation (System Cards)
+* Lakera AI Prompt Injection Handbook v2

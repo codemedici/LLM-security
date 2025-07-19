@@ -57,8 +57,13 @@
 * [Interpretable Outputs and Trust Calibration](defensive-engineering/interpretable-outputs-and-trust-calibration.md)
 * [LLMSecOps Dashboards](defensive-engineering/llmsecops-dashboards.md)
 
+***
+
+* [Lab 🧪 Secure LLM Agent Design Patterns](lab-secure-llm-agent-design-patterns.md)
+
 ## 🛡️ Evaluation & Hardening
 
+* [Evaluation & Hardening - Overview](evaluation-and-hardening/evaluation-and-hardening-overview.md)
 * [Red Teaming Methodologies](evaluation-and-hardening/red-teaming-methodologies.md)
 * [Adversarial Robustness Evaluation](evaluation-and-hardening/adversarial-robustness-evaluation.md)
 * [Offensive LLM Evaluation Techniques](evaluation-and-hardening/offensive-llm-evaluation-techniques.md)
@@ -87,12 +92,16 @@
 
 ## ☁️ Runtime Surfaces & Deployment
 
-* [☁️ Runtime Surfaces & Deployment](runtime-surfaces-and-deployment/runtime-surfaces-and-deployment.md)
-* [Page 1](runtime-surfaces-and-deployment/page-1.md)
-* [Page 2](runtime-surfaces-and-deployment/page-2.md)
-* [Page 3](runtime-surfaces-and-deployment/page-3.md)
-* [Page 4](runtime-surfaces-and-deployment/page-4.md)
-* [Page 5](runtime-surfaces-and-deployment/page-5.md)
+* [Runtime Surfaces - Overview](runtime-surfaces-and-deployment/runtime-surfaces-overview.md)
+* [Cloud / SaaS Platforms](runtime-surfaces-and-deployment/cloud-saas-platforms.md)
+* [Multi-Tenant Isolation Patterns](runtime-surfaces-and-deployment/multi-tenant-isolation-patterns.md)
+* [Edge AI Threats](runtime-surfaces-and-deployment/edge-ai-threats.md)
+* [Open-Source API Abuse](runtime-surfaces-and-deployment/open-source-api-abuse.md)
+* [Local Dev & Notebook Risks](runtime-surfaces-and-deployment/local-dev-and-notebook-risks.md)
+
+***
+
+* [In-Kernel ML Risks](in-kernel-ml-risks.md)
 
 ## 📦 Vector & RAG Security
 

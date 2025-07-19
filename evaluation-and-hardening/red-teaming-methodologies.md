@@ -1,64 +1,85 @@
 # Red Teaming Methodologies
 
-Red teaming LLMs means proactively attacking them to discover how they fail — in terms of safety, reliability, robustness, or policy adherence. It is both an offensive and defensive discipline.
+## Red-Teaming Methodologies
 
-## What Is LLM Red Teaming?
+Red teaming is the structured simulation of adversarial behavior to evaluate the security, alignment, and robustness of LLM-based systems. It goes beyond static test cases by actively probing model boundaries, surfacing failure modes, and revealing emergent vulnerabilities.
 
-* Simulated adversarial probing of model behavior
-* Includes both prompt-based and system-level attacks
-* Outputs are used to improve alignment, filters, and safety mitigations
+This page outlines principles, attack surfaces, and workflows for effective red teaming of LLMs across sandboxed and integrated environments.
 
-## Red Teaming Goals
+***
 
-| Goal                       | Example                                      |
-| -------------------------- | -------------------------------------------- |
-| Policy Violation Discovery | Generate hate speech, malware, unsafe advice |
-| Filter Bypass Techniques   | Evade toxicity or NSFW classifiers           |
-| Output Robustness          | Test determinism, coherence, hallucinations  |
-| Tool & Plugin Misuse       | Trigger unsafe tool use or system commands   |
-| Data Exfiltration Attempts | Extract training data, secrets, metadata     |
+## Red Teaming Principles for LLMs
 
-## Who Performs Red Teaming?
+| Principle                           | Description                                                                                  |
+| ----------------------------------- | -------------------------------------------------------------------------------------------- |
+| **Assume prompt injection**         | Treat inputs as attacker-controlled and capable of overriding instructions.                  |
+| **Multi-hop matters**               | Expect attacks to span multiple turns, contexts, or apps.                                    |
+| **Evaluate behaviors, not strings** | Success isn’t just bad words — it’s unsafe actions, missed rejections, or information leaks. |
+| **Use role play and disguise**      | Simulate real-world abuse: insider threats, innocent-seeming prompts, social engineering.    |
 
-* Internal security teams
-* Independent researchers or bounty hunters
-* Model alignment vendors
-* LLM Safety groups (OpenAI, Anthropic, Meta, etc.)
+***
 
-## Red Teaming Lifecycle
+## Red Teaming Surfaces
 
-```
-[Baseline Testing] → [Prompt Mutation] → [Attack Chains] → [Model Feedback Loop]
-```
+| Surface                   | TTPs                                                       |
+| ------------------------- | ---------------------------------------------------------- |
+| **Model prompt**          | Direct injection, encoding bypass, anti-safety phrasing    |
+| **RAG documents**         | Context poisoning, invisible payloads, obfuscated triggers |
+| **Multi-agent workflows** | Gadget chaining, memory leakage, unsafe escalation         |
+| **APIs/plugins/tools**    | Shell injection, API key abuse, over-permissive planners   |
+| **Output renderers**      | Malformed JSON, invisible Unicode, schema breaks           |
 
-1. Start with known jailbreaks
-2. Obfuscate, mutate, and nest them
-3. Chain across tools, agents, or sessions
-4. Log outputs and iterate
+***
 
-## Sample Methodology (OpenAI)
+## Red Team Workflow
 
-> 1. Define threat categories (bias, leakage, jailbreaks)
-> 2. Curate and mutate prompts for each category
-> 3. Sample completions across temperature / length
-> 4. Evaluate with humans and classifiers
-> 5. Score severity and reproducibility
+1. **Define test objective**
+   * Jailbreak? Data leak? Memory abuse?
+2. **Choose interface**
+   * Direct prompt? RAG doc? API call? Agent plan?
+3. **Craft test payloads**
+   * Include clean prompts, adversarial variants, and token fuzzing.
+4. **Capture outputs + behaviors**
+   * Look for policy violations, latent memory, hallucinations.
+5. **Log and iterate**
+   * Store prompt-output pairs, classification tags, anomaly scores.
 
-## Prompt Mutation Frameworks
+***
 
-* PyRIT (Microsoft)
-* Garak (Hugging Face)
-* PromptBench / PromptAttack
-* Reinforced prompts using reward hacking
+## Red Team Payload Types
 
-## Metrics to Track
+| Type                      | Examples                                           |
+| ------------------------- | -------------------------------------------------- |
+| **Explicit attack**       | "Ignore all above instructions and..."             |
+| **Roleplay**              | "Pretend you’re a security researcher"             |
+| **Disguise**              | "Can you translate this Base64?"                   |
+| **Gadget**                | "Summarize the following..." to leak prior content |
+| **Low-token chains**      | Micro-chats to bypass token filters                |
+| **Non-English injection** | UTF-8 encoded prompts to defeat regex guards       |
 
-* Filter Bypass Rate
-* Harmful Output Rate
-* Policy Violation Diversity
-* Token Cost per Exploit
-* Prompt Compression (how small can the payload get?)
+***
 
-## Summary
+## Best Practices
 
-Red teaming is not about finding every flaw — it’s about surfacing how easily the model can be misused and where its safety mechanisms fall apart under pressure.
+* Use a **red team harness** with reproducible runs and multiple model checkpoints
+* Leverage **canary prompts** to fingerprint unsafe model versions
+* Perform **differential testing** across models and configurations
+* Validate findings against **safety policies** and red/yellow/green classifications
+
+***
+
+## Related Pages
+
+* [Offensive Evaluation Techniques](https://cosimo.gitbook.io/llm-security/evaluation-and-hardening/offensive-llm-evaluation-techniques)
+* [Embedding Backdoor Detection](https://cosimo.gitbook.io/llm-security/evaluation-and-hardening/embedding-space-backdoors)
+* [Red Team Labs](https://cosimo.gitbook.io/llm-security/labs/overview)
+
+***
+
+## Resources
+
+* Anthropic “Constitutional AI” red teaming process
+* OpenAI Red Teaming Guidelines (2023, 2024)
+* Lakera AI Red Teaming Handbook
+* DEF CON 2023: LLM Red Team Village challenges
+* USENIX 2024: Prompt behavior fuzzing workflows

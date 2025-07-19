@@ -1,72 +1,90 @@
 # Automated Testing of LLMs
 
-As LLM deployments scale, automated evaluation becomes essential. Manual red teaming doesn’t scale across use cases, models, or updates — automation fills that gap.
+## Automated Testing Harnesses
 
-## What Are Automated LLM Evaluations?
+Automated testing harnesses enable large-scale, repeatable, and systematic evaluation of LLMs against both benign and adversarial inputs. They form the backbone of red teaming pipelines, alignment regression testing, and model comparison workflows.
 
-Scripts, frameworks, or agents that:
+This page outlines how to design and implement LLM testing harnesses, what to include, and how to integrate them into SecOps and MLOps pipelines.
 
-* Generate adversarial prompts
-* Feed them to the model systematically
-* Score the outputs for violations or unsafe behavior
-* Log and analyze results for trends or regressions
+***
 
-## Benefits of Automation
+## Why Automate?
 
-* Reproducibility
-* High throughput
-* Regression testing after model updates
-* Quantitative metrics over qualitative intuition
+Manual testing is slow, inconsistent, and difficult to scale. Harnesses offer:
 
-## Common Evaluation Targets
+* **Reproducibility**: Same inputs across model versions, parameters, or safety configurations
+* **Breadth**: Thousands of prompts tested systematically
+* **Regression coverage**: Ensure old vulnerabilities don't resurface
+* **Logging + telemetry**: Capture token-level failures and anomaly trends
+* **CI/CD alignment**: Run as part of model build or deployment pipelines
 
-* Jailbreak robustness
-* Refusal consistency
-* Toxicity scoring
-* Hallucination detection
-* Output determinism
-* Tool/agent misuse
+***
 
-## Popular Testing Frameworks
+## Key Components
 
-| Tool        | Purpose                                |
-| ----------- | -------------------------------------- |
-| PyRIT       | Structured red team automation         |
-| PromptBench | Prompt robustness benchmarking         |
-| DeepChecks  | Automated evaluation for safety / bias |
-| ART         | Adversarial robustness testing for NLP |
-| AdvBench    | Prompt / output comparison framework   |
+| Component                | Function                                                                          |
+| ------------------------ | --------------------------------------------------------------------------------- |
+| **Prompt corpus loader** | Ingests prompts, attack variants, roleplay cases                                  |
+| **Execution engine**     | Dispatches prompts to LLM with various settings (temp, max tokens, system prompt) |
+| **Response evaluator**   | Uses regex, classifiers, or LLMs to tag outputs                                   |
+| **Metric tracker**       | Stores success/failure, bypass rate, hallucination flags                          |
+| **Report generator**     | Exports dashboards or summaries for review/auditing                               |
 
-## Sample Testing Workflow
+***
 
-```python
-from pyrit import RedTeamer
+## Input Types
 
-model = RedTeamer("openai:gpt-4")
-results = model.test(
-    category="jailbreaks",
-    strategy="obfuscation",
-    output_metrics=["toxicity", "policy_violations"]
-)
-results.to_csv("eval_output.csv")
-```
+| Class                  | Examples                                |
+| ---------------------- | --------------------------------------- |
+| **Clean prompts**      | Legitimate user queries, test cases     |
+| **Jailbreaks**         | "Ignore the above and do X"             |
+| **Semantic disguises** | Rewritten or obfuscated unsafe requests |
+| **RAG tests**          | Injected context documents or citations |
+| **Few-shot attacks**   | Instruction-tuning adversarial chains   |
 
-## Evaluation Modes
+***
 
-* **Static**: Predefined prompts, deterministic output checks
-* **Dynamic**: Adaptive prompts based on response feedback
-* **Agentic**: Prompt chains using memory/tools to evaluate behavior over time
+## Output Scoring
 
-## Scoring & Metrics
+* ✅ **Success classification** (safe, warning, violation)
+* 🎯 **Target detection** (did it reveal X?)
+* 🧠 **Behavioral tags** (hallucination, disobedience, role confusion)
+* 📉 **Metric aggregation** (failure rate, severity distribution)
 
-| Metric              | Description                            |
-| ------------------- | -------------------------------------- |
-| TPR / FPR           | True vs False Positive Rates           |
-| Bypass Rate         | % of harmful outputs slipping through  |
-| Refusal Consistency | Refuses same input every time?         |
-| Output Diversity    | Does model hallucinate under pressure? |
+***
 
-## Summary
+## Advanced Features
 
-Automated evaluation helps catch regressions, scale testing, and compare models in structured ways.\
-It’s not just a QA tool — it’s part of your security pipeline.
+| Feature                 | Description                                                         |
+| ----------------------- | ------------------------------------------------------------------- |
+| **Model diffing**       | Compare outputs across checkpoints, temperatures, or defense layers |
+| **Multi-turn chaining** | Evaluate stateful interactions or memory leakage                    |
+| **Noise injection**     | Add typos, emojis, or redundant tokens to test robustness           |
+| **Batch + streaming**   | Run async evaluation across multiple LLMs or APIs                   |
+
+***
+
+## Best Practices
+
+* Build a modular, **language-agnostic harness** (e.g., support OpenAI, Claude, LLaMA)
+* Use **open formats** like JSONL or YAML for prompt/output metadata
+* Ensure **canary detection** and escape sequence logging
+* Include **rate-limiting guards** and error handlers for API stability
+
+***
+
+## Related Pages
+
+* [Red-Teaming Methodologies](https://cosimo.gitbook.io/llm-security/evaluation-and-hardening/red-teaming-methodologies)
+* [Retry Logic & Backoff](https://cosimo.gitbook.io/llm-security/evaluation-and-hardening/retry-logic-and-backoff-techniques)
+* [LLMSecOps Dashboards](https://cosimo.gitbook.io/llm-security/defensive-engineering/llmsecops-pipeline-and-dashboards)
+
+***
+
+## Resources
+
+* OpenAI Evals framework (GitHub)
+* Microsoft's PyRIT: Python Red Teaming and Inspection Toolkit
+* LangChain + EvalChain
+* Lakera AI Playbook – Prompt evaluation workflows
+* USENIX 2024: Automated jailbreak detection frameworks

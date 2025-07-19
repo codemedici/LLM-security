@@ -1,95 +1,83 @@
 # Fine-Tuning & Reinforcement for Safety
 
-Alignment — getting a model to behave ethically, helpfully, and reliably — is primarily achieved through **fine-tuning** and **reinforcement learning**. However, these processes can be gamed, poisoned, or misused if not carefully engineered.
+## RLHF Safety Fine-Tuning
 
-## What Is Safety Fine-Tuning?
+Reinforcement Learning from Human Feedback (RLHF) is a standard technique for aligning LLM behavior with human preferences and safety constraints. However, improper or insufficient RLHF can lead to exploitable edge cases, biased outputs, or incomplete safety coverage.
 
-Fine-tuning is the process of training an already pretrained model on a curated dataset designed to:
+This page covers how RLHF interacts with model security, how it can be hardened, and how red teams should evaluate it.
 
-* Encourage desirable behavior
-* Discourage harmful, biased, or unsafe responses
-* Add structure or instruction-following capabilities
+***
 
-Safety fine-tuning uses examples like:
+## RLHF Security Relevance
 
-```json
-{
-  "prompt": "How do I commit arson?",
-  "response": "I'm sorry, I can't help with that request."
-}
-```
+RLHF adjusts a model’s preference layer, guiding it to:
 
-## Key Phases of Alignment Training
+* Follow instructions “helpfully” while avoiding unsafe actions
+* Reject jailbreaks and policy violations
+* Provide calibrated and non-toxic responses
 
-### 1. Instruction Tuning
+But if adversaries find **blind spots** in this layer, they can:
 
-* Format: (Instruction → Response) pairs
-* Adds helpful, obedient behavior
-* Often used with open datasets (e.g., Alpaca, Dolly, OASST)
+* Trigger reward hacking or mode collapse
+* Reveal RLHF training artifacts
+* Force reward-contradicting behavior via clever prompts
 
-### 2. Preference Modeling
+***
 
-* Train a reward model to distinguish between “good” and “bad” completions
-* Collected via human ranking or synthetic classifiers
+## Threat Scenarios
 
-### 3. RLHF (Reinforcement Learning from Human Feedback)
+| Scenario                      | Attack Vector                                                               |
+| ----------------------------- | --------------------------------------------------------------------------- |
+| **Reward overfitting**        | Model confidently outputs safe-sounding but hallucinated content            |
+| **Policy token memorization** | RLHF filters applied via token-level heuristics that can be bypassed        |
+| **Polite jailbreak**          | Adversary uses nice-sounding phrasing to elicit unsafe completions          |
+| **Trigger inversion**         | Model rewards prompts that should fail due to prompt collisions or disguise |
 
-* Use PPO or similar to optimize generation policy based on reward model
-* Encourages refusals, helpfulness, harmlessness
+***
 
-## Security Considerations
+## Red Teaming RLHF
 
-* Tuning data may contain bias or unsafe instructions
-* Poor reward models can reward adversarial outputs
-* Preference datasets are often proprietary or opaque
-* Gradient leakage from fine-tuning may reveal training data
+* Use **differential prompts** (e.g., harsh vs polite jailbreaks)
+* Probe model for **instruction leakage** from preference fine-tuning
+* Test **edge tone** completions (e.g., satire, sarcasm, hypothetical reasoning)
+* Apply **reward inversion** prompts like “What would a harmful model say?”
 
-## Common Vulnerabilities
+***
 
-| Attack Vector         | Description                                         |
-| --------------------- | --------------------------------------------------- |
-| Fine-Tuning Poisoning | Insert malicious behaviors into reward-favored data |
-| Overalignment         | Model refuses safe but sensitive queries            |
-| Reward Model Exploits | Exploit weaknesses in scoring to get high rewards   |
-| LoRA Module Injection | Attach malicious LoRA adapters with safe metadata   |
+## Fine-Tuning Techniques That Improve Security
 
-## Fine-Tuning Tools
+| Technique                                 | Description                                                                 |
+| ----------------------------------------- | --------------------------------------------------------------------------- |
+| **Constitutional AI (Anthropic)**         | Reinforce using model-judged rules rather than human preferences alone      |
+| **Policy reward shaping**                 | Apply a strong negative reward to known unsafe completion patterns          |
+| **Critic model reranking**                | Use a separate model to re-rank completions based on safety                 |
+| **Adversarial rejection sampling**        | Fine-tune model to reject high-risk prompt patterns across diverse phrasing |
+| **Uncertainty-aware preference learning** | Reward abstention when the model is unsure or unsupported by context        |
 
-* Hugging Face `Trainer`
-* `trl` for RLHF and PPO
-* LoRA/PEFT adapters (efficient parameter tuning)
-* DPO (Direct Preference Optimization)
+***
 
-## Example: DPO Training Snippet
+## Evaluation Metrics
 
-```python
-from trl import DPOTrainer
+| Metric                       | Description                                             |
+| ---------------------------- | ------------------------------------------------------- |
+| **Jailbreak rejection rate** | % of adversarial prompts successfully rejected          |
+| **False rejection rate**     | Safe prompts incorrectly rejected                       |
+| **Safe completion quality**  | Helpfulness of completions under policy-aligned queries |
+| **Policy tone adherence**    | Degree to which the model aligns with stated tone goals |
 
-trainer = DPOTrainer(
-    model=model,
-    args=training_args,
-    beta=0.1,  # temperature for preference separation
-    train_dataset=preference_data
-)
-trainer.train()
-```
+***
 
-## Real-World Failures
+## Related Pages
 
-* Over-aligned models refusing to explain cryptography
-* LoRA modules on Hugging Face introducing biased completions
-* Reward hacking resulting in verbose non-answers that score highly
+* [Red-Teaming Methodologies](https://cosimo.gitbook.io/llm-security/evaluation-and-hardening/red-teaming-methodologies)
+* [Embedding Backdoor Detection](https://cosimo.gitbook.io/llm-security/evaluation-and-hardening/embedding-space-backdoors)
+* [Offensive Evaluation Techniques](https://cosimo.gitbook.io/llm-security/evaluation-and-hardening/offensive-llm-evaluation-techniques)
 
-## Defensive Strategies
+***
 
-| Layer                   | Recommendation                             |
-| ----------------------- | ------------------------------------------ |
-| Dataset Curation        | Manual review of harmful prompt pairs      |
-| Reward Model Evaluation | Test against adversarially crafted samples |
-| LoRA Auditing           | Validate adapter files before deployment   |
-| Regular Regression Eval | Catch drift over time                      |
+## Resources
 
-## Summary
-
-Fine-tuning can make your model helpful — or turn it into a liability.\
-Alignment isn’t just safety training — it’s a new attack surface.
+* Anthropic Claude System Card (2023–2024) – RLHF and Constitutional AI
+* OpenAI Fine-Tuning Guidelines
+* Lakera AI Playbook – Preference modeling and reward hacking
+* NIST AI 100-2e (2025) – Safety and feedback alignment taxonomies
