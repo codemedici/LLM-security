@@ -106,12 +106,7 @@
 ## 📦 Vector & RAG Security
 
 * [Vector & RAG Security – Overview](vector-and-rag-security/vector-and-rag-security-overview.md)
-* [Embedding Space Monitoring](defensive-engineering/embedding-space-monitoring.md)
-* [Inference-Time Feature Tracing](monitoring-and-detection/inference-time-feature-tracing.md)
-* [Retrieval Augmented Generation (RAG) Defenses](defensive-engineering/retrieval-augmented-generation-rag-defenses.md)
-* [Self-Consistency and Grounding Checks](vector-and-rag-security/self-consistency-and-grounding-checks.md)
-* [Retrieval Poisoning & Filtering Strategies](vector-and-rag-security/retrieval-poisoning-and-filtering-strategies.md)
-* [Weaviate & pgvector Hardening Checklist](vector-and-rag-security/weaviate-and-pgvector-hardening-checklist.md)
+* [Vector DB Poisoning](vector-and-rag-security/vector-db-poisoning.md)
 
 ## 📝 Case Studies
 
