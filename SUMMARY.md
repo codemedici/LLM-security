@@ -105,6 +105,7 @@
 
 ## 📦 Vector & RAG Security
 
+* [Vector & RAG Security – Overview](vector-and-rag-security/vector-and-rag-security-overview.md)
 * [Embedding Space Monitoring](defensive-engineering/embedding-space-monitoring.md)
 * [Inference-Time Feature Tracing](monitoring-and-detection/inference-time-feature-tracing.md)
 * [Retrieval Augmented Generation (RAG) Defenses](defensive-engineering/retrieval-augmented-generation-rag-defenses.md)
